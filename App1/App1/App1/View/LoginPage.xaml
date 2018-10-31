@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.LoginPage"
+             BackgroundColor="#9ab7b6">
+    
+    <ContentPage.Content>
+
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                    
+
+                <Image Margin="40,40,40,40" Scale="0.5" Grid.Row="0" Source="LogoWhite" />
+
+
+
+                <Label HorizontalTextAlignment="Center" 
+                       Margin="0,250,0,0" 
+                       Grid.RowSpan="2"  
+                       Text="Velkommen til ASE StudyHelper!" 
+                       FontSize="32" 
+                       TextColor="White"/>
+
+                <Grid Grid.Row="1">
+                    
+                    <Button BorderRadius="1" 
+                            BorderWidth="1" 
+                            BorderColor="White" 
+                            Text="Login"  
+                            TextColor="White"
+                            BackgroundColor="#9ab7b6" 
+                            Margin="40,40,40,230"
+                            Clicked="Login_Clicked"/>
+                    
+                    <Button Clicked="Opret_Bruger_Clicked"
+                            TextColor="#9ab7b6" 
+                            Text="Opret bruger" 
+                            BackgroundColor="White" 
+                            Margin="60,150,60,120"/>
+
+
+                </Grid>
+
+            </Grid>
+ 
+
+
+
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

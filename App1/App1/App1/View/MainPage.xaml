@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App1"
+             x:Class="App1.MainPage"
+             BackgroundColor="#9ab7b6">
+
+
+    
+    
+    <Grid Padding="60">
+
+        <ScrollView>
+            <StackLayout>
+
+
+                <Button  FontSize="10"  Margin="5" BackgroundColor="White" TextColor="#f65a41" Text="Indstillinger"  />
+                <Button  FontSize="10" Margin="5" BackgroundColor="White" TextColor="#f65a41" Clicked="Quiz_Clicked" Text="Quiz"   />
+                <Button  FontSize="10" Margin="5" BackgroundColor="White" TextColor="#f65a41" Clicked="Hiscore_Clicked" Text="Hiscore"  />
+                <Button  FontSize="10" Margin="5" BackgroundColor="White" TextColor="#f65a41" Text="Spil"  />
+                <Button  FontSize="10" Margin="5" BackgroundColor="White" TextColor="#f65a41" Text="Om os" />
+
+            </StackLayout>
+            
+            
+            
+        </ScrollView>
+        
+
+    </Grid>
+
+</ContentPage>
