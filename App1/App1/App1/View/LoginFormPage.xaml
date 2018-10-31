@@ -35,13 +35,15 @@
                 TextColor="#9ab7b6"
                 FontSize="24"/>
 
-                    <Entry 
-                Margin="30,20,30,0"
-                HorizontalTextAlignment="Start" 
-                HorizontalOptions="FillAndExpand" 
-                Grid.Row="2" 
-                PlaceholderColor="#9ab7b6"  
-                Placeholder="Brugernavn, email eller ID"
+                <Entry 
+                        x:Name="Username_Entry"
+                        Margin="30,20,30,0"
+                        HorizontalTextAlignment="Start" 
+                        HorizontalOptions="FillAndExpand" 
+                        Grid.Row="2" 
+                        PlaceholderColor="#9ab7b6"  
+                        Placeholder="Brugernavn, email eller ID"
+                        Text="{Binding Username}"
                 />
 
                 <Entry 
@@ -53,7 +55,8 @@
                         PlaceholderColor="#9ab7b6" 
                         Placeholder="Password" 
                         IsPassword="True"
-                    />
+                        Text="{Binding Password}"
+                />
                 <Image 
                         Grid.Row="3"
                         HorizontalOptions="End"
@@ -90,7 +93,7 @@
                         Text="Log ind"
                         TextColor="White"
                         BackgroundColor="#9ab7b6"
-                        Clicked="Login_Clicked"
+                        Command ="{Binding SubmitCommand}"
 
                         />
 

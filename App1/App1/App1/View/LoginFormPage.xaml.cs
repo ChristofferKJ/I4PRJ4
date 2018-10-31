@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using App1;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using App1.ViewModel;
 
 namespace App1
 {
@@ -14,7 +15,21 @@ namespace App1
 	{
 		public LoginFormPage ()
 		{
-			InitializeComponent ();
+            var vm = new LoginViewModel();
+            this.BindingContext = vm;
+            vm.DisplayInvalidLoginPrompt += () => DisplayAlert("Fejl!", "Forkert logind, prøv igen", "OK");
+
+            InitializeComponent();
+
+            Username_Entry.Completed += (object sender, EventArgs e) =>
+            {
+                Password_Entry.Focus();
+            };
+
+            Password_Entry.Completed += (object sender, EventArgs e) =>
+            {
+                vm.SubmitCommand.Execute(null);
+            };
 		}
 
 
@@ -23,15 +38,10 @@ namespace App1
 	        Password_Entry.IsPassword = Password_Entry.IsPassword ? false : true; 
 	    }
 
-	    private void Login_Clicked(object sender, EventArgs e)
-	    {
-	        throw new NotImplementedException();
-	    }
 
 	    private async void CreateUser_Clicked(object sender, EventArgs e)
 	    {
 	        await Navigation.PushModalAsync(new NewUserPage()); 
-
 	    }
 	}
 }

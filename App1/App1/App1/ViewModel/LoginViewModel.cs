@@ -35,7 +35,7 @@ namespace App1.ViewModel
             }
         }
 
-        public ICommand SubmitCommand { protected get; set; }
+        public ICommand SubmitCommand { get; set; }
 
         public LoginViewModel()
         {
@@ -48,6 +48,10 @@ namespace App1.ViewModel
             {
                 DisplayInvalidLoginPrompt();
             }
+
+           
+
+            
         }
     }
 }

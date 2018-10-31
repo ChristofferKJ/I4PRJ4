@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using App1;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using App1.ViewModel;
 
 namespace App1
 {
@@ -14,8 +15,10 @@ namespace App1
     {
         public LoginPage()
         {
+           
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
+
         }
 
         private async void Login_Clicked(object sender, EventArgs e)
