@@ -8,17 +8,29 @@
 
     
     
-    <Grid Padding="60">
+    <Grid Margin="0,40,0,40">
 
-        <ScrollView>
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
             <StackLayout>
 
+                <Image Scale="0.4" Source="spil"/>
+                <Label TextColor="White"  Text="Spil" HorizontalTextAlignment="Center" Margin="0,-80,0,0"/>
+                <Image Scale="0.4" Source="quiz"/>
+                <Label TextColor="White" Text="Quiz" HorizontalTextAlignment="Center" Margin="0,-80,0,0"/>
+                <Image Scale="0.4" Source="hiscore"/>
+                <Label TextColor="White" Text="Hiscore" HorizontalTextAlignment="Center" Margin="0,-80,0,0"/>
+                <Image Scale="0.4" Source="settings"/>
+                <Label TextColor="White" Text="Indstillinger" HorizontalTextAlignment="Center" Margin="0,-80,0,0"/>
+                <Image Scale="0.4" Source="omos"/>
+                <Label TextColor="White" Text="Om os" HorizontalTextAlignment="Center" Margin="0,-80,0,0"/>
 
-                <Button  FontSize="10"  Margin="5" BackgroundColor="White" TextColor="#f65a41" Text="Indstillinger"  />
+
+
+                <!--<Button  FontSize="10"  Margin="5" BackgroundColor="White" TextColor="#f65a41" Text="Indstillinger"  />
                 <Button  FontSize="10" Margin="5" BackgroundColor="White" TextColor="#f65a41" Clicked="Quiz_Clicked" Text="Quiz"   />
                 <Button  FontSize="10" Margin="5" BackgroundColor="White" TextColor="#f65a41" Clicked="Hiscore_Clicked" Text="Hiscore"  />
                 <Button  FontSize="10" Margin="5" BackgroundColor="White" TextColor="#f65a41" Text="Spil"  />
-                <Button  FontSize="10" Margin="5" BackgroundColor="White" TextColor="#f65a41" Text="Om os" />
+                <Button  FontSize="10" Margin="5" BackgroundColor="White" TextColor="#f65a41" Text="Om os" />-->
 
             </StackLayout>
             

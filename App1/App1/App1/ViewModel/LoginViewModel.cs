@@ -4,12 +4,14 @@ using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using App1; 
 
 namespace App1.ViewModel
 {
     class LoginViewModel : INotifyPropertyChanged
     {
-        public Action DisplayInvalidLoginPrompt; 
+        public Action DisplayInvalidLoginPrompt;
+        public Action LoginSuccess; 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         private string email;
 
@@ -42,15 +44,17 @@ namespace App1.ViewModel
             SubmitCommand = new Command(OnSubmit);
         }
 
-        public void OnSubmit()
+         async public void OnSubmit()
         {
             if (email != "test@test.com" || password != "test")
             {
                 DisplayInvalidLoginPrompt();
             }
 
-           
-
+            else
+            {
+               LoginSuccess(); 
+            }
             
         }
     }
