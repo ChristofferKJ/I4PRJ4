@@ -25,5 +25,11 @@ namespace App1
         {
             await Navigation.PushModalAsync(new QuizPage());
         }
+
+        private async void Spil_OnTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new SpilPage());
+
+        }
     }
 }
