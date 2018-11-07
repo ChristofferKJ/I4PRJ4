@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="App1.LoginPage"
              BackgroundColor="#9ab7b6">
     
@@ -12,7 +13,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                    
+
 
                 <Image Margin="40,40,40,40" Scale="0.5" Grid.Row="0" Source="LogoWhite" />
 
@@ -40,7 +41,10 @@
                             TextColor="#9ab7b6" 
                             Text="Opret bruger" 
                             BackgroundColor="White" 
-                            Margin="60,150,60,120"/>
+                            Margin="60,150,60,120"
+                            BorderRadius="1" 
+                            BorderWidth="1" 
+                            BorderColor="White"/>
 
 
                 </Grid>
