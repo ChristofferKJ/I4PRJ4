@@ -14,19 +14,32 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <TableView Intent="Form">
-            <TableRoot>
-                <TableSection Title="Basic Info">
-                    <EntryCell Label="Category" Text="{Binding TheQuiz.Category}" />
-                    <EntryCell Label="Question" Text="{Binding TheQuiz.Question}" />
-                    <EntryCell Label="Option" Text="{Binding TheQuiz.Option}" />
-                </TableSection>
-            </TableRoot>
-        </TableView>
+        <StackLayout>
+            <TableView Intent="Form">
+                <TableRoot>
+                    <TableSection Title="Basic Info">
+                        <EntryCell Label="Category" Text="{Binding TheQuiz.Category}" />
+                        <EntryCell Label="Question" Text="{Binding TheQuiz.Question}" />
+                        <EntryCell Label="Option" Text="{Binding TheQuiz.Option}" />
+                    </TableSection>
+                </TableRoot>
+             </TableView>
+
+            <ListView ItemsSource="{Binding MyQuizzes}" x:Name="myQuizzesList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Question}" Detail="{Binding Option}">
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
     </ContentPage.Content>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel" Clicked="Handle_CancelClicked" />
         <ToolbarItem Text="Save" Command="{Binding SaveCommand}" />
+        <ToolbarItem Text="Refresh" Command="{Binding RefreshCommand}" />
     </ContentPage.ToolbarItems>
 
 
