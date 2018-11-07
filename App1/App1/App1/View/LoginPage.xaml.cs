@@ -29,7 +29,7 @@ namespace App1
 
         private async void Opret_Bruger_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new MainPage(), true);
+            await Navigation.PushModalAsync(new NewUserPage(), true);
         }
 
     }

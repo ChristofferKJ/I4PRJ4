@@ -17,21 +17,30 @@ namespace App1
         }
 
 
-        private async void Hiscore_Clicked(object sender, EventArgs e)
+        private async void hiscore_OnTapped(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new HiscoreWindow());
         }
 
-        private async void Quiz_Clicked(object sender, EventArgs e)
+        private async void quiz_OnTapped(object sender, EventArgs e)
         {
             var myQuiz = new Quiz();
             var QuizPage = new QuizPage(myQuiz, true);
             await Navigation.PushModalAsync(new NavigationPage(QuizPage));
         }
 
-        private async void Spil_OnTapped(object sender, EventArgs e)
+        private async void spil_OnTapped(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new SpilPage());
+
+        }
+        private async void settings_OnTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new SpilPage());
+        }
+        private async void omos_OnTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new OmOsPage());
 
         }
     }

@@ -44,18 +44,9 @@ namespace App1.ViewModel
             SubmitCommand = new Command(OnSubmit);
         }
 
-         async public void OnSubmit()
+        public void OnSubmit()
         {
-            if (email != "test@test.com" || password != "test")
-            {
-                DisplayInvalidLoginPrompt();
-            }
-
-            else
-            {
-               LoginSuccess(); 
-            }
-            
+            LoginSuccess(); 
         }
     }
 }
