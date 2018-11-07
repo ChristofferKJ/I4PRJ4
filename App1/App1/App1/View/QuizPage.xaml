@@ -3,26 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="App1.QuizPage"
-             BackgroundColor="#9ab7b6">
+             BackgroundColor="#9ab7b6"
+             Title="{Binding Title}">
 
-    <Grid>
-        
-  
-
-        <forms:AnimationView
-
-            x:Name="animationView" 
-            Animation="process_complete.json" 
-            Loop="True" 
-            AutoPlay="True"/>        
-
-
-    </Grid>
-    
-    
-    
-
-
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <TableView Intent="Form">
+            <TableRoot>
+                <TableSection Title="Basic Info">
+                    <EntryCell Label="Category" Text="{Binding TheQuiz.Category}" />
+                    <EntryCell Label="Question" Text="{Binding TheQuiz.Question}" />
+                    <EntryCell Label="Option" Text="{Binding TheQuiz.Option}" />
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Handle_CancelClicked" />
+        <ToolbarItem Text="Save" Command="{Binding SaveCommand}" />
+    </ContentPage.ToolbarItems>
 
 
 </ContentPage>

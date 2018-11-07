@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using App1.Model;
 using Xamarin.Forms;
 
 namespace App1
@@ -23,7 +24,9 @@ namespace App1
 
         private async void Quiz_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new QuizPage());
+            var myQuiz = new Quiz();
+            var QuizPage = new QuizPage(myQuiz, true);
+            await Navigation.PushModalAsync(new NavigationPage(QuizPage));
         }
 
         private async void Spil_OnTapped(object sender, EventArgs e)

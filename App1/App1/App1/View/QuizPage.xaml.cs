@@ -15,10 +15,46 @@ namespace App1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuizPage : ContentPage
     {
-        public QuizPage()
+        bool _isNew;
+        QuizViewModel _viewModel;
+
+        public QuizPage(Quiz quiz, bool isNew)
         {
             InitializeComponent();
-            this.BindingContext = new QuizViewModel();
+
+            _isNew = isNew;
+
+            _viewModel = new QuizViewModel(quiz, isNew);
+            _viewModel.SaveComplete += Handle_SaveComplete;
+
+            BindingContext = _viewModel;
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            _viewModel.SaveComplete -= Handle_SaveComplete;
+        }
+
+        async void Handle_SaveComplete(object sender, EventArgs eventArgs)
+        {
+            await DismissPage();
+        }
+
+        protected async void Handle_CancelClicked(object sender, EventArgs e)
+        {
+            await DismissPage();
+        }
+
+        async Task DismissPage()
+        {
+            if (_isNew)
+                await Navigation.PopModalAsync();
+            else
+                await Navigation.PopAsync();
+        }
+
+
     }
 }
