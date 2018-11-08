@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using App1.Model;
+using App1.View;
 using Xamarin.Forms;
 
 namespace App1
@@ -25,7 +26,7 @@ namespace App1
         private async void quiz_OnTapped(object sender, EventArgs e)
         {
             var myQuiz = new Quiz();
-            var QuizPage = new QuizPage(myQuiz, true);
+            var QuizPage = new QuizPageDemo(myQuiz, true);
             await Navigation.PushModalAsync(new NavigationPage(QuizPage));
         }
 
