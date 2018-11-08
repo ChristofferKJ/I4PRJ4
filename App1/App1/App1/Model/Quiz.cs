@@ -3,13 +3,32 @@ using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 
 namespace App1.Model
 {
-    public class Quiz : INotifyPropertyChanged
+    public class Quiz : PropertyChangedModel
     {
         [BsonId(IdGenerator = typeof(CombGuidGenerator))]
         public Guid Id { get; set; }
+
+        string _quizName;
+        [BsonElement("QuizName")]
+        public string QuizName
+        {
+            get => _quizName;
+            set
+            {
+                if (_quizName == value)
+                    return;
+
+                _quizName = value;
+
+                HandlePropertyChanged();
+            }
+        }
+
+
 
         string _category;
         [BsonElement("Category")]
@@ -27,45 +46,26 @@ namespace App1.Model
             }
         }
 
-        string _question;
-        [BsonElement("Question")]
-        public string Question
+        List<Question> _questionList;
+        [BsonElement("QuestionList")]
+        public List<Question> QuestionList
         {
-            get => _question;
+            get => _questionList;
             set
             {
-                if (_question == value)
+                if (_questionList == value)
                     return;
 
-                _question = value;
+                _questionList = value;
 
                 HandlePropertyChanged();
             }
         }
 
-        string _option;
-        [BsonElement("Option")]
-        public string Option
+        //getNextQuestion
+        public Question GetNextQuestion()
         {
-            get => _option;
-            set
-            {
-                if (_option == value)
-                    return;
-
-                _option = value;
-
-                HandlePropertyChanged();
-            }
+            return new Question();
         }
-
-
-
-        void HandlePropertyChanged([CallerMemberName]string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

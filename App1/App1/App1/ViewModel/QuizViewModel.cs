@@ -30,7 +30,7 @@ namespace App1.ViewModel
             SaveCommand = new Command(async () => await ExecuteSaveCommand());
 
             MyQuizzes = new List<Quiz>();
-            RefreshCommand = new Command(async () => await ExecuteRefreshCommand());
+            RefreshCommand = new Command(async () => await ExecuteRefreshQuizListCommand());
             IsBusy = false;
         }
 
@@ -46,7 +46,7 @@ namespace App1.ViewModel
             SaveComplete?.Invoke(this, new EventArgs());
         }
 
-        async Task ExecuteRefreshCommand()
+        async Task ExecuteRefreshQuizListCommand()
         {
             if (IsBusy)
                 return;
