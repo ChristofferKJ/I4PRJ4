@@ -22,7 +22,7 @@
                 <Label Grid.Row="0" Grid.ColumnSpan="2"
                        HorizontalTextAlignment="Center"
                        Margin="3,3,3,3" 
-                       Text="{Binding TheQuiz.Question}"
+                       Text="{Binding TheQuiz.Category}"
                        FontSize="32" FontAttributes="Bold"
                        TextColor="White"/>
                <Button Grid.Row="2" Grid.Column="0"
