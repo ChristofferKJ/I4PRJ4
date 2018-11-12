@@ -3,19 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="App1.OmOsPage"
-             BackgroundColor="White">
+             BackgroundColor="#9ab7b6">
+
+
     <ContentPage.Content>
         <Grid Padding="50">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-            <forms:AnimationView
+            <Label 
+                Grid.Row="0"
+                Text="Om os" 
+                TextColor="White" 
+                FontAttributes="Bold"
+                FontSize="20"/>
+            <Label 
+                Grid.Row="0"
+                Margin="0,30,0,0"
+                TextColor="White" 
+                FontSize="14"
+                Text="ASE StudyHelper er en applikation udviklet i forbindelse med et semesterprojekt på uddannelsen Information- og Kommunikationsteknologi."/>
 
-                x:Name="animationView" 
-                Animation="process_complete.json" 
-                Loop="True" 
-                AutoPlay="True"/>
 
 
-            <Label TextColor="Black" Text="ASE StudyHelper er en applikation udviklet i forbindelse med et semesterprojekt på uddannelsen Information- og Kommunikationsteknologi."/>
+            <forms:AnimationView 
+                x:Name="AnimationView"
+                Grid.Row="1"
+                Animation="cool.json"
+                Loop="True"
+                AutoPlay="True"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand" />
 
         </Grid>
     </ContentPage.Content>
