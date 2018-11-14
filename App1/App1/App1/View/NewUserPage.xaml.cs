@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using App1.ViewModel;
 namespace App1
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -20,5 +20,10 @@ namespace App1
 	    {
 	        await Navigation.PopModalAsync(); 
 	    }
-	}
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            MariusEl.Text = ;
+        }
+    }
 }
