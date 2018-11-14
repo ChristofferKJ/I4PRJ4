@@ -15,9 +15,10 @@ namespace App1
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            
         }
 
-
+        
         private async void hiscore_OnTapped(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new HiscoreWindow());
@@ -44,5 +45,7 @@ namespace App1
             await Navigation.PushModalAsync(new OmOsPage());
 
         }
+
+
     }
 }
