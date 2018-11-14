@@ -55,4 +55,51 @@ namespace App1.View
 	            await Navigation.PopAsync();
 	    }
     }
+
+    /*
+     [XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class QuizPageDemo : ContentPage
+	{
+	    bool _isNew;
+	    QuizViewModel _viewModel;
+
+	    public QuizPageDemo(Quiz quiz, bool isNew)
+	    {
+	        InitializeComponent();
+
+	        _isNew = isNew;
+
+	        _viewModel = new QuizViewModel(quiz, isNew);
+	       //_viewModel.SaveComplete += Handle_SaveComplete;
+
+	        BindingContext = _viewModel;
+	    }
+
+	    protected override void OnDisappearing()
+	    {
+	        base.OnDisappearing();
+
+	        //_viewModel.SaveComplete -= Handle_SaveComplete;
+	    }
+
+	    async void Handle_SaveComplete(object sender, EventArgs eventArgs)
+	    {
+	        await DismissPage();
+	    }
+
+	    protected async void Handle_CancelClicked(object sender, EventArgs e)
+	    {
+	        await DismissPage();
+	    }
+
+	    async Task DismissPage()
+	    {
+	        if (_isNew)
+	            await Navigation.PopModalAsync();
+	        else
+	            await Navigation.PopAsync();
+	    }
+    }
+}
+     */
 }

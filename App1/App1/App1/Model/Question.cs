@@ -46,34 +46,95 @@ namespace App1.Model
 
         }
 
-        List<Option> _optionList;
-        [BsonElement("OptionList")]
-        public List<Option> OptionList
+        Option[] _options;
+
+        [BsonElement("Option0")]
+        public Option Option0
         {
-            get => _optionList;
+            get => _options[0];
             set
             {
-                if (_optionList == value)
+                if (_options[0] == value)
                     return;
 
-                _optionList = value;
+                _options[0] = value;
 
                 HandlePropertyChanged();
+            }
+        }
+
+        [BsonElement("Option1")]
+        public Option Option1
+        {
+            get => _options[1];
+            set
+            {
+                if (_options[1] == value)
+                    return;
+
+                _options[1] = value;
+
+                HandlePropertyChanged();
+            }
+        }
+
+        [BsonElement("Option2")]
+        public Option Option2
+        {
+            get => _options[2];
+            set
+            {
+                if (_options[2] == value)
+                    return;
+
+                _options[2] = value;
+
+                HandlePropertyChanged();
+            }
+        }
+
+
+        [BsonElement("Option3")]
+        public Option Option3
+        {
+            get => _options[3];
+            set
+            {
+                if (_options[3] == value)
+                    return;
+
+                _options[3] = value;
+
+                HandlePropertyChanged();
+
             }
         }
 
         public void RandomizeOptionOrder()
         {
 
-            int n = _optionList.Count;
+            int n = _options.Length;
             while (n > 1)
             {
                 n--;
                 int k = nrg.Next(n + 1);
-                Option opt = _optionList[k];
-                _optionList[k] = _optionList[n];
-                _optionList[n] = opt;
+                Option opt = _options[k];
+                _options[k] = _options[n];
+                _options[n] = opt;
             }
+        }
+
+        public void print()
+        {
+            Console.WriteLine($"Question: {QuestionText}");
+            Console.WriteLine("----------------------");
+            Console.WriteLine("     Options");
+            Console.WriteLine("----------------------");
+            foreach (var o in _options)
+            {
+                o.print();
+            }
+            Console.WriteLine("----------------------");
         }
     }
 }

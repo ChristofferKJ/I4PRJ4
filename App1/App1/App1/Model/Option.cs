@@ -27,7 +27,7 @@ namespace App1.Model
 
         bool _isRight; //den her behøver måske ikke være propertychanged
         [BsonElement("IsRight")]
-        bool IsRight
+        public bool IsRight
         {
             get => _isRight;
             set
@@ -56,6 +56,13 @@ namespace App1.Model
                 HandlePropertyChanged();
             }
 
+        }
+
+        public void print()
+        {
+            Console.WriteLine($"Option: {OptionText}");
+            Console.WriteLine($"Right Choice: {IsRight}");
+            Console.WriteLine("----------------------");
         }
     }
 }

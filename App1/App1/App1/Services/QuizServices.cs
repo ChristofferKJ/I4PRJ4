@@ -75,6 +75,15 @@ namespace App1.Services
             return singleTask;
         }
 
+        public async Task<Quiz> GetQuizByName(string quizName)
+        {
+            var Quiz = await quizCollection
+                .AsQueryable()
+                .Where(q => q.QuizName == quizName)
+                .FirstOrDefaultAsync();
+            return Quiz;
+        }
+
         #endregion
 
         #region Search Funktioner

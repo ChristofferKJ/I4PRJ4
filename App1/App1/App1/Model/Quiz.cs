@@ -46,17 +46,18 @@ namespace App1.Model
             }
         }
 
-        List<Question> _questionList;
-        [BsonElement("QuestionList")]
-        public List<Question> QuestionList
+        Question[] _questions;
+        [BsonElement("Questions")]
+        public Question[] Questions
         {
-            get => _questionList;
+            get => _questions;
+
             set
             {
-                if (_questionList == value)
+                if (_questions == value)
                     return;
 
-                _questionList = value;
+                _questions = value;
 
                 HandlePropertyChanged();
             }
@@ -66,6 +67,21 @@ namespace App1.Model
         public Question GetNextQuestion()
         {
             return new Question();
+        }
+
+        public void print()
+        {
+            Console.WriteLine($"-----------QUIZ-------");
+            Console.WriteLine($"Quizname: {QuizName}");
+            Console.WriteLine($"Category: {Category}");
+            Console.WriteLine("----------------------");
+            Console.WriteLine("     Questions");
+            Console.WriteLine("----------------------");
+            foreach (var q in Questions)
+            {
+                q.print();
+            }
+            Console.WriteLine("----------------------");
         }
     }
 }
