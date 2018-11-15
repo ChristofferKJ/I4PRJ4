@@ -23,7 +23,7 @@ namespace App1
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            MariusEl.Text = ;
+         //  MariusEl.Text = ;
         }
     }
 }
