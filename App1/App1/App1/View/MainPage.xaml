@@ -3,11 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="App1.MainPage"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              BackgroundColor="#9ab7b6">
 
 
 
     <Grid>
+
+
+        <ffimageloading:CachedImage HorizontalOptions="Start"
+                                    Scale="1"
+                                    Source = "BackgroundMain">
+        </ffimageloading:CachedImage>
 
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
             <Grid>
@@ -22,13 +29,13 @@
                     <RowDefinition Height="170"/>
                 </Grid.RowDefinitions>
 
-                <Image Scale="0.7" Source="spil" Grid.Row="1">
-                    <Image.GestureRecognizers>
+                <ffimageloading:CachedImage Scale="0.7" Source="spil" Grid.Row="1">
+                    <ffimageloading:CachedImage.GestureRecognizers>
                         <TapGestureRecognizer 
                         Tapped="spil_OnTapped" 
                         NumberOfTapsRequired="1"/>
-                    </Image.GestureRecognizers>
-                </Image>
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
                 <Label 
                        Grid.Row="1"
                        TextColor="White"  
@@ -36,52 +43,52 @@
                        HorizontalTextAlignment="Center" 
                        Margin="0,150,0,0"/>
 
-                <Image Scale="0.7" Source="quiz" Grid.Row="2">
-                    <Image.GestureRecognizers>
+                <ffimageloading:CachedImage Scale="0.7" Source="quiz" Grid.Row="2">
+                    <ffimageloading:CachedImage.GestureRecognizers>
                         <TapGestureRecognizer 
                         Tapped="quiz_OnTapped" 
                         NumberOfTapsRequired="1"/>
-                    </Image.GestureRecognizers>
-                </Image>
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
                 <Label TextColor="White" 
                        Text="Quiz" 
                        HorizontalTextAlignment="Center" 
                        Margin="0,150,0,0"
                        Grid.Row="2"/>
 
-                <Image Scale="0.7" Source="hiscore" Grid.Row="3">
-                    <Image.GestureRecognizers>
+                <ffimageloading:CachedImage Scale="0.7" Source="hiscore" Grid.Row="3">
+                    <ffimageloading:CachedImage.GestureRecognizers>
                         <TapGestureRecognizer 
                             Tapped="hiscore_OnTapped" 
                             NumberOfTapsRequired="1"/>
-                    </Image.GestureRecognizers>
-                </Image>
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
                 <Label TextColor="White" 
                        Text="Hiscore" 
                        HorizontalTextAlignment="Center" 
                        Margin="0,150,0,0"
                        Grid.Row="3"/>
 
-                <Image Scale="0.7" Source="settings" Grid.Row="4">
-                    <Image.GestureRecognizers>
+                <ffimageloading:CachedImage Scale="0.7" Source="settings" Grid.Row="4">
+                    <ffimageloading:CachedImage.GestureRecognizers>
                         <TapGestureRecognizer 
                         Tapped="settings_OnTapped" 
                         NumberOfTapsRequired="1"/>
-                    </Image.GestureRecognizers>
-                </Image>
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
                 <Label TextColor="White" 
                        Text="Indstillinger" 
                        HorizontalTextAlignment="Center" 
                        Margin="0,150,0,0"
                        Grid.Row="4"/>
 
-                <Image Scale="0.7" Source="omos" Grid.Row="5">
-                    <Image.GestureRecognizers>
+                <ffimageloading:CachedImage Scale="0.7" Source="omos" Grid.Row="5">
+                    <ffimageloading:CachedImage.GestureRecognizers>
                         <TapGestureRecognizer 
                         Tapped="omos_OnTapped" 
                         NumberOfTapsRequired="1"/>
-                    </Image.GestureRecognizers>
-                </Image>
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
                 <Label TextColor="White" 
                        Text="Om os" 
                        HorizontalTextAlignment="Center" 

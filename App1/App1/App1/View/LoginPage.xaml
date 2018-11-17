@@ -15,12 +15,13 @@
                 </Grid.RowDefinitions>
 
 
-                <!--<Image Margin="40,40,40,40" Scale="0.5" Grid.Row="0" Source="LogoWhite" />-->
+             
 
                 <forms:AnimationView 
                     x:Name="AnimationView"
                     Grid.Row="0"
-                    Animation="LoginPageAnimation.json"
+                    Scale="0.7"
+                    Animation="ase_heartbeat.json"
                     Loop="True"
                     AutoPlay="True"
                     VerticalOptions="FillAndExpand"
