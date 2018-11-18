@@ -20,10 +20,5 @@ namespace App1
 	    {
 	        await Navigation.PopModalAsync(); 
 	    }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-         //  MariusEl.Text = ;
-        }
     }
 }

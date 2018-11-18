@@ -4,49 +4,26 @@ using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-using App1; 
+using App1;
+using App1.Services;
 
 namespace App1.ViewModel
 {
-    class LoginViewModel : INotifyPropertyChanged
+    class LoginViewModel //: INotifyPropertyChanged
     {
-        public Action DisplayInvalidLoginPrompt;
-        public Action LoginSuccess; 
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
-        private string email;
+        private ApiServices apiServices = new ApiServices();
+        public string Username { get; set; }
+        public string Password { get; set; }
 
-        public string Email
+        public ICommand LoginCommand
         {
-            get { return email; }
-            set
+            get
             {
-                email = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("Email"));
+                return new Command(async () =>
+                {
+                    await apiServices.LoginAsync(Username, Password);
+                });
             }
-        }
-
-        private string password;
-
-        public string Password
-        {
-            get { return password; }
-            set
-            {
-                password = value;
-                PropertyChanged(this,new PropertyChangedEventArgs("Password"));
-            }
-        }
-
-        public ICommand SubmitCommand { get; set; }
-
-        public LoginViewModel()
-        {
-            SubmitCommand = new Command(OnSubmit);
-        }
-
-        public void OnSubmit()
-        {
-            LoginSuccess(); 
         }
     }
 }

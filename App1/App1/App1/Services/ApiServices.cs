@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using System.Diagnostics;
 
 namespace App1.Services
 {
@@ -17,12 +18,9 @@ namespace App1.Services
 
             var model = new NewUserBindingModel()
             {
-                Id = 0,
-                UserName = username,
-                Password = password,
                 Email = email,
-                QuizCategoryScore = null,
-                TotalHighscore = null,
+                Password = password,
+                ConfirmPassword = confirmPassword
             };
 
             var json = JsonConvert.SerializeObject(model);
@@ -31,9 +29,27 @@ namespace App1.Services
 
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var response = await client.PostAsync("https://asestudyhelper.azurewebsites.net/api/Users",content);
+            var response = await client.PostAsync("https://asestudyhelper.azurewebsites.net/api/Account/Register", content);
 
             return response.IsSuccessStatusCode;
+        }
+        public async Task LoginAsync(string Username, string Password)
+        {
+            var KeyValues = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string,string> ("username", Username),
+                new KeyValuePair<string, string>("password", Password),
+                new KeyValuePair<string,string> ("grant_type", "password")
+            };
+
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://asestudyhelper.azurewebsites.net/Token");
+
+            request.Content = new FormUrlEncodedContent(KeyValues);
+
+            var client = new HttpClient();
+            var response = await client.SendAsync(request);
+
+            Debug.WriteLine(await response.Content.ReadAsStringAsync());
         }
     }
 }

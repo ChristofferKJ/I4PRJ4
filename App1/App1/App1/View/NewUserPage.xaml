@@ -85,13 +85,21 @@
                        Grid.ColumnSpan="2" 
                        Grid.Row="4" 
                        Placeholder="Indtast dit ønskede password"/>
+                
+                <Entry Text ="{Binding ConfirmPassword}" 
+                       HorizontalOptions="FillAndExpand" 
+                       PlaceholderColor="#9ab7b6" 
+                       HorizontalTextAlignment="Center"
+                       Grid.ColumnSpan="2" 
+                       Grid.Row="5" 
+                       Placeholder="Bekræft password"/>
 
                 <Button Grid.Column="0"
                         BackgroundColor="#9ab7b6" 
                         Margin="40,0,5,0" 
                         Text="Opret bruger" 
                         Command="{Binding NewUserCommand}"
-                        Grid.Row="6"
+                        Grid.Row="7"
                         BorderWidth="1"
                         BorderColor="#9ab7b6"
                         TextColor="White"/>
@@ -101,18 +109,11 @@
                         Margin="5,0,40,0" 
                         Text="Gå tilbage" 
                         TextColor="#9ab7b6"
-                        Grid.Row="6"
+                        Grid.Row="7"
                         BorderWidth="1"
                         BorderColor="#9ab7b6"
                         Clicked="GoBack_Clicked"/>
-                <Button x:Name="test"
-                        Text="Well ok"
-                        Clicked="Button_Clicked"
-                        Grid.Row="7"/>
-                <Label x:Name="MariusEl"
-                       Grid.Column="1"
-                       
-                       Text=""/>
+                
             </Grid>
             
         </StackLayout>

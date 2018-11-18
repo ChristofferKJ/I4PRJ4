@@ -43,11 +43,11 @@ namespace App1.Services
                 }
             };
 
-            List<User> sortedlist  = list.OrderByDescending(o => o.UserHiscore).ToList();
+            List<User> sortedlist = list.OrderByDescending(o => o.UserHiscore).ToList();
 
             list = sortedlist;
 
-            return list; 
+            return list;
         }
 
 

@@ -17,8 +17,8 @@ namespace App1
 		{
             var vm = new LoginViewModel();
             this.BindingContext = vm;
-            vm.DisplayInvalidLoginPrompt += () => DisplayAlert("Fejl!", "Forkert logind, prøv igen", "OK");
-            vm.LoginSuccess += () => Navigation.PushModalAsync(new MainPage()); 
+            //vm.DisplayInvalidLoginPrompt += () => DisplayAlert("Fejl!", "Forkert logind, prøv igen", "OK");
+            //vm.LoginSuccess += () => Navigation.PushModalAsync(new MainPage());
 
             InitializeComponent();
 
@@ -29,9 +29,9 @@ namespace App1
 
             Password_Entry.Completed += (object sender, EventArgs e) =>
             {
-                vm.SubmitCommand.Execute(null);
+                vm.LoginCommand.Execute(null);
             };
-		}
+        }
 
 
 	    private void ShowPass_OnTapped(object sender, EventArgs e)
