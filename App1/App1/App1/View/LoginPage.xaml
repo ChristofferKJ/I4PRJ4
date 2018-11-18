@@ -54,16 +54,13 @@
                             BorderRadius="1" 
                             BorderWidth="1" 
                             BorderColor="White"/>
+               
 
 
                 </Grid>
 
             </Grid>
  
-
-
-
-
         </StackLayout>
 
     </ContentPage.Content>

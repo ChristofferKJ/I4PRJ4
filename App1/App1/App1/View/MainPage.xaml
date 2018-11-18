@@ -4,8 +4,14 @@
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="App1.MainPage"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             BackgroundColor="#9ab7b6">
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"             BackgroundColor="#9ab7b6">
 
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="150">
+            <xfg:GradientStep StepColor="Orange" StepPercentage="0" />
+            <xfg:GradientStep StepColor="#9ab7b6" StepPercentage=".5" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
 
 
     <Grid>
@@ -99,8 +105,8 @@
 
         </ScrollView>
 
-    <Image Source="fade" VerticalOptions="Start"/>
-    <Image Source="fade" VerticalOptions="End" Scale="-1"/>
+    <!--<Image Source="fade" VerticalOptions="Start"/>
+    <Image Source="fade" VerticalOptions="End" Scale="-1"/>-->
 
 
 </Grid>
