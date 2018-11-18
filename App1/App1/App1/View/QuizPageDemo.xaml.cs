@@ -15,16 +15,15 @@ namespace App1.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class QuizPageDemo : ContentPage
 	{
-	    bool _isNew;
+	    
 	    QuizViewModel _viewModel;
 
-	    public QuizPageDemo(Quiz quiz, bool isNew)
+	    public QuizPageDemo(Quiz quiz)
 	    {
 	        InitializeComponent();
 
-	        _isNew = isNew;
 
-	        _viewModel = new QuizViewModel(quiz, isNew);
+	        _viewModel = new QuizViewModel(quiz);
 	        _viewModel.SaveComplete += Handle_SaveComplete;
 
 	        BindingContext = _viewModel;
@@ -49,10 +48,7 @@ namespace App1.View
 
 	    async Task DismissPage()
 	    {
-	        if (_isNew)
-	            await Navigation.PopModalAsync();
-	        else
-	            await Navigation.PopAsync();
+	       await Navigation.PopAsync();
 	    }
     }
 
