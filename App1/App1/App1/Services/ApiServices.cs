@@ -19,6 +19,7 @@ namespace App1.Services
             var model = new NewUserBindingModel()
             {
                 Email = email,
+                Username = username,
                 Password = password,
                 ConfirmPassword = confirmPassword
             };
