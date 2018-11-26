@@ -11,26 +11,27 @@ using App1.ViewModel;
 namespace App1
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class LoginFormPage : ContentPage
+    
+    public partial class LoginFormPage : ContentPage
 	{
-		public LoginFormPage ()
+		public LoginFormPage()
 		{
             var vm = new LoginViewModel();
-            this.BindingContext = vm;
+            //this.BindingContext = vm;
             //vm.DisplayInvalidLoginPrompt += () => DisplayAlert("Fejl!", "Forkert logind, prøv igen", "OK");
             //vm.LoginSuccess += () => Navigation.PushModalAsync(new MainPage());
 
             InitializeComponent();
 
-            Username_Entry.Completed += (object sender, EventArgs e) =>
-            {
-                Password_Entry.Focus();
-            };
+            //Username_Entry.Completed += (object sender, EventArgs e) =>
+            //{
+            //    Password_Entry.Focus();
+            //};
 
-            Password_Entry.Completed += (object sender, EventArgs e) =>
-            {
-                vm.LoginCommand.Execute(null);
-            };
+            //Password_Entry.Completed += (object sender, EventArgs e) =>
+            //{
+            //    vm.LoginCommand.Execute(null);
+            //};
         }
 
 
@@ -44,5 +45,7 @@ namespace App1
 	    {
 	        await Navigation.PushModalAsync(new NewUserPage()); 
 	    }
+
+	    
 	}
 }

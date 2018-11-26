@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Diagnostics;
+using System.Net;
 
 namespace App1.Services
 {
@@ -34,23 +35,24 @@ namespace App1.Services
 
             return response.IsSuccessStatusCode;
         }
-        public async Task LoginAsync(string Username, string Password)
+        public async Task<HttpResponseMessage> LoginAsync(string username, string password)
         {
-            var KeyValues = new List<KeyValuePair<string, string>>
+            var keyValues = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string,string> ("username", Username),
-                new KeyValuePair<string, string>("password", Password),
+                new KeyValuePair<string,string> ("username", username),
+                new KeyValuePair<string, string>("password", password),
                 new KeyValuePair<string,string> ("grant_type", "password")
             };
 
             var request = new HttpRequestMessage(HttpMethod.Post, "https://asestudyhelper.azurewebsites.net/Token");
 
-            request.Content = new FormUrlEncodedContent(KeyValues);
+            request.Content = new FormUrlEncodedContent(keyValues);
 
             var client = new HttpClient();
             var response = await client.SendAsync(request);
 
-            Debug.WriteLine(await response.Content.ReadAsStringAsync());
+            return response;
+            //Debug.WriteLine(await response.Content.ReadAsStringAsync());
         }
     }
 }

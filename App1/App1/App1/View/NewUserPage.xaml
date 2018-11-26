@@ -84,21 +84,35 @@
                        HorizontalTextAlignment="Center"
                        Grid.ColumnSpan="2" 
                        Grid.Row="4" 
-                       Placeholder="Indtast dit ønskede password"/>
+                       Placeholder="Indtast dit ønskede password"
+                       IsPassword="True"/>
                 
                 <Entry Text ="{Binding ConfirmPassword}" 
                        HorizontalOptions="FillAndExpand" 
-                       PlaceholderColor="#9ab7b6" 
+                       PlaceholderColor="#9ab7b6"
                        HorizontalTextAlignment="Center"
                        Grid.ColumnSpan="2" 
                        Grid.Row="5" 
-                       Placeholder="Bekræft password"/>
+                       Placeholder="Bekræft password"
+                       IsPassword="True"/>
+
+
+                <Label Text="{Binding Message}"
+                       Grid.Row="6"
+                       Grid.ColumnSpan="2"
+                       TextColor="#9ab7b6"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="FillAndExpand"
+                       
+                       />
+                
 
                 <Button Grid.Column="0"
                         BackgroundColor="#9ab7b6" 
                         Margin="40,0,5,0" 
                         Text="Opret bruger" 
                         Command="{Binding NewUserCommand}"
+                        CommandParameter="{Binding Message}"
                         Grid.Row="7"
                         BorderWidth="1"
                         BorderColor="#9ab7b6"
