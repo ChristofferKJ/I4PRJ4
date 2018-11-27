@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using App1;
 using App1.Annotations;
 using App1.Services;
+using Plugin.Connectivity;
 
 namespace App1.ViewModel
 {
@@ -33,21 +34,26 @@ namespace App1.ViewModel
             {
                 return new Command(async () =>
                 {
-                    var response = await _apiServices.LoginAsync(Username, Password);
-                    switch (response.StatusCode)
+                    var isConnected = CrossConnectivity.Current.IsConnected;
+                    if (!isConnected)
                     {
-                        case HttpStatusCode.OK:
+                        LoginResponse = "Kan ikke oprette forbindelse";
+
+                    }
+                    else
+                    {
+                        var response = await _apiServices.LoginAsync(Username, Password);
+                        switch (response.StatusCode)
                         {
-                            LoginResponse = "Login succes";
+                            case HttpStatusCode.OK:
+                            {
+                                LoginResponse = "Login succes";
+                                break;
+                            }
+                            default:
+                                LoginResponse = "Fejl i brugernavn eller kodeord";
                                 break;
                         }
-                        case HttpStatusCode.NotFound:
-                            LoginResponse = "Fejl i brugernavn eller kodeord";
-                            break;
-                        
-                       default:
-                            LoginResponse = "Ase Study Helper kan ikke få forbindelse til serveren, check din internetforbindelse og prøv igen";
-                            break;
                     }
                 });
             }

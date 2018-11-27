@@ -90,12 +90,12 @@
                 </Grid.RowDefinitions>
 
                 <Label Text="{Binding LoginResponse}"
-                           TextColor="#9ab7b6"
-                           HorizontalOptions="FillAndExpand"
-                           HorizontalTextAlignment="Center"
-                           Grid.ColumnSpan="2"
-                           Grid.Row="0"
-                           Margin="30,30,10,0"
+                       TextColor="#9ab7b6"
+                       HorizontalOptions="FillAndExpand"
+                       HorizontalTextAlignment="Center"
+                       Grid.ColumnSpan="2"
+                       Grid.Row="0"
+                       Margin="30,30,10,0"
                        
                            />
 
