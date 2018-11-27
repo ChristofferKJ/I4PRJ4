@@ -16,22 +16,12 @@ namespace App1
 	{
 		public LoginFormPage()
 		{
-            var vm = new LoginViewModel();
-            this.BindingContext = vm;
-            //vm.DisplayInvalidLoginPrompt += () => DisplayAlert("Fejl!", "Forkert logind, prøv igen", "OK");
-            vm.LoginSuccess += () => Navigation.PushModalAsync(new MainPage());
-
             InitializeComponent();
 
-            //Username_Entry.Completed += (object sender, EventArgs e) =>
-            //{
-            //    Password_Entry.Focus();
-            //};
-
-            //Password_Entry.Completed += (object sender, EventArgs e) =>
-            //{
-            //    vm.LoginCommand.Execute(null);
-            //};
+            Username_Entry.Completed += (object sender, EventArgs e) =>
+            {
+                Password_Entry.Focus();
+            };
         }
 
 

@@ -54,7 +54,7 @@ namespace App1.ViewModel
 
                     if (LoginResponse == "Login succes")
                     {
-                        OnSubmit();
+                        Application.Current.MainPage = new MainPage();
                     }
 
                     
@@ -62,20 +62,7 @@ namespace App1.ViewModel
             }
         }
 
-        public ICommand SubmitCommand { get; set; }
-
-        public LoginViewModel()
-        {
-            SubmitCommand = new Command(OnSubmit);
-        }
-
-        public void OnSubmit()
-        {
-            LoginSuccess();
-        }
-
-
-        public bool IsEverythingFilled()
+          public bool IsEverythingFilled()
         {
             if (Username == string.Empty || Password == string.Empty)
                 return false;
