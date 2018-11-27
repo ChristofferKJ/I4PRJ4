@@ -3,112 +3,82 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="App1.MainPage"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"             BackgroundColor="#9ab7b6">
-
-    <xfg:ContentPageGloss.BackgroundGradient>
-        <xfg:Gradient Rotation="150">
-            <xfg:GradientStep StepColor="Orange" StepPercentage="0" />
-            <xfg:GradientStep StepColor="#9ab7b6" StepPercentage=".5" />
-        </xfg:Gradient>
-    </xfg:ContentPageGloss.BackgroundGradient>
+             BackgroundColor="#9ab7b6">
 
 
-    <Grid>
 
 
-        <ffimageloading:CachedImage HorizontalOptions="Start"
-                                    Scale="1"
-                                    Source = "BackgroundMain">
-        </ffimageloading:CachedImage>
+    <Grid Margin="0,15,0,0">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-            <Grid>
+            <StackLayout>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="170"/>
-                    <RowDefinition Height="170"/>
-                    <RowDefinition Height="170"/>
-                    <RowDefinition Height="170"/>
-                    <RowDefinition Height="170"/>
-                    <RowDefinition Height="170"/>
-                </Grid.RowDefinitions>
-
-                <ffimageloading:CachedImage Scale="0.7" Source="spil" Grid.Row="1">
-                    <ffimageloading:CachedImage.GestureRecognizers>
+                <Image Scale="0.4" Source="spil">
+                    <Image.GestureRecognizers>
                         <TapGestureRecognizer 
                         Tapped="spil_OnTapped" 
                         NumberOfTapsRequired="1"/>
-                    </ffimageloading:CachedImage.GestureRecognizers>
-                </ffimageloading:CachedImage>
-                <Label 
-                       Grid.Row="1"
-                       TextColor="White"  
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label TextColor="White"  
                        Text="Spil" 
                        HorizontalTextAlignment="Center" 
-                       Margin="0,150,0,0"/>
+                       Margin="0,-60,0,-50"/>
 
-                <ffimageloading:CachedImage Scale="0.7" Source="quiz" Grid.Row="2">
-                    <ffimageloading:CachedImage.GestureRecognizers>
+                <Image Scale="0.4" Source="quiz">
+                    <Image.GestureRecognizers>
                         <TapGestureRecognizer 
                         Tapped="quiz_OnTapped" 
                         NumberOfTapsRequired="1"/>
-                    </ffimageloading:CachedImage.GestureRecognizers>
-                </ffimageloading:CachedImage>
+                    </Image.GestureRecognizers>
+                </Image>
                 <Label TextColor="White" 
                        Text="Quiz" 
                        HorizontalTextAlignment="Center" 
-                       Margin="0,150,0,0"
-                       Grid.Row="2"/>
+                       Margin="0,-60,0,-50"/>
 
-                <ffimageloading:CachedImage Scale="0.7" Source="hiscore" Grid.Row="3">
-                    <ffimageloading:CachedImage.GestureRecognizers>
+                <Image Scale="0.4" Source="hiscore">
+                    <Image.GestureRecognizers>
                         <TapGestureRecognizer 
                             Tapped="hiscore_OnTapped" 
                             NumberOfTapsRequired="1"/>
-                    </ffimageloading:CachedImage.GestureRecognizers>
-                </ffimageloading:CachedImage>
+                    </Image.GestureRecognizers>
+                </Image>
                 <Label TextColor="White" 
                        Text="Hiscore" 
                        HorizontalTextAlignment="Center" 
-                       Margin="0,150,0,0"
-                       Grid.Row="3"/>
+                       Margin="0,-60,0,-50"/>
 
-                <ffimageloading:CachedImage Scale="0.7" Source="settings" Grid.Row="4">
-                    <ffimageloading:CachedImage.GestureRecognizers>
+                <Image Scale="0.4" Source="settings">
+                    <Image.GestureRecognizers>
                         <TapGestureRecognizer 
                         Tapped="settings_OnTapped" 
                         NumberOfTapsRequired="1"/>
-                    </ffimageloading:CachedImage.GestureRecognizers>
-                </ffimageloading:CachedImage>
+                    </Image.GestureRecognizers>
+                </Image>
                 <Label TextColor="White" 
                        Text="Indstillinger" 
                        HorizontalTextAlignment="Center" 
-                       Margin="0,150,0,0"
-                       Grid.Row="4"/>
+                       Margin="0,-60,0,-50"/>
 
-                <ffimageloading:CachedImage Scale="0.7" Source="omos" Grid.Row="5">
-                    <ffimageloading:CachedImage.GestureRecognizers>
+                <Image Scale="0.4" Source="omos">
+                    <Image.GestureRecognizers>
                         <TapGestureRecognizer 
                         Tapped="omos_OnTapped" 
                         NumberOfTapsRequired="1"/>
-                    </ffimageloading:CachedImage.GestureRecognizers>
-                </ffimageloading:CachedImage>
+                    </Image.GestureRecognizers>
+                </Image>
                 <Label TextColor="White" 
                        Text="Om os" 
                        HorizontalTextAlignment="Center" 
-                       Margin="0,150,0,0"
-                       Grid.Row="5"/>
+                       Margin="0,-60,0,-50"/>
 
-            </Grid>
-
+            </StackLayout>
         </ScrollView>
-
-    <!--<Image Source="fade" VerticalOptions="Start"/>
-    <Image Source="fade" VerticalOptions="End" Scale="-1"/>-->
-
-
-</Grid>
-
+    </Grid>
 </ContentPage>

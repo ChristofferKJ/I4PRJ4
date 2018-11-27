@@ -46,74 +46,42 @@ namespace App1.Model
             }
         }
 
-        string _question;
-        [BsonElement("Question")]
-        public string Question
+        Question[] _questions;
+        [BsonElement("Questions")]
+        public Question[] Questions
         {
-            get => _question;
+            get => _questions;
+
             set
             {
-                if (_question == value)
+                if (_questions == value)
                     return;
 
-                _question = value;
+                _questions = value;
 
                 HandlePropertyChanged();
             }
         }
 
-        string _option1;
-        [BsonElement("Option1")]
-        public string Option1
+        //getNextQuestion
+        public Question GetNextQuestion()
         {
-            get => _option1;
-            set
-            {
-                if (_option1 == value)
-                    return;
-
-                _option1 = value;
-
-                HandlePropertyChanged();
-            }
+            return new Question();
         }
 
-        /* Question[] _questions;
-         [BsonElement("Questions")]
-         public Question[] Questions
-         {
-             get => _questions;
-
-             set
-             {
-                 if (_questions == value)
-                     return;
-
-                 _questions = value;
-
-                 HandlePropertyChanged();
-             }
-         }
-
-         //getNextQuestion
-         public Question GetNextQuestion()
-         {
-             return new Question();
-         }
-
-         public void print()
-         {
-             Console.WriteLine($"-----------QUIZ-------");
-             Console.WriteLine($"Quizname: {QuizName}");
-             Console.WriteLine($"Category: {Category}");
-             Console.WriteLine("----------------------");
-             Console.WriteLine("     Questions");
-             Console.WriteLine("----------------------");
-             foreach (var q in Questions)
-             {
-                 q.print();
-             }
-             Console.WriteLine("----------------------");
-         }*/
+        public void print()
+        {
+            Console.WriteLine($"-----------QUIZ-------");
+            Console.WriteLine($"Quizname: {QuizName}");
+            Console.WriteLine($"Category: {Category}");
+            Console.WriteLine("----------------------");
+            Console.WriteLine("     Questions");
+            Console.WriteLine("----------------------");
+            foreach (var q in Questions)
+            {
+                q.print();
+            }
+            Console.WriteLine("----------------------");
+        }
     }
 }

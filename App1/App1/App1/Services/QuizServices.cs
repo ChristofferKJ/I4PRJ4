@@ -77,7 +77,7 @@ namespace App1.Services
 
         public async Task<Quiz> GetQuizByName(string quizName)
         {
-            var Quiz = await QuizCollection
+            var Quiz = await quizCollection
                 .AsQueryable()
                 .Where(q => q.QuizName == quizName)
                 .FirstOrDefaultAsync();
