@@ -21,5 +21,6 @@ namespace App1
 	    {
 	        await Navigation.PopModalAsync(); 
 	    }
+
     }
 }

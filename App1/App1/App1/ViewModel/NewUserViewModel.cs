@@ -77,6 +77,11 @@ namespace App1.ViewModel
                             ? "Bruger oprettet"
                             : "Der opstod en fejl under oprettelse af bruger, prøv igen";
                     }
+
+                    if (Message == "Bruger oprettet")
+                    {
+                        
+                    }
                 });
             }
         }

@@ -17,17 +17,17 @@ namespace App1.ViewModel
     class LoginViewModel : INotifyPropertyChanged
     {
         private readonly ApiServices _apiServices = new ApiServices();
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
         public string LoginResponse
         {
-            get { return _LoginResponse;}
+            get { return _loginResponse;}
             set
             {
-                _LoginResponse = value;
+                _loginResponse = value;
                 OnPropertyChanged();
             } }
-        private string _LoginResponse;
+        private string _loginResponse;
         public ICommand LoginCommand
         {
             get
@@ -40,23 +40,32 @@ namespace App1.ViewModel
                         LoginResponse = "Kan ikke oprette forbindelse";
 
                     }
+                    else if (!IsEverythingFilled())
+                    {
+                        LoginResponse = WhatIsNotFilled();
+                    }
                     else
                     {
                         var response = await _apiServices.LoginAsync(Username, Password);
-                        switch (response.StatusCode)
-                        {
-                            case HttpStatusCode.OK:
-                            {
-                                LoginResponse = "Login succes";
-                                break;
-                            }
-                            default:
-                                LoginResponse = "Fejl i brugernavn eller kodeord";
-                                break;
-                        }
+                        LoginResponse = response.StatusCode == HttpStatusCode.OK ? "Login succes" : "Fejl i brugernavn eller kodeord";
                     }
                 });
             }
+        }
+        public bool IsEverythingFilled()
+        {
+            if (Username == string.Empty || Password == string.Empty)
+                return false;
+            return true;
+        }
+        public string WhatIsNotFilled()
+        {
+            if (Username == "") 
+                return "Feltet brugernavn er ikke udfyldt";
+            else if (Password == string.Empty)
+                return "Feltet password er ikke udfyldt";
+            else
+                return string.Empty;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

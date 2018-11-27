@@ -17,7 +17,7 @@ namespace App1
 		public LoginFormPage()
 		{
             var vm = new LoginViewModel();
-            //this.BindingContext = vm;
+            this.BindingContext = vm;
             //vm.DisplayInvalidLoginPrompt += () => DisplayAlert("Fejl!", "Forkert logind, prøv igen", "OK");
             //vm.LoginSuccess += () => Navigation.PushModalAsync(new MainPage());
 
