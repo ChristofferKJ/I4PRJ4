@@ -18,7 +18,9 @@ namespace App1.ViewModel
     {
         private readonly ApiServices _apiServices = new ApiServices();
         public string Username { get; set; } = string.Empty;
+
         public string Password { get; set; } = string.Empty;
+        public Action LoginSuccess;
         public string LoginResponse
         {
             get { return _loginResponse;}
@@ -49,9 +51,30 @@ namespace App1.ViewModel
                         var response = await _apiServices.LoginAsync(Username, Password);
                         LoginResponse = response.StatusCode == HttpStatusCode.OK ? "Login succes" : "Fejl i brugernavn eller kodeord";
                     }
+
+                    if (LoginResponse == "Login succes")
+                    {
+                        OnSubmit();
+                    }
+
+                    
                 });
             }
         }
+
+        public ICommand SubmitCommand { get; set; }
+
+        public LoginViewModel()
+        {
+            SubmitCommand = new Command(OnSubmit);
+        }
+
+        public void OnSubmit()
+        {
+            LoginSuccess();
+        }
+
+
         public bool IsEverythingFilled()
         {
             if (Username == string.Empty || Password == string.Empty)
