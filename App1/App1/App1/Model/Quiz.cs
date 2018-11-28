@@ -4,116 +4,82 @@ using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
+using Microsoft.Azure.Documents;
+using Newtonsoft.Json;
 
 namespace App1.Model
 {
     public class Quiz : PropertyChangedModel
     {
-        [BsonId(IdGenerator = typeof(CombGuidGenerator))]
-        public Guid Id { get; set; }
-
-        string _quizName;
-        [BsonElement("QuizName")]
-        public string QuizName
+        string _Id;
+        [JsonProperty(PropertyName = "id")]
+        public string Id
         {
-            get => _quizName;
+            get => _Id;
             set
             {
-                if (_quizName == value)
+                if (_Id == value)
+                {
                     return;
-
-                _quizName = value;
-
+                }
+                _Id = value;
                 HandlePropertyChanged();
             }
         }
 
-
-
-        string _category;
-        [BsonElement("Category")]
+        string _Category;
+        [JsonProperty(PropertyName = "Category")]
         public string Category
         {
-            get => _category;
+            get => _Category;
             set
             {
-                if (_category == value)
+                if (_Category == value)
+                {
                     return;
+                }
 
-                _category = value;
-
+                _Category = value;
                 HandlePropertyChanged();
             }
+
         }
 
-        string _question;
-        [BsonElement("Question")]
-        public string Question
+        private string _QuizName;
+        [JsonProperty(PropertyName = "QuizName")]
+        public string QuizName
         {
-            get => _question;
+            get => _QuizName;
             set
             {
-                if (_question == value)
+                if (_QuizName == value)
+                {
                     return;
+                }
 
-                _question = value;
-
+                _QuizName = value;
                 HandlePropertyChanged();
             }
+
         }
 
-        string _option1;
-        [BsonElement("Option1")]
-        public string Option1
+        private List<Question> _Question;
+        [JsonProperty(PropertyName = "Question")]
+        public List<Question> Question
         {
-            get => _option1;
+            get => _Question;
             set
             {
-                if (_option1 == value)
+                if (_Question == value)
+                {
                     return;
+                }
 
-                _option1 = value;
-
+                _Question = value;
                 HandlePropertyChanged();
             }
+
         }
 
-        /* Question[] _questions;
-         [BsonElement("Questions")]
-         public Question[] Questions
-         {
-             get => _questions;
-
-             set
-             {
-                 if (_questions == value)
-                     return;
-
-                 _questions = value;
-
-                 HandlePropertyChanged();
-             }
-         }
-
-         //getNextQuestion
-         public Question GetNextQuestion()
-         {
-             return new Question();
-         }
-
-         public void print()
-         {
-             Console.WriteLine($"-----------QUIZ-------");
-             Console.WriteLine($"Quizname: {QuizName}");
-             Console.WriteLine($"Category: {Category}");
-             Console.WriteLine("----------------------");
-             Console.WriteLine("     Questions");
-             Console.WriteLine("----------------------");
-             foreach (var q in Questions)
-             {
-                 q.print();
-             }
-             Console.WriteLine("----------------------");
-         }*/
     }
 }

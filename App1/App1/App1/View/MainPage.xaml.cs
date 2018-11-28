@@ -27,12 +27,7 @@ namespace App1
 
         private async void quiz_OnTapped(object sender, EventArgs e)
         {
-            var myQuiz = new Quiz();
-            myQuiz.Question = "Er der hul igennem?";
-            myQuiz.Option1 = "Måske";
-            myQuiz.Category = "Quiz";
-            var QuizPage = new QuizPageDemo(myQuiz);
-
+            var QuizPage = new QuizPageDemo();
             await Navigation.PushModalAsync(new NavigationPage(QuizPage));
         }
 

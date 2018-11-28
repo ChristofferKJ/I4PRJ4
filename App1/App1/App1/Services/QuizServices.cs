@@ -17,12 +17,13 @@ namespace App1.Services
         string collectionName = "Test Collection";
 
         IMongoCollection<Quiz> quizCollection;
+        MongoClient client;
 
         IMongoCollection<Quiz> QuizCollection
         {
             get
             {
-                if (quizCollection == null)
+                if (quizCollection == null || client == null)
                 {
                     // APIKeys.Connection string is found in the portal under the "Connection String" blade
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
@@ -33,10 +34,10 @@ namespace App1.Services
                         new SslSettings() {EnabledSslProtocols = SslProtocols.Tls12};
 
                     // Initialize the client
-                    var mongoClient = new MongoClient(settings);
+                    client = new MongoClient(settings);
 
                     // This will create or get the database
-                    var db = mongoClient.GetDatabase(dbName);
+                    var db = client.GetDatabase(dbName);
 
                     // This will create or get the collection
                     var collectionSettings = new MongoCollectionSettings {ReadPreference = ReadPreference.Nearest};
@@ -51,37 +52,36 @@ namespace App1.Services
 
         public async Task<List<Quiz>> GetAllQuizzes()
         {
-            try
-            {
+            
+           
                 var allQuizzes = await QuizCollection
                     .Find(new BsonDocument())
                     .ToListAsync();
 
                 return allQuizzes;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-            }
-            return null;
+            
+            
         }
 
+   
         public async Task<Quiz> GetQuizById(Guid quizId)
         {
-            var singleTask = await QuizCollection
+            var quiz = await QuizCollection
                 .Find(f => f.Id.Equals(quizId))
                 .FirstOrDefaultAsync();
 
-            return singleTask;
+            return quiz;
         }
 
-        public async Task<Quiz> GetQuizByName(string quizName)
+        public async Task<List<Quiz>> GetQuizByName(string quizName)
         {
-            var Quiz = await QuizCollection
+            var quiz = await QuizCollection
                 .AsQueryable()
-                .Where(q => q.QuizName == quizName)
-                .FirstOrDefaultAsync();
-            return Quiz;
+                .Where(q => quizName.Contains(quizName))
+                .Take(10)
+                .ToListAsync();
+
+            return quiz;
         }
 
         #endregion
@@ -102,17 +102,17 @@ namespace App1.Services
 
         #region Save/Delete Funktioner
 
-        public async Task CreateTask(Quiz quiz)
+        public async Task CreateQuiz(Quiz quiz)
         {
             await QuizCollection.InsertOneAsync(quiz);
         }
 
-        public async Task UpdateTask(Quiz quiz)
+        public async Task UpdateQuiz(Quiz quiz)
         {
             await QuizCollection.ReplaceOneAsync(t => t.Id.Equals(quiz.Id), quiz);
         }
 
-        public async Task DeleteTask(Quiz quiz)
+        public async Task DeleteQuiz(Quiz quiz)
         {
             await QuizCollection.DeleteOneAsync(t => t.Id.Equals(quiz.Id));
         }

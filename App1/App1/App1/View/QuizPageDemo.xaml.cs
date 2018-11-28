@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,14 +18,13 @@ namespace App1.View
 	{
 	    
 	    QuizViewModel _viewModel;
-
-	    public QuizPageDemo(Quiz quiz)
+       
+	    public QuizPageDemo()
 	    {
 	        InitializeComponent();
 
-
-	        _viewModel = new QuizViewModel(quiz);
-	        _viewModel.SaveComplete += Handle_SaveComplete;
+            _viewModel = new QuizViewModel();
+	       
 
 	        BindingContext = _viewModel;
 	    }
@@ -33,18 +33,8 @@ namespace App1.View
 	    {
 	        base.OnDisappearing();
 
-	        _viewModel.SaveComplete -= Handle_SaveComplete;
 	    }
 
-	    async void Handle_SaveComplete(object sender, EventArgs eventArgs)
-	    {
-	        await DismissPage();
-	    }
-
-	    protected async void Handle_CancelClicked(object sender, EventArgs e)
-	    {
-	        await DismissPage();
-	    }
 
 	    async Task DismissPage()
 	    {
@@ -52,50 +42,5 @@ namespace App1.View
 	    }
     }
 
-    /*
-     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class QuizPageDemo : ContentPage
-	{
-	    bool _isNew;
-	    QuizViewModel _viewModel;
 
-	    public QuizPageDemo(Quiz quiz, bool isNew)
-	    {
-	        InitializeComponent();
-
-	        _isNew = isNew;
-
-	        _viewModel = new QuizViewModel(quiz, isNew);
-	       //_viewModel.SaveComplete += Handle_SaveComplete;
-
-	        BindingContext = _viewModel;
-	    }
-
-	    protected override void OnDisappearing()
-	    {
-	        base.OnDisappearing();
-
-	        //_viewModel.SaveComplete -= Handle_SaveComplete;
-	    }
-
-	    async void Handle_SaveComplete(object sender, EventArgs eventArgs)
-	    {
-	        await DismissPage();
-	    }
-
-	    protected async void Handle_CancelClicked(object sender, EventArgs e)
-	    {
-	        await DismissPage();
-	    }
-
-	    async Task DismissPage()
-	    {
-	        if (_isNew)
-	            await Navigation.PopModalAsync();
-	        else
-	            await Navigation.PopAsync();
-	    }
-    }
-}
-     */
 }

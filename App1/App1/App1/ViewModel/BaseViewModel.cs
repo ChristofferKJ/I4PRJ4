@@ -12,14 +12,7 @@ namespace TaskList.Core
             get => _title;
             set => SetProperty(ref _title, value);
         }
-
-        bool _isBusy = false;
-        public bool IsBusy
-        {
-            get => _isBusy;
-            set => SetProperty(ref _isBusy, value);
-        }
-
+        
         protected void SetProperty<T>(ref T backingStore, T value, Action onChanged = null, [CallerMemberName] string propertyName = "")
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
