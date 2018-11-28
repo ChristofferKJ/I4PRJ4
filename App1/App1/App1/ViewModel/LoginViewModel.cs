@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
 using System.Net.Http;
@@ -20,7 +19,7 @@ namespace App1.ViewModel
         public string Username { get; set; } = string.Empty;
 
         public string Password { get; set; } = string.Empty;
-        public Action LoginSuccess;
+
         public string LoginResponse
         {
             get { return _loginResponse;}
@@ -54,7 +53,9 @@ namespace App1.ViewModel
 
                     if (LoginResponse == "Login succes")
                     {
-                        Application.Current.MainPage = new MainPage();
+                        
+                    //todo: fix this
+                        await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new MainPage()));
                     }
 
                     

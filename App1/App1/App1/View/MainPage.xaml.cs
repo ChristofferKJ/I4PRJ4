@@ -44,5 +44,6 @@ namespace App1
             await Navigation.PushModalAsync(new OmOsPage());
 
         }
+
     }
 }
