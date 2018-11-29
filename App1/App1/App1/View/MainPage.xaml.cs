@@ -51,9 +51,6 @@ namespace App1
 
         }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> parent of 8d96f64... Revert "Merge branch 'master' into LoginBranch"
     }
 }

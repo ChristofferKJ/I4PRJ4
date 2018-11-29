@@ -55,7 +55,7 @@ namespace App1.ViewModel
                     {
                         
                     //todo: fix this
-                        await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new MainPage()));
+                        Application.Current.MainPage = new NavigationPage(new MainPage());
                     }
 
                     
