@@ -24,7 +24,7 @@ namespace App1.View
 	        InitializeComponent();
 
             _viewModel = new QuizViewModel();
-	       
+	      
 
 	        BindingContext = _viewModel;
 	    }

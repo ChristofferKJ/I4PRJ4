@@ -19,55 +19,51 @@
                    <RowDefinition />
                    <RowDefinition />
                 </Grid.RowDefinitions>
-               
+
                 <Label Grid.Row="0" Grid.ColumnSpan="2"
                        HorizontalTextAlignment="Center"
-                       Margin="3,3,3,3" 
-                       Text="{Binding TheQuiz.Question}"
-                       FontSize="32" FontAttributes="Bold"
+                       Margin="10,10,10,10" 
+                       Text="{Binding Path=TheQuestion.QuestionText}"
+                       
                        TextColor="White"/>
+
+               <Button Grid.Row="1" Grid.Column="0"
+                       TextColor="White" 
+                       Text="{Binding TheQuestion.Options[0].OptionText}" 
+                       BackgroundColor="#9ab7b6"
+                       Margin="10,10,10,10"
+                       Command="{Binding AnswerCommand}"
+                       BorderWidth="1" BorderRadius="1" BorderColor="White"/>
+               <Button Grid.Row="1" Grid.Column="1"
+                       TextColor="White" 
+                       Text="{Binding Path=TheQuestion.Options[1].OptionText}" 
+                       BackgroundColor="#9ab7b6"
+                       Margin="10,10,10,10"
+                       
+                       BorderWidth="1" BorderRadius="1" BorderColor="White"/>
                <Button Grid.Row="2" Grid.Column="0"
                        TextColor="White" 
-                       Text="{Binding TheQuiz.Question}" 
+                       Text="{Binding Path=TheQuestion.Options[2].OptionText}" 
                        BackgroundColor="#9ab7b6"
-                       Margin="3,3,3,3"
-                       Command="{Binding RefreshCommand}"
+                       Margin="10,10,10,10"
+                       FontSize="Default"
                        BorderWidth="1" BorderRadius="1" BorderColor="White"/>
                <Button Grid.Row="2" Grid.Column="1"
                        TextColor="White" 
-                       Text="{Binding TheQuiz.Question.Option}" 
+                       Text="{Binding Path=TheQuestion.Options[3].OptionText}" 
                        BackgroundColor="#9ab7b6"
-                       Margin="3,3,3,3"
-                       Command="{Binding RefreshCommand}"
-                       BorderWidth="1" BorderRadius="1" BorderColor="White"/>
-               <Button Grid.Row="3" Grid.Column="0"
-                       TextColor="White" 
-                       Text="{Binding TheQuiz.QuizName}" 
-                       BackgroundColor="#9ab7b6"
-                       Margin="3,3,3,3"
-                       Command="{Binding RefreshCommand}"
-                       BorderWidth="1" BorderRadius="1" BorderColor="White"/>
-               <Button Grid.Row="3" Grid.Column="1"
-                       TextColor="White" 
-                       Text="{Binding TheQuiz.Category}" 
-                       BackgroundColor="#9ab7b6"
-                       Margin="3,3,3,3"
+                       Margin="10,10,10,10"
+                       
                        BorderWidth="1" BorderRadius="1" BorderColor="White"
                        />
+                <Label Grid.Row="3" Grid.ColumnSpan="2"
+                       HorizontalTextAlignment="Center"
+                       Margin="10,10,10,10" 
+                       Text="{Binding TotalScore}"
+                       TextColor="White"/>
                
             </Grid>
-            <ListView ItemsSource="{Binding MyQuizzes}" HasUnevenRows="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text ="{Binding Question }"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+           </StackLayout>
         </ContentPage.Content>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Refresh" Command="{Binding RefreshCommand}" />

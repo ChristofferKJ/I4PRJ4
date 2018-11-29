@@ -12,6 +12,13 @@ namespace TaskList.Core
             get => _title;
             set => SetProperty(ref _title, value);
         }
+
+        private int _TotalScore;
+        public int TotalScore
+        {
+            get => _TotalScore;
+            set => SetProperty(ref _TotalScore, value);
+        }
         
         protected void SetProperty<T>(ref T backingStore, T value, Action onChanged = null, [CallerMemberName] string propertyName = "")
         {
