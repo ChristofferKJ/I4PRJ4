@@ -24,7 +24,7 @@ namespace App1
 
             _isNew = isNew;
 
-            _viewModel = new QuizViewModel(quiz, isNew);
+            _viewModel = new QuizViewModel(quiz);
             _viewModel.SaveComplete += Handle_SaveComplete;
 
             BindingContext = _viewModel;

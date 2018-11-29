@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using App1.Model;
+using App1.Services;
 using App1.View;
 using Xamarin.Forms;
 
@@ -15,9 +16,10 @@ namespace App1
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            
         }
 
-
+        
         private async void hiscore_OnTapped(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new HiscoreWindow());
@@ -26,7 +28,11 @@ namespace App1
         private async void quiz_OnTapped(object sender, EventArgs e)
         {
             var myQuiz = new Quiz();
-            var QuizPage = new QuizPageDemo(myQuiz, true);
+            myQuiz.Question = "Er der hul igennem?";
+            myQuiz.Option1 = "Måske";
+            myQuiz.Category = "Quiz";
+            var QuizPage = new QuizPageDemo(myQuiz);
+
             await Navigation.PushModalAsync(new NavigationPage(QuizPage));
         }
 
@@ -45,5 +51,9 @@ namespace App1
 
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 8d96f64... Revert "Merge branch 'master' into LoginBranch"
     }
 }
