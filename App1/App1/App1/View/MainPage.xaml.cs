@@ -29,7 +29,7 @@ namespace App1
         {
              var quizService = new QuizDBServices();
              var quizzes = await quizService.RefreshDataAsync();
-             var QuizPage = new QuizPageDemo(quizzes[0]);
+             var QuizPage = new QuizPageDemo(quizzes[1]);
             //var SearchPage = new QuizSearchPage();
 
 

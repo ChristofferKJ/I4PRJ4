@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using System.Threading.Tasks;
+using System.Timers;
 using App1.Model;
 using App1.Services;
 using Xamarin.Forms;
@@ -25,6 +26,13 @@ namespace App1.ViewModel
 
         public ICommand AnswerCommand { get; private set; }
 
+        private int timeLeft;
+        public int TimeLeft
+        {
+            get => timeLeft;
+            set => SetProperty(ref timeLeft, value);
+        }
+
        // private int count;
 
         private int totalScore;
@@ -45,6 +53,10 @@ namespace App1.ViewModel
             TotalScore = 0;
             //RefreshCommand = new Command(async () => await ExecuteRefreshQuizListCommand());
             AnswerCommand = new Command<bool>(ExcuteAnswerCommand);
+
+            // Adding timer test
+            timeLeft = 15;
+            startTimerForTimeLeft();
         }
 
         
@@ -87,7 +99,7 @@ namespace App1.ViewModel
         void updateScore(bool isRightAnswer)
         {
             if (isRightAnswer)
-                TotalScore = TotalScore + TheQuestion.Score;
+                TotalScore += TheQuestion.Score * TimeLeft;
 
             //replace with scoring method
         }
@@ -97,6 +109,27 @@ namespace App1.ViewModel
             theQuestion.QuestionText = newQuestion.QuestionText;
             theQuestion.Options = newQuestion.Options;
             theQuestion.Score = newQuestion.Score;
+            TimeLeft = 15;
+        }
+
+        void startTimerForTimeLeft()
+        {
+            System.Timers.Timer timer = new System.Timers.Timer(1000);
+            timer.Enabled = true;
+            timer.Elapsed += new ElapsedEventHandler(TimerTick);
+            timer.AutoReset = true;
+        }
+
+        void TimerTick(object sender, ElapsedEventArgs e)
+        {
+            if (TimeLeft > 0)
+            {
+                TimeLeft -= 1;
+            }
+            else
+            {
+                
+            }
         }
     }
 
