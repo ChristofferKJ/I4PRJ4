@@ -12,7 +12,8 @@
                <Grid.ColumnDefinitions>
                    <ColumnDefinition />
                    <ColumnDefinition />
-               </Grid.ColumnDefinitions>
+                   <ColumnDefinition />
+                </Grid.ColumnDefinitions>
                <Grid.RowDefinitions>
                    <RowDefinition />
                    <RowDefinition />
@@ -24,35 +25,35 @@
 
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Grid.ColumnSpan="2"
+                <Label Grid.Row="0" Grid.ColumnSpan="3"
                        HorizontalTextAlignment="Center"
                        Margin="10,10,10,10" 
                        Text="{Binding Path=TheQuestion.QuestionText}"
                        
                        TextColor="White"/>
 
-               <Button Grid.Row="1" Grid.ColumnSpan="2"
+               <Button Grid.Row="1" Grid.ColumnSpan="3"
                        TextColor="White" 
                        Text="{Binding TheQuestion.Options[0].OptionText}" 
                        BackgroundColor="#9ab7b6"
                        Margin="10,5,10,5"
                        Command="{Binding AnswerCommand}" CommandParameter="{Binding TheQuestion.Options[0].IsRight}"
                        BorderWidth="1" BorderRadius="1" BorderColor="White"/>
-                <Button Grid.Row="2" Grid.ColumnSpan="2"
+                <Button Grid.Row="2" Grid.ColumnSpan="3"
                        TextColor="White" 
                        Text="{Binding Path=TheQuestion.Options[1].OptionText}" 
                        BackgroundColor="#9ab7b6"
                        Margin="10,5,10,5"
                        Command="{Binding AnswerCommand}" CommandParameter="{Binding TheQuestion.Options[1].IsRight}"
                        BorderWidth="1" BorderRadius="1" BorderColor="White"/>
-                <Button Grid.Row="3" Grid.ColumnSpan="2"
+                <Button Grid.Row="3" Grid.ColumnSpan="3"
                        TextColor="White" 
                        Text="{Binding Path=TheQuestion.Options[2].OptionText}" 
                        BackgroundColor="#9ab7b6"
                        Margin="10,5,10,5"
                        Command="{Binding AnswerCommand}" CommandParameter="{Binding TheQuestion.Options[2].IsRight}"
                        BorderWidth="1" BorderRadius="1" BorderColor="White"/>
-                <Button Grid.Row="4" Grid.ColumnSpan="2"
+                <Button Grid.Row="4" Grid.ColumnSpan="3"
                        TextColor="White" 
                        Text="{Binding Path=TheQuestion.Options[3].OptionText}" 
                        BackgroundColor="#9ab7b6"
@@ -60,11 +61,13 @@
                        Command="{Binding AnswerCommand}" CommandParameter="{Binding TheQuestion.Options[3].IsRight}"
                        BorderWidth="1" BorderRadius="1" BorderColor="White"
                        />
-                <Label Grid.Row="5" Grid.Column="1"
-                       HorizontalTextAlignment="Center"
-                       Margin="10,10,10,10" 
-                       Text="{Binding TimeLeft}"
-                       TextColor="White"/>
+                <ProgressBar Grid.Row="5" Grid.Column ="1" Grid.ColumnSpan="2"
+                       x:Name="pb_timeleft"
+                       ProgressColor="White"
+                       Margin="1,11,10,5"
+                       VerticalOptions="LayoutOptions.Start"
+                       HorizontalOptions="LayoutOptions.Fill"
+                       Progress ="{Binding TimeLeft}"/>
                 <Label Grid.Row="5" Grid.Column="0"
                        HorizontalTextAlignment="Center"
                        Margin="10,10,10,10" 
@@ -75,7 +78,7 @@
                        Margin="10,10,10,10" 
                        Text="Score"
                        TextColor="White"/>
-                <Label Grid.Row="6" Grid.Column="1"
+                <Label Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"
                        HorizontalTextAlignment="Center"
                        Margin="10,10,10,10" 
                        Text="{Binding TotalScore}"

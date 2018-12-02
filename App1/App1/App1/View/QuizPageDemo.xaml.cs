@@ -27,6 +27,7 @@ namespace App1.View
 	      
 
 	        BindingContext = _viewModel;
+	       
 	    }
 
 	    public  QuizPageDemo()

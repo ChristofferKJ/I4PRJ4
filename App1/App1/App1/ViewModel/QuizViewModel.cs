@@ -26,8 +26,8 @@ namespace App1.ViewModel
 
         public ICommand AnswerCommand { get; private set; }
 
-        private int timeLeft;
-        public int TimeLeft
+        private double timeLeft;
+        public double TimeLeft
         {
             get => timeLeft;
             set => SetProperty(ref timeLeft, value);
@@ -35,8 +35,8 @@ namespace App1.ViewModel
 
        // private int count;
 
-        private int totalScore;
-        public int TotalScore
+        private double totalScore;
+        public double TotalScore
         {
             get => totalScore;
             set => SetProperty(ref totalScore, value);}
@@ -55,7 +55,8 @@ namespace App1.ViewModel
             AnswerCommand = new Command<bool>(ExcuteAnswerCommand);
 
             // Adding timer test
-            timeLeft = 15;
+            timeLeft = 1;
+            
             startTimerForTimeLeft();
         }
 
@@ -109,7 +110,7 @@ namespace App1.ViewModel
             theQuestion.QuestionText = newQuestion.QuestionText;
             theQuestion.Options = newQuestion.Options;
             theQuestion.Score = newQuestion.Score;
-            TimeLeft = 15;
+            TimeLeft = 1;
         }
 
         void startTimerForTimeLeft()
@@ -124,7 +125,7 @@ namespace App1.ViewModel
         {
             if (TimeLeft > 0)
             {
-                TimeLeft -= 1;
+                TimeLeft -= 0.05;
             }
             else
             {
