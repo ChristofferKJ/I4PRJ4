@@ -19,15 +19,20 @@ namespace App1.View
 	    
 	    QuizViewModel _viewModel;
        
-	    public QuizPageDemo()
+	    public QuizPageDemo(Quiz quiz)
 	    {
 	        InitializeComponent();
 
-            _viewModel = new QuizViewModel();
+            _viewModel = new QuizViewModel(quiz);
 	      
 
 	        BindingContext = _viewModel;
 	    }
+
+	    public  QuizPageDemo()
+	    {
+	        InitializeComponent();
+        }
 
 	    protected override void OnDisappearing()
 	    {

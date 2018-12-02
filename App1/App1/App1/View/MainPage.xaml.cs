@@ -27,7 +27,12 @@ namespace App1
 
         private async void quiz_OnTapped(object sender, EventArgs e)
         {
-            var QuizPage = new QuizPageDemo();
+             var quizService = new QuizDBServices();
+             var quizzes = await quizService.RefreshDataAsync();
+             var QuizPage = new QuizPageDemo(quizzes[0]);
+            //var SearchPage = new QuizSearchPage();
+
+
             await Navigation.PushModalAsync(new NavigationPage(QuizPage));
         }
 

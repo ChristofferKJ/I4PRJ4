@@ -11,6 +11,14 @@ namespace App1.Model
 {
     public class Quiz : PropertyChangedModel
     {
+        private int questionIndex_;
+        private static System.Random nrg => new System.Random();
+
+        Quiz()
+        {
+            questionIndex_ = 0;
+        }
+
         string _Id;
         [JsonProperty(PropertyName = "id")]
         public string Id
@@ -80,6 +88,32 @@ namespace App1.Model
             }
 
         }
+
+        public Question NextQuestion()
+        {
+            if ((questionIndex_ + 1) >= Question.Count)
+                return null;
+
+            var nextQuestion =  Question[++questionIndex_];
+            return nextQuestion;
+
+
+        }
+
+        public void RandomizeQuestionOrder()
+        {
+
+            int n = _Question.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = nrg.Next(n + 1);
+                Question question = _Question[k];
+                _Question[k] = _Question[n];
+                _Question[n] = question;
+            }
+        }
+
 
     }
 }

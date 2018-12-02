@@ -10,6 +10,9 @@ namespace App1.Model
 {
     public class Question : PropertyChangedModel
     {
+        private static System.Random nrg => new System.Random();
+
+
         private string _QuestionText;
         [JsonProperty(PropertyName = "QuestionText")]
         public string QuestionText
@@ -55,6 +58,20 @@ namespace App1.Model
                 }
                 _Options = value;
                 HandlePropertyChanged();
+            }
+        }
+
+        public void RandomizeOptionOrder()
+        {
+
+            int n = _Options.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = nrg.Next(n + 1);
+                Option opt = _Options[k];
+                _Options[k] = _Options[n];
+                _Options[n] = opt;
             }
         }
     }

@@ -36,5 +36,24 @@ namespace App1.Services
             }
             
         }
+
+        public async Task<List<Quiz>> GetQuizzesByCategory(string category)
+        {
+            var uri = new Uri("https://ase-studyhelper-quiz.azurewebsites.net/api/QuizToAPI/" + category);
+
+
+            var response = await QuizDBClient.GetAsync(uri);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var Quizzes = JsonConvert.DeserializeObject<List<Quiz>>(content);
+                return Quizzes;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
     }
 }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-namespace TaskList.Core
+
+namespace App1.ViewModel
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
@@ -13,12 +14,12 @@ namespace TaskList.Core
             set => SetProperty(ref _title, value);
         }
 
-        private int _TotalScore;
-        public int TotalScore
-        {
-            get => _TotalScore;
-            set => SetProperty(ref _TotalScore, value);
-        }
+        //private int _TotalScore;
+        //public int TotalScore
+        //{
+            //get => _TotalScore;
+          //  set => SetProperty(ref _TotalScore, value);
+        //}
         
         protected void SetProperty<T>(ref T backingStore, T value, Action onChanged = null, [CallerMemberName] string propertyName = "")
         {
