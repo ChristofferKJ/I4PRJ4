@@ -27,13 +27,12 @@ namespace App1
 
         private async void quiz_OnTapped(object sender, EventArgs e)
         {
-             var quizService = new QuizDBServices();
-             var quizzes = await quizService.RefreshDataAsync();
-             var QuizPage = new QuizPageDemo(quizzes[1]);
-            //var SearchPage = new QuizSearchPage();
+             //var quizService = new QuizDBServices();
+             //var quizzes = await quizService.GetAllQuizzesAsync();
+            // var QuizPage = new QuizPageDemo(quizzes[1]);
+            var QuizSearchPage = new SearchQuizPageSelectCategory();
 
-
-            await Navigation.PushModalAsync(new NavigationPage(QuizPage));
+            await Navigation.PushModalAsync(new NavigationPage(QuizSearchPage));
         }
 
         private async void spil_OnTapped(object sender, EventArgs e)

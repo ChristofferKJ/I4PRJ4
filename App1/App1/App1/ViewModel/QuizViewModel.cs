@@ -64,7 +64,7 @@ namespace App1.ViewModel
         async Task ExecuteRefreshQuizListCommand()
         {
             var services = new QuizDBServices();
-            MyQuizzes = await services.RefreshDataAsync();
+            MyQuizzes = await services.GetAllQuizzesAsync();
            TheQuiz = MyQuizzes[0];
            TheQuestion = TheQuiz.Question[0];
             TheQuestion.RandomizeOptionOrder();
@@ -129,7 +129,7 @@ namespace App1.ViewModel
             }
             else
             {
-                
+                ExcuteAnswerCommand(false);
             }
         }
     }

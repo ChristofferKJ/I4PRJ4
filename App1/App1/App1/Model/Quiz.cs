@@ -14,7 +14,7 @@ namespace App1.Model
         private int questionIndex_;
         private static System.Random nrg => new System.Random();
 
-        Quiz()
+        public Quiz()
         {
             questionIndex_ = 0;
         }
