@@ -32,7 +32,7 @@ namespace App1
             // var QuizPage = new QuizPageDemo(quizzes[1]);
             var QuizSearchPage = new SearchQuizPageSelectCategory();
 
-            await Navigation.PushModalAsync(new NavigationPage(QuizSearchPage));
+            await Navigation.PushModalAsync(new NavigationPage(QuizSearchPage){ BarBackgroundColor = Color.FromHex("#9ab7b6"), BarTextColor = Color.White});
         }
 
         private async void spil_OnTapped(object sender, EventArgs e)

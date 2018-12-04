@@ -115,7 +115,7 @@ namespace App1.ViewModel
 
         void startTimerForTimeLeft()
         {
-            System.Timers.Timer timer = new System.Timers.Timer(1000);
+            System.Timers.Timer timer = new System.Timers.Timer(500);
             timer.Enabled = true;
             timer.Elapsed += new ElapsedEventHandler(TimerTick);
             timer.AutoReset = true;
@@ -125,7 +125,7 @@ namespace App1.ViewModel
         {
             if (TimeLeft > 0)
             {
-                TimeLeft -= 0.05;
+                TimeLeft -= 0.025;
             }
             else
             {

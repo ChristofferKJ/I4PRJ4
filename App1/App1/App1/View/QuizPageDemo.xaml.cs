@@ -30,7 +30,7 @@ namespace App1.View
 	       
 	    }
 
-	    QuizPageDemo()
+	    public QuizPageDemo()
 	    {
 	        InitializeComponent();
         }
