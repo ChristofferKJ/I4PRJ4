@@ -21,13 +21,7 @@ namespace App1.ViewModel
             set => SetProperty(ref _isBusy, value);
         }
 
-        //private int _TotalScore;
-        //public int TotalScore
-        //{
-        //get => _TotalScore;
-        //  set => SetProperty(ref _TotalScore, value);
-        //}
-
+        
         protected void SetProperty<T>(ref T backingStore, T value, Action onChanged = null, [CallerMemberName] string propertyName = "")
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))

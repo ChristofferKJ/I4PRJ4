@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Windows.Input;
 using System.Threading.Tasks;
 using System.Timers;
@@ -19,21 +20,15 @@ namespace App1.ViewModel
         private Question theQuestion;
         public Question TheQuestion { get => theQuestion; set => SetProperty(ref theQuestion, value); }
 
-        List<Quiz> myQuizzes;
-
-        public List<Quiz> MyQuizzes{ get => myQuizzes; set => SetProperty(ref myQuizzes, value); }
-        public ICommand RefreshCommand { get; }
-
+        
         public ICommand AnswerCommand { get; private set; }
-
+        
         private double timeLeft;
         public double TimeLeft
         {
             get => timeLeft;
             set => SetProperty(ref timeLeft, value);
         }
-
-       // private int count;
 
         private double totalScore;
         public double TotalScore
@@ -47,33 +42,17 @@ namespace App1.ViewModel
             theQuiz.RandomizeQuestionOrder();
             Title = theQuiz.Category;
             TheQuestion = theQuiz.Question[0];
-            TheQuestion.RandomizeOptionOrder(); //  
-            //myQuizzes = new List<Quiz>();
-            //count = 0;
+            TheQuestion.RandomizeOptionOrder(); 
+           
             TotalScore = 0;
-            //RefreshCommand = new Command(async () => await ExecuteRefreshQuizListCommand());
+            
             AnswerCommand = new Command<bool>(ExcuteAnswerCommand);
-
-            // Adding timer test
             timeLeft = 1;
             
             startTimerForTimeLeft();
         }
 
         
-        async Task ExecuteRefreshQuizListCommand()
-        {
-            var services = new QuizDBServices();
-            MyQuizzes = await services.GetAllQuizzesAsync();
-           TheQuiz = MyQuizzes[0];
-           TheQuestion = TheQuiz.Question[0];
-            TheQuestion.RandomizeOptionOrder();
-            Title = theQuiz.Category;
-            
-        }
-
-
-
         void ExcuteAnswerCommand(bool isRightAnswer) //Kan kaldes med false, hvis timelimit overstiges.
         {
             /* if (count < TheQuiz.Question.Count)
@@ -81,8 +60,8 @@ namespace App1.ViewModel
              count++;
              if(count < TheQuiz.Question.Count)
                  TheQuestion = TheQuiz.Question[count]; */
-
-           updateScore(isRightAnswer);
+            
+            updateScore(isRightAnswer);
 
             var nextQuestion = theQuiz.NextQuestion();
             
@@ -102,7 +81,7 @@ namespace App1.ViewModel
             if (isRightAnswer)
                 TotalScore += TheQuestion.Score * TimeLeft;
 
-            //replace with scoring method
+            
         }
 
         void updateQuestion(Question newQuestion)
@@ -111,6 +90,7 @@ namespace App1.ViewModel
             theQuestion.Options = newQuestion.Options;
             theQuestion.Score = newQuestion.Score;
             TimeLeft = 1;
+            
         }
 
         void startTimerForTimeLeft()
@@ -121,6 +101,8 @@ namespace App1.ViewModel
             timer.AutoReset = true;
         }
 
+       
+        
         void TimerTick(object sender, ElapsedEventArgs e)
         {
             if (TimeLeft > 0)
@@ -132,6 +114,7 @@ namespace App1.ViewModel
                 ExcuteAnswerCommand(false);
             }
         }
+
     }
 
     
