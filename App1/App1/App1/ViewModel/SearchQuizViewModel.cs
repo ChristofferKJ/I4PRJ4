@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using App1.Model;
 using App1.Services;
@@ -21,19 +18,12 @@ namespace App1.ViewModel
         public List<Quiz> Quizzes { get => quizzes_; set => SetProperty(ref quizzes_, value); }
 
 
-      //  public ICommand LoadCategories { get; private set; }
-        //public ICommand LoadQuizzesFromCategory { get; private set; }
-
         public SearchQuizViewModel(string title)
         {
             Title = title;
             Categories = new List<string>();
             Quizzes = new List<Quiz>();
             quizService_ = new QuizDBServices();
-
-            //LoadCategories = new Command(async () => await ExecuteLoadCategories());
-           // LoadQuizzesFromCategory = new Command<string>(async (category) => await ExecuteLoadQuzzesFromCategory(category));
-
         }
 
         public async void LoadCategories()
@@ -87,10 +77,11 @@ namespace App1.ViewModel
         List<string> ExtractCategories(List<Quiz> quizzes)
         {
             List<string> categories = new List<string>();
-            bool categoryAdded = false;
+            
 
             foreach (var quiz in quizzes)
             {
+                bool categoryAdded = false;
                 foreach (var category in categories)
                 {
                     if (quiz.Category == category) categoryAdded = true;
@@ -102,10 +93,6 @@ namespace App1.ViewModel
 
             return categories; 
         }
-
-
-
-
          
     }
 }

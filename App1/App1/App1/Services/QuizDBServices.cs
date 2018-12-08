@@ -22,6 +22,7 @@ namespace App1.Services
         {
             var uri = new Uri("https://ase-studyhelper-quiz.azurewebsites.net/api/QuizToAPI");
             
+
             
             var response = await QuizDBClient.GetAsync(uri);
             if (response.IsSuccessStatusCode)
@@ -40,6 +41,7 @@ namespace App1.Services
         public async Task<List<Quiz>> GetQuizzesByCategoryAsync(string category)
         {
             var uri = new Uri("https://ase-studyhelper-quiz.azurewebsites.net/api/QuizToAPI/" + category);
+          
 
             var response = await QuizDBClient.GetAsync(uri);
            
@@ -47,7 +49,7 @@ namespace App1.Services
             {
                 var content = await response.Content.ReadAsStringAsync();
                 var Quizzes = JsonConvert.DeserializeObject<List<Quiz>>(content);
-                JsonConvert.SerializeObject(new Quiz());
+               // JsonConvert.SerializeObject(new Quiz());
                 return Quizzes;
             }
             else

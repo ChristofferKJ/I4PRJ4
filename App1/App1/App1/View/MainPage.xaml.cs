@@ -27,9 +27,7 @@ namespace App1
 
         private async void quiz_OnTapped(object sender, EventArgs e)
         {
-             //var quizService = new QuizDBServices();
-             //var quizzes = await quizService.GetAllQuizzesAsync();
-            // var QuizPage = new QuizPageDemo(quizzes[1]);
+             
             var QuizSearchPage = new SearchQuizPageSelectCategory();
 
             await Navigation.PushModalAsync(new NavigationPage(QuizSearchPage){ BarBackgroundColor = Color.FromHex("#9ab7b6"), BarTextColor = Color.White});

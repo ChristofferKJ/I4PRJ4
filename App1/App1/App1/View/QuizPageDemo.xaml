@@ -46,9 +46,9 @@
                        Text="{Binding Path=TheQuestion.QuestionText}"
                        TextColor="White"/>
 
-               <Button Grid.Row="2" Grid.ColumnSpan="3"
-                       TextColor="White" 
-                       Text="{Binding TheQuestion.Options[0].OptionText}" 
+                   <Button Grid.Row="2" Grid.ColumnSpan="3"
+                           TextColor="White" 
+                           Text="{Binding TheQuestion.Options[0].OptionText}" 
                        BackgroundColor="#9ab7b6"
                        Margin="10,5,10,5"
                        Command="{Binding AnswerCommand}" CommandParameter="{Binding TheQuestion.Options[0].IsRight}"
@@ -69,7 +69,6 @@
                        BorderWidth="1" BorderRadius="1" BorderColor="White"/>
                 <Button Grid.Row="5" Grid.ColumnSpan="3"
                        TextColor="White" 
-                       
                        Text="{Binding Path=TheQuestion.Options[3].OptionText}" 
                        BackgroundColor="#9ab7b6"
                        Margin="10,5,10,5"

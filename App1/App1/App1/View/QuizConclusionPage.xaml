@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.View.QuizConclusionPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+              <Grid.RowDefinitions>
+                    <RowDefinition  Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="1" Margin="20,0,0,0">Tilykke du har fuldendt quiz: </Label>
+                <Label Grid.Row="2" Margin="20,0,0,0" Text="{Binding QuizDescription}"/>
+                <Label Grid.Row="3" Margin="20,0,0,0">Du har scoret: </Label>
+                <Label Grid.Row="3" Margin="120,0,0,0" Text="{Binding TotalScore}"/>
+                <Label Grid.Row="3" Margin="160,0,0,0">Points</Label>
+                <Label Grid.Row="4" Margin="20,0,0,0" Text="{Binding HighScoreUpdatedDescription}"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

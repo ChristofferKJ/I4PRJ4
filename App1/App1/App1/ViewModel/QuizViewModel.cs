@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Windows.Input;
-using System.Threading.Tasks;
 using System.Timers;
 using App1.Model;
-using App1.Services;
 using Xamarin.Forms;
 
 
@@ -21,12 +20,9 @@ namespace App1.ViewModel
         private Question theQuestion;
         public Question TheQuestion { get => theQuestion; set => SetProperty(ref theQuestion, value); }
 
-        List<Quiz> myQuizzes;
-
-        public List<Quiz> MyQuizzes{ get => myQuizzes; set => SetProperty(ref myQuizzes, value); }
-        public ICommand RefreshCommand { get; }
-
         public ICommand AnswerCommand { get; private set; }
+
+        public event EventHandler QuizCompleted;
 
         private double timeLeft;
         public double TimeLeft
@@ -34,8 +30,6 @@ namespace App1.ViewModel
             get => timeLeft;
             set => SetProperty(ref timeLeft, value);
         }
-
-       // private int count;
 
         private double totalScore;
         public double TotalScore
@@ -49,47 +43,28 @@ namespace App1.ViewModel
             theQuiz.RandomizeQuestionOrder();
             Title = theQuiz.Category;
             TheQuestion = theQuiz.Question[0];
-            TheQuestion.RandomizeOptionOrder(); //  
-            //myQuizzes = new List<Quiz>();
-            //count = 0;
-            TotalScore = 0;
-            //RefreshCommand = new Command(async () => await ExecuteRefreshQuizListCommand());
-            AnswerCommand = new Command<bool>(ExcuteAnswerCommand);
+            TheQuestion.RandomizeOptionOrder();
 
-            // Adding timer test
+            TotalScore = 0;
+            AnswerCommand = new Command<bool>(ExcuteAnswerCommand);
             timeLeft = 1;
-            
+
             startTimerForTimeLeft();
         }
 
-        
-        async Task ExecuteRefreshQuizListCommand()
+        protected virtual void OnQuizCompleted()
         {
-            var services = new QuizDBServices();
-            MyQuizzes = await services.GetAllQuizzesAsync();
-           TheQuiz = MyQuizzes[0];
-           TheQuestion = TheQuiz.Question[0];
-            TheQuestion.RandomizeOptionOrder();
-            Title = theQuiz.Category;
-            
+            QuizCompleted?.Invoke(this, new EventArgs());
         }
-
-
 
         void ExcuteAnswerCommand(bool isRightAnswer) //Kan kaldes med false, hvis timelimit overstiges.
         {
-            /* if (count < TheQuiz.Question.Count)
-                 TotalScore += TheQuiz.Question[count].Score;
-             count++;
-             if(count < TheQuiz.Question.Count)
-                 TheQuestion = TheQuiz.Question[count]; */
-
            updateScore(isRightAnswer);
 
         
 
             var nextQuestion = theQuiz.NextQuestion();
-            
+
             if (nextQuestion != null)
             {
                 nextQuestion.RandomizeOptionOrder();
@@ -97,7 +72,7 @@ namespace App1.ViewModel
             }
             else
             {
-                //terminate quiz - update highscore
+                OnQuizCompleted();
             }
         }
 
@@ -105,8 +80,6 @@ namespace App1.ViewModel
         {
             if (isRightAnswer)
                 TotalScore += TheQuestion.Score * TimeLeft;
-
-            //replace with scoring method
         }
 
         void updateQuestion(Question newQuestion)
@@ -115,6 +88,7 @@ namespace App1.ViewModel
             theQuestion.Options = newQuestion.Options;
             theQuestion.Score = newQuestion.Score;
             TimeLeft = 1;
+
         }
 
         void startTimerForTimeLeft()
@@ -124,6 +98,8 @@ namespace App1.ViewModel
             timer.Elapsed += new ElapsedEventHandler(TimerTick);
             timer.AutoReset = true;
         }
+
+
 
         void TimerTick(object sender, ElapsedEventArgs e)
         {
@@ -136,7 +112,8 @@ namespace App1.ViewModel
                 ExcuteAnswerCommand(false);
             }
         }
+
     }
 
-    
+
 }
