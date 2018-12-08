@@ -16,5 +16,13 @@ namespace App1
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private async void ScrollViewTo(object sender, EventArgs e)
+        {
+            await scrollingfar.ScrollToAsync(10.0,600,true); 
+            
+        }
+    }
 }
+
+

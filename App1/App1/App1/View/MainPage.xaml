@@ -4,11 +4,12 @@
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="App1.MainPage"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"             BackgroundColor="#9ab7b6">
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"             
+             BackgroundColor="#9ab7b6">
 
     <xfg:ContentPageGloss.BackgroundGradient>
-        <xfg:Gradient Rotation="150">
-            <xfg:GradientStep StepColor="Orange" StepPercentage="0" />
+        <xfg:Gradient Rotation="180">
+            <xfg:GradientStep StepColor="LightGray" StepPercentage="0" />
             <xfg:GradientStep StepColor="#9ab7b6" StepPercentage=".5" />
         </xfg:Gradient>
     </xfg:ContentPageGloss.BackgroundGradient>
@@ -19,7 +20,15 @@
 
         <ffimageloading:CachedImage HorizontalOptions="Start"
                                     Scale="1"
-                                    Source = "BackgroundMain">
+                                    Source = "BackgroundMain"
+                                    Opacity="0.5">
+        </ffimageloading:CachedImage>
+
+        <ffimageloading:CachedImage HorizontalOptions="End"
+                                    Scale="1"
+                                    Rotation="180"
+                                    Source = "BackgroundMain"
+                                    Opacity="0.5">
         </ffimageloading:CachedImage>
 
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">

@@ -1,12 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="App1.HiscoreWindow"
              BackgroundColor="#9ab7b6">
 
-
-  
+    <!--<xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="180">
+            <xfg:GradientStep StepColor="LightGray" StepPercentage="0" />
+            <xfg:GradientStep StepColor="#9ab7b6" StepPercentage=".5" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>-->
     <Grid>
+
+      
+
+        <!--<ffimageloading:CachedImage 
+                Margin="0,0,0,0"
+                VerticalOptions="Start"
+                HorizontalOptions="End"
+                Rotation="30"
+                Opacity="0.25"
+                Scale="2"
+                Source = "hiscore_bg"
+                />-->
+
+        <Grid>
+
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -16,35 +38,51 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="200"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
 
 
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="1" Grid.Column="1" Text="USERNAME" />
-        <Label Grid.Row="1" Grid.Column="3" Text="SCORE"/>
+        <Label TextColor="White" Grid.Row="2" FontAttributes="Bold, Italic" Grid.Column="1" FontSize="20" Text="USERNAME" />
+        <Label TextColor="White" Grid.Row="2" FontAttributes="Bold, Italic" Grid.Column="3" FontSize="20" Text="SCORE"/>
 
-    <ListView Grid.Row="2" Grid.Column="1" ItemsSource="{Binding UserList}" HasUnevenRows="True">
+    <ListView 
+        SeparatorColor="Transparent"
+        Grid.Row="3" 
+        Grid.Column="1" 
+        ItemsSource="{Binding UserList}" 
+        HasUnevenRows="True">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text ="{Binding Username}"/>
+                        <Label TextColor="White"  
+                               Text ="{Binding Username}"
+                               HorizontalOptions="EndAndExpand"
+                               HorizontalTextAlignment="End"/>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
         </ListView>
 
-    <ListView Grid.Row="2" Grid.Column="3" ItemsSource="{Binding UserList}" HasUnevenRows="True">
+    <ListView 
+        SeparatorColor="Transparent"
+        Grid.Row="3" 
+        Grid.Column="3" 
+        ItemsSource="{Binding UserList}" 
+        HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text ="{Binding UserHiscore}"/>
+                            <Label HorizontalTextAlignment="Start" 
+                                   HorizontalOptions="StartAndExpand"
+                                   TextColor="White" 
+                                   Text="{Binding UserHiscore}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
@@ -54,4 +92,10 @@
     </Grid>
 
 
+
+        
+                    
+
+
+    </Grid>
 </ContentPage>

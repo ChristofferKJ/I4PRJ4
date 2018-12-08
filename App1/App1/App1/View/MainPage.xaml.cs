@@ -42,7 +42,8 @@ namespace App1
         }
         private async void settings_OnTapped(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new SpilPage());
+            var Settingspage = new SettingsPage(); 
+            await Navigation.PushModalAsync(new NavigationPage(Settingspage) { BarBackgroundColor = Color.FromHex("#9ab7b6"), BarTextColor = Color.White });
         }
         private async void omos_OnTapped(object sender, EventArgs e)
         {

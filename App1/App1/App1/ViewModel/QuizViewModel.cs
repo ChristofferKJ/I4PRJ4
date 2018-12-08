@@ -16,6 +16,8 @@ namespace App1.ViewModel
         Quiz theQuiz;
         public Quiz TheQuiz { get => theQuiz; set => SetProperty(ref theQuiz, value); }
 
+        private string b_animation = "#9ab7b6"; 
+
         private Question theQuestion;
         public Question TheQuestion { get => theQuestion; set => SetProperty(ref theQuestion, value); }
 
@@ -83,6 +85,8 @@ namespace App1.ViewModel
                  TheQuestion = TheQuiz.Question[count]; */
 
            updateScore(isRightAnswer);
+
+        
 
             var nextQuestion = theQuiz.NextQuestion();
             

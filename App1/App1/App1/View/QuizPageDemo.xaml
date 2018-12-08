@@ -1,15 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
              x:Class="App1.View.QuizPageDemo"
              Title="{Binding Title}"
              BackgroundColor="#9ab7b6">
 
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="180">
+            <xfg:GradientStep StepColor="LightGray" StepPercentage="0" />
+            <xfg:GradientStep StepColor="#9ab7b6" StepPercentage=".5" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
 
     <ContentPage.Content>
         <StackLayout>
             <Grid>
-               <Grid.ColumnDefinitions>
+
+              
+
+                <Grid.ColumnDefinitions>
                    <ColumnDefinition />
                    <ColumnDefinition />
                    <ColumnDefinition />
@@ -17,7 +27,7 @@
                <Grid.RowDefinitions>
                    <RowDefinition />
                    <RowDefinition Height="Auto" />
-                   <RowDefinition />
+                   <RowDefinition Height="50" />
                    <RowDefinition />
                    <RowDefinition />
                    <RowDefinition />
@@ -27,10 +37,11 @@
 
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0"
-                       Grid.RowSpan="2"
+                <Label Grid.Row="1"
+                       Grid.RowSpan="1"
                        Grid.ColumnSpan="3"
                        HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
                        Margin="10,10,10,10" 
                        Text="{Binding Path=TheQuestion.QuestionText}"
                        TextColor="White"/>
@@ -73,18 +84,7 @@
                        VerticalOptions="LayoutOptions.Start"
                        HorizontalOptions="FillAndExpand"
                        Progress ="{Binding TimeLeft}"/>
-                
-                <!--<Label Grid.Row="6" Grid.Column="0"
-                       HorizontalTextAlignment="Center"
-                       Margin="10,10,10,10" 
-                       Text="Time left:"
-                       TextColor="White"/>-->
-                
-                <!--<Label Grid.Row="7" Grid.Column="0"
-                       HorizontalTextAlignment="Center"                
-                       Margin="10,-30,10,10" 
-                       Text="Score"
-                       TextColor="White"/>-->
+   
                 
                 <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"
                        HorizontalTextAlignment="Center"
