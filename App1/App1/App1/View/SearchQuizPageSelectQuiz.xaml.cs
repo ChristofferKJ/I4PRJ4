@@ -18,8 +18,8 @@ namespace App1.View
         public SearchQuizPageSelectQuiz(SearchQuizViewModel viewModel , string category =null)
 	    {
 	        InitializeComponent();
-
-	        viewModel_ = viewModel;
+	        NavigationPage.SetHasNavigationBar(this, false);
+            viewModel_ = viewModel;
 	        if (viewModel_ == null)
 	            viewModel_ = new SearchQuizViewModel("Vælg Quiz");
 
