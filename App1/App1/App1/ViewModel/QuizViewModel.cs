@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
 using System.Windows.Input;
 using System.Timers;
 using App1.Model;
@@ -39,13 +42,11 @@ namespace App1.ViewModel
             Title = theQuiz.Category;
             TheQuestion = theQuiz.Question[0];
             TheQuestion.RandomizeOptionOrder();
-           
+
             TotalScore = 0;
             AnswerCommand = new Command<bool>(ExcuteAnswerCommand);
-
-            // Adding timer test
             timeLeft = 1;
-            
+
             startTimerForTimeLeft();
         }
 
@@ -59,7 +60,7 @@ namespace App1.ViewModel
            updateScore(isRightAnswer);
 
             var nextQuestion = theQuiz.NextQuestion();
-            
+
             if (nextQuestion != null)
             {
                 nextQuestion.RandomizeOptionOrder();
@@ -83,6 +84,7 @@ namespace App1.ViewModel
             theQuestion.Options = newQuestion.Options;
             theQuestion.Score = newQuestion.Score;
             TimeLeft = 1;
+
         }
 
         void startTimerForTimeLeft()
@@ -92,6 +94,8 @@ namespace App1.ViewModel
             timer.Elapsed += new ElapsedEventHandler(TimerTick);
             timer.AutoReset = true;
         }
+
+
 
         void TimerTick(object sender, ElapsedEventArgs e)
         {
@@ -104,7 +108,8 @@ namespace App1.ViewModel
                 ExcuteAnswerCommand(false);
             }
         }
+
     }
 
-    
+
 }
