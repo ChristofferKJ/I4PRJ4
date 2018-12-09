@@ -20,7 +20,7 @@ namespace App1.ViewModel
         private Question theQuestion;
         public Question TheQuestion { get => theQuestion; set => SetProperty(ref theQuestion, value); }
 
-        public ICommand AnswerCommand { get; private set; }
+        public Command AnswerCommand { get; private set; }
 
         public event EventHandler QuizCompleted;
 

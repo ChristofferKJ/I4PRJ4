@@ -28,7 +28,7 @@ namespace App1.Services
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                var Quizzes = JsonConvert.DeserializeObject<List<Quiz>>(content);
+                List<Quiz> Quizzes = JsonConvert.DeserializeObject<List<Quiz>>(content);
                 return Quizzes;
             }
             else

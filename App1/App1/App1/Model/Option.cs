@@ -16,7 +16,11 @@ namespace App1.Model
             get => _IsRight;
             set
             {
-                
+
+                if (_IsRight == value)
+                {
+                    return;
+                }
                 _IsRight = value;
                 HandlePropertyChanged();
             }
