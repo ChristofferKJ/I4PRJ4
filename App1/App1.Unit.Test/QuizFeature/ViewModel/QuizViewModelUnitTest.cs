@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace App1.Unit.Test.QuizFeature.ViewModel
 {
     [TestFixture]
-        class QuizViewModelUnitTest
+    class QuizViewModelUnitTest
     {
         private QuizViewModel uut_;
 
@@ -19,5 +19,14 @@ namespace App1.Unit.Test.QuizFeature.ViewModel
         {
 
         }
+
+        //Test property changed TheQuiz
+
+        //Test property changed TheQuestion
+
+        //Test property changed TotalScore
+
+        //Test AnswerCommand
+
     }
 }
