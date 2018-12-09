@@ -12,6 +12,7 @@ namespace App1.ViewModel
     {
         private ApiServices _apiServices = new ApiServices();
         public List<CategoryScoreModel> Highscores { get; set; }
+        public CategoryScoreModel CategoryScoreModel { get; set; }
 
         public ICommand GetHighscores
         {
@@ -26,7 +27,7 @@ namespace App1.ViewModel
                 return new Command(async () =>
                 {
                     //todo
-                    await _apiServices.PostHighscore();
+                    await _apiServices.PostHighscore(CategoryScoreModel);
                 });
             }
         }
