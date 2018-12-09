@@ -8,12 +8,12 @@ using NUnit.Framework;
 namespace App1.Unit.Test
 {
     [TestFixture]
-    public class App1UnitTest
+    class QuizServicesTest
     {
         [Test]
-        public void TestTest()
+        public void TestTEst()
         {
-            Assert.That(2 + 2,Is.EqualTo(4));
+
         }
     }
 }
