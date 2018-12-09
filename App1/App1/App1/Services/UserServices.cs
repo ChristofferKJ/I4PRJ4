@@ -14,8 +14,6 @@ namespace App1.Services
 
         }
 
-
-
         public List<User> GetUsers()
         {
             var list = new List<User>
