@@ -74,10 +74,17 @@
                        Grid.ColumnSpan="2" 
                        Grid.Row="4" 
                        Placeholder="Indtast dit ønskede password"/>
+                
+                <Entry HorizontalOptions="FillAndExpand" 
+                       PlaceholderColor="#9ab7b6" 
+                       HorizontalTextAlignment="Center"
+                       Grid.ColumnSpan="2" 
+                       Grid.Row="5" 
+                       Placeholder="Gentag password"/>
 
                 <Button Grid.Column="0"
                         BackgroundColor="#9ab7b6" 
-                        Margin="40,0,5,0" 
+                        Margin="40,10,5,0" 
                         Text="Opret bruger" 
                         Grid.Row="6"
                         BorderWidth="1"
@@ -86,7 +93,7 @@
 
                 <Button Grid.Column="1"
                         BackgroundColor="White" 
-                        Margin="5,0,40,0" 
+                        Margin="5,10,40,0" 
                         Text="Gå tilbage" 
                         TextColor="#9ab7b6"
                         Grid.Row="6"
