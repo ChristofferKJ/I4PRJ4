@@ -17,8 +17,13 @@ namespace App1
 		public HiscoreWindow ()
 		{
 			InitializeComponent ();
-		    this.BindingContext = new UserViewModel(); 
-		}
-	  
+		    this.BindingContext = new UserViewModel();
+
+   
+
+
+        }
+
 	}
 }
+
