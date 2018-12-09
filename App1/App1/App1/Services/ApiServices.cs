@@ -65,6 +65,8 @@ namespace App1.Services
 
 
             var accessToken = jwtDynamic.Value<string>("access_token");
+            var accessTokenExpirationDate = jwtDynamic.Value<DateTime>(".expires");
+            Settings.AccessTokenExpirationDate = accessTokenExpirationDate;
 
             return accessToken;
             //Debug.WriteLine(await response.Content.ReadAsStringAsync());
@@ -145,6 +147,17 @@ namespace App1.Services
                 content);
 
             return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> DeleteUser()
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer",Settings.AccessToken);
+            HttpContent content = new StringContent("");
+
+            var response = await client.PostAsync("https://asestudyhelper.azurewebsites.net/api/Account/RemoveUser",content);
+
+            return response.IsSuccessStatusCode;    
         }
     }
 }

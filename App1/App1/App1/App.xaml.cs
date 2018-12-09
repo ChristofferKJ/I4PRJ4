@@ -1,5 +1,7 @@
 ﻿using System;
 using App1.Helpers;
+using App1.Services;
+using App1.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,6 +21,11 @@ namespace App1
         {
             if (!string.IsNullOrEmpty(Settings.AccessToken))
             {
+                if (Settings.AccessTokenExpirationDate < DateTime.UtcNow.AddHours(1))
+                {
+                    var vm = new LoginViewModel();
+                    vm.LoginCommand.Execute(null);
+                }
                MainPage = new MainPage();
             }
             else if (!string.IsNullOrEmpty(Settings.Password)

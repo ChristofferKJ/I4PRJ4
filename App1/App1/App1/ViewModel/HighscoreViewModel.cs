@@ -26,7 +26,7 @@ namespace App1.ViewModel
                 return new Command(async () =>
                 {
                     //todo
-                    await _apiServices.PostHighscore(category, score, isHighscore);
+                    await _apiServices.PostHighscore();
                 });
             }
         }
