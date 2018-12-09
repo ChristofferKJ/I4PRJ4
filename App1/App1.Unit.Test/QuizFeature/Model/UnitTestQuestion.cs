@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace App1.Unit.Test
 {
     [TestFixture]
-    public class QuestionTest
+    public class UnitTestQuestion
     {
         private Question uut;
         private int eventsreceived;
