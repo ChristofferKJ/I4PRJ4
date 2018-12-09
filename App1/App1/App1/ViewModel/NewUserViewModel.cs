@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 using App1.Annotations;
+using App1.Helpers;
 using Xamarin.Forms;
 using App1.Services;
 using MongoDB.Driver.Core.Operations;
@@ -77,10 +78,10 @@ namespace App1.ViewModel
                             ? "Bruger oprettet"
                             : "Der opstod en fejl under oprettelse af bruger, prøv igen";
                     }
-
                     if (Message == "Bruger oprettet")
                     {
-                        
+                        Settings.Username = Username;
+                        Settings.Password = Password;
                     }
                 });
             }

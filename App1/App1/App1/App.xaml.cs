@@ -1,4 +1,5 @@
 ﻿using System;
+using App1.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,24 @@ namespace App1
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            setMainPage();
+        }
+
+        private void setMainPage()
+        {
+            if (!string.IsNullOrEmpty(Settings.AccessToken))
+            {
+               MainPage = new MainPage();
+            }
+            else if (!string.IsNullOrEmpty(Settings.Password)
+            && !string.IsNullOrEmpty(Settings.Username))
+            {
+                MainPage = new LoginFormPage();
+            }
+            else
+            {
+                MainPage = new LoginPage();
+            }
         }
 
         protected override void OnStart()

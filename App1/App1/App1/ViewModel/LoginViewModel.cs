@@ -8,6 +8,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using App1;
 using App1.Annotations;
+using App1.Helpers;
 using App1.Services;
 using Plugin.Connectivity;
 
@@ -15,10 +16,15 @@ namespace App1.ViewModel
 {
     class LoginViewModel : INotifyPropertyChanged
     {
+        public LoginViewModel()
+        {
+            Username = Settings.Username;
+            Password = Settings.Password;
+        }
         private readonly ApiServices _apiServices = new ApiServices();
-        public string Username { get; set; } = string.Empty;
+        public string Username { get; set; }
 
-        public string Password { get; set; } = string.Empty;
+        public string Password { get; set; }
 
         public string LoginResponse
         {
@@ -47,8 +53,9 @@ namespace App1.ViewModel
                     }
                     else
                     {
-                        var response = await _apiServices.LoginAsync(Username, Password);
-                        LoginResponse = response.StatusCode == HttpStatusCode.OK ? "Login succes" : "Fejl i brugernavn eller kodeord";
+                        var accesstoken = await _apiServices.LoginAsync(Username, Password);
+                        Settings.AccessToken = accesstoken;
+                        LoginResponse = accesstoken != "" ? "Login succes" : "Fejl i brugernavn eller kodeord";
                     }
 
                     if (LoginResponse == "Login succes")
@@ -63,7 +70,7 @@ namespace App1.ViewModel
             }
         }
 
-          public bool IsEverythingFilled()
+        public bool IsEverythingFilled()
         {
             if (Username == string.Empty || Password == string.Empty)
                 return false;
@@ -86,5 +93,6 @@ namespace App1.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
     }
 }
