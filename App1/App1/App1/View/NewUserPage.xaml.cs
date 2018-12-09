@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using App1.ViewModel;
 
 namespace App1
 {
@@ -15,12 +14,11 @@ namespace App1
 		public NewUserPage ()
 		{
 			InitializeComponent ();
-        }
+		}
 
-        private async void GoBack_Clicked(object sender, EventArgs e)
+	    private async void GoBack_Clicked(object sender, EventArgs e)
 	    {
 	        await Navigation.PopModalAsync(); 
 	    }
-
-    }
+	}
 }

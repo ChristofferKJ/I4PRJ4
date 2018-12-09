@@ -15,11 +15,10 @@ namespace App1.ViewModel
         }
 
         private List<User> userList;
-        
 
         public List<User> UserList
         {
-            get { return userList; }
+            get { return userList;}
             set { SetProperty(ref userList, value); }
         }
 

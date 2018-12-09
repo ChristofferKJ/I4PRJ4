@@ -20,33 +20,32 @@ namespace App1.Services
             {
                 new User
                 {
-                    Username = "Bruger1",
-                    UserHiscore = 9999999
+                    Username = "MarkusFriis123",
+                    UserHiscore = 484
                 },
 
                 new User
                 {
-                    Username = "Bruger2",
-                    UserHiscore = 999999
-
+                    Username = "MowgliWonKanobi",
+                    UserHiscore = 900
                 },
                 new User
                 {
-                    Username = "Bruger3",
-                    UserHiscore = 99999
+                    Username = "RasmusRøved",
+                    UserHiscore = 33
                 },
                 new User
                 {
-                    Username = "Bruger4",
-                    UserHiscore = 9999
+                    Username = "Sucker4Love",
+                    UserHiscore = 999
                 }
             };
 
-            List<User> sortedlist = list.OrderByDescending(o => o.UserHiscore).ToList();
+            List<User> sortedlist  = list.OrderByDescending(o => o.UserHiscore).ToList();
 
             list = sortedlist;
 
-            return list;
+            return list; 
         }
 
 

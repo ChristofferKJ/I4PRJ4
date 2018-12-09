@@ -1,98 +1,52 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.Net;
-using System.Net.Http;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-using App1;
-using App1.Annotations;
-using App1.Helpers;
-using App1.Services;
-using Plugin.Connectivity;
+using App1; 
 
 namespace App1.ViewModel
 {
     class LoginViewModel : INotifyPropertyChanged
     {
-        public LoginViewModel()
-        {
-            Username = Settings.Username;
-            Password = Settings.Password;
-        }
-        private readonly ApiServices _apiServices = new ApiServices();
-        public string Username { get; set; }
+        public Action DisplayInvalidLoginPrompt;
+        public Action LoginSuccess; 
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        private string email;
 
-        public string Password { get; set; }
-
-        public string LoginResponse
+        public string Email
         {
-            get { return _loginResponse;}
+            get { return email; }
             set
             {
-                _loginResponse = value;
-                OnPropertyChanged();
-            } }
-        private string _loginResponse;
-        public ICommand LoginCommand
-        {
-            get
-            {
-                return new Command(async () =>
-                {
-                    var isConnected = CrossConnectivity.Current.IsConnected;
-                    if (!isConnected)
-                    {
-                        LoginResponse = "Kan ikke oprette forbindelse";
-
-                    }
-                    else if (!IsEverythingFilled())
-                    {
-                        LoginResponse = WhatIsNotFilled();
-                    }
-                    else
-                    {
-                        var accesstoken = await _apiServices.LoginAsync(Username, Password);
-                        Settings.AccessToken = accesstoken;
-                        LoginResponse = accesstoken != "" ? "Login succes" : "Fejl i brugernavn eller kodeord";
-                    }
-
-                    if (LoginResponse == "Login succes")
-                    {
-                        
-                    //todo: fix this
-                        Application.Current.MainPage = new NavigationPage(new MainPage());
-                    }
-
-                    
-                });
+                email = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Email"));
             }
         }
 
-        public bool IsEverythingFilled()
+        private string password;
+
+        public string Password
         {
-            if (Username == string.Empty || Password == string.Empty)
-                return false;
-            return true;
-        }
-        public string WhatIsNotFilled()
-        {
-            if (Username == "") 
-                return "Feltet brugernavn er ikke udfyldt";
-            else if (Password == string.Empty)
-                return "Feltet password er ikke udfyldt";
-            else
-                return string.Empty;
+            get { return password; }
+            set
+            {
+                password = value;
+                PropertyChanged(this,new PropertyChangedEventArgs("Password"));
+            }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public ICommand SubmitCommand { get; set; }
 
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        public LoginViewModel()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            SubmitCommand = new Command(OnSubmit);
         }
 
+        public void OnSubmit()
+        {
+            LoginSuccess(); 
+        }
     }
 }
