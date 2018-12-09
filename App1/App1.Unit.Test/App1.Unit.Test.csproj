@@ -203,10 +203,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="QuestionTest.cs" />
+    <Compile Include="QuizFeature\Model\QuestionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuizFeature\Model\UnitTestOption.cs" />
     <Compile Include="QuizFeature\Model\UnitTestQuiz.cs" />
+    <Compile Include="QuizFeature\ViewModel\QuizViewModelUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
