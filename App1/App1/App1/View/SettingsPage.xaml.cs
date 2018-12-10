@@ -30,5 +30,10 @@ namespace App1
 	    {
 	        PopupNavigation.Instance.PushAsync(new ResetHighscoreView());
 	    }
+
+	    private void Delete_OnClicked(object sender, EventArgs e)
+	    {
+	        PopupNavigation.Instance.PushAsync(new DeleteUserView());
+	    }
 	}
 }

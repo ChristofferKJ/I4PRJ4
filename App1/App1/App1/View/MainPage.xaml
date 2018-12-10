@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App1.MainPage"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"             
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+             xmlns:viewModel="clr-namespace:App1.ViewModel;assembly=App1"
              BackgroundColor="#9ab7b6">
 
     <xfg:ContentPageGloss.BackgroundGradient>
@@ -13,7 +14,9 @@
         </xfg:Gradient>
     </xfg:ContentPageGloss.BackgroundGradient>
 
-
+<ContentPage.BindingContext>
+    <viewModel:LogoutViewModel/>
+</ContentPage.BindingContext>
     <Grid>
 
 
@@ -115,7 +118,8 @@
                 <ffimageloading:CachedImage Scale="0.4" Source="logud" Grid.Row="6">
                     <ffimageloading:CachedImage.GestureRecognizers>
                         <TapGestureRecognizer 
-                            Command=""
+                            Command="{Binding LogoutCommand}"
+                            Tapped="Logout_OnTapped"
                         NumberOfTapsRequired="1"/>
                     </ffimageloading:CachedImage.GestureRecognizers>
                 </ffimageloading:CachedImage>

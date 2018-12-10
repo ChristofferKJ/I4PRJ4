@@ -14,7 +14,7 @@ namespace App1
         {
             InitializeComponent();
 
-          MainPage = new MainPage(); //setMainPage();
+          setMainPage();
         }
 
         private void setMainPage()
