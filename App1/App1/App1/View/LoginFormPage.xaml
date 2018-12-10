@@ -2,10 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+             xmlns:viewModel="clr-namespace:App1.ViewModel;assembly=App1"
              x:Class="App1.LoginFormPage"
-             BackgroundColor="White"
-             >
+             BackgroundColor="White">
 
+    <ContentPage.BindingContext>
+        <viewModel:LoginViewModel/>
+    </ContentPage.BindingContext>
     <xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient Rotation="180">
             <xfg:GradientStep StepColor="LightGray" StepPercentage="0" />
@@ -48,7 +51,7 @@
                         HorizontalOptions="FillAndExpand"
                         Grid.Row="2"
                         PlaceholderColor="#9ab7b6"
-                        Placeholder="Brugernavn, email eller ID"
+                        Placeholder="Brugernavn"
                         Text="{Binding Username}"
                 />
 
