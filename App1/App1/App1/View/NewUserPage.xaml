@@ -7,6 +7,9 @@
              BackgroundColor="White">
 
 
+    <ContentPage.BindingContext>
+        <vm:NewUserViewModel/>
+    </ContentPage.BindingContext>
 
     <xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient Rotation="180">
