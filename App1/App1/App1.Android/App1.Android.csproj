@@ -242,5 +242,8 @@
     <AndroidResource Include="Resources\drawable\viktor_omos.png" />
     <AndroidResource Include="Resources\drawable\lyn.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logud.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
