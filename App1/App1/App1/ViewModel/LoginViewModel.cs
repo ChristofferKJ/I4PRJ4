@@ -55,13 +55,12 @@ namespace App1.ViewModel
                     {
                         var accesstoken = await _apiServices.LoginAsync(Username, Password);
                         Settings.AccessToken = accesstoken;
-                        LoginResponse = accesstoken != "" ? "Login succes" : "Fejl i brugernavn eller kodeord";
+
+                        LoginResponse = !string.IsNullOrEmpty(accesstoken) ? "Login succes" : "Fejl i brugernavn eller kodeord";
                     }
 
                     if (LoginResponse == "Login succes")
                     {
-                        
-                    //todo: fix this
                         Application.Current.MainPage = new NavigationPage(new MainPage());
                     }
 

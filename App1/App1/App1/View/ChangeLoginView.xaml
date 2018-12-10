@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:viewModel="clr-namespace:App1.ViewModel;assembly=App1"
+             x:Class="App1.View.ChangeLoginView">
+ 
+    <ContentPage.BindingContext>
+        <viewModel:ChangePasswordViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout 
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Margin="12"
+        Padding="24"
+        Spacing="24"
+        BackgroundColor="White"
+        >
+
+        <StackLayout>
+            <Label Text="Skift password"
+                   TextColor="#9ab7b6"
+                   FontSize="Large"/>
+        </StackLayout>
+        <StackLayout>
+            <Entry Placeholder="Indtast dit nuværende pasword"
+                TextColor="#9ab7b6"
+                   PlaceholderColor="#9ab7b6"
+                   IsPassword="True"
+                   Text="{Binding OldPassword}"
+                   />
+        </StackLayout>
+        <StackLayout>
+            <Entry Placeholder="Indtast ønskede pasword" 
+                 TextColor="#9ab7b6"
+                   PlaceholderColor="#9ab7b6"
+                   IsPassword="True"
+                   Text="{Binding NewPassword}"/>
+        </StackLayout>
+        <StackLayout>
+            <Entry Placeholder="Gentag dit ænskede password"
+                   TextColor="#9ab7b6"
+                   PlaceholderColor="#9ab7b6"
+                   IsPassword="True"
+                   Text="{Binding ConfirmPassword}"/>
+        </StackLayout>
+        <StackLayout>
+
+            <Button TextColor="#9ab7b6"
+                        Text="Skift password"
+                        BackgroundColor="White"
+                        CornerRadius="5"
+                        BorderWidth="1"
+                        BorderColor="#9ab7b6"
+                        Command="{Binding ChangePaswordCommand}"
+                        />
+        </StackLayout>
+    </StackLayout>
+</pages:PopupPage>

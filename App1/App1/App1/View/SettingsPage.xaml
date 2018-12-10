@@ -45,13 +45,13 @@
                     BorderColor="White"  BorderWidth="1"  Grid.Row="1" Text="Skift brugernavn"/>
                 <Button TextColor="White" FontAttributes="Bold, Italic"
                     BackgroundColor="#9ab7b6" Margin="40,0,40,0" 
-                    BorderColor="White" BorderWidth="1"  Grid.Row="2" Text="Skift password"/>
+                    BorderColor="White" BorderWidth="1"  Grid.Row="2" Text="Skift password" Clicked="Button_OnClicked"/>
                 <Button TextColor="White" FontAttributes="Bold, Italic"
                     BackgroundColor="#9ab7b6" Margin="40,0,40,0" 
                     BorderColor="White" BorderWidth="1"  Grid.Row="4" Text="Slet din bruger"/>
                 <Button TextColor="White" FontAttributes="Bold, Italic"
                     BackgroundColor="#9ab7b6" Margin="40,0,40,0" 
-                    BorderColor="White" BorderWidth="1"  Grid.Row="3" Text="Reset din hiscore"/>
+                    BorderColor="White" BorderWidth="1"  Grid.Row="3" Text="Reset din hiscore" Clicked="ResetHighscore"/>
 
                 <Image Scale="0.35" Grid.Row="5" HorizontalOptions="Center" VerticalOptions="Center" Source="Icon" />
 
