@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using App1.Model;
+using App1.Services;
 using App1.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,7 +22,7 @@ namespace App1.View
 	        NavigationPage.SetHasNavigationBar(this, false);
             viewModel_ = viewModel;
 	        if (viewModel_ == null)
-	            viewModel_ = new SearchQuizViewModel("Vælg Quiz");
+	            viewModel_ = new SearchQuizViewModel("Vælg Quiz", new QuizDBServices());
 
 	        BindingContext = viewModel_;
 

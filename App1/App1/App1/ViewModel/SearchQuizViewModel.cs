@@ -8,7 +8,7 @@ namespace App1.ViewModel
 {
     public class SearchQuizViewModel : BaseViewModel
     {
-        private QuizDBServices quizService_;
+        private IQuizDBService quizService_;
 
         private List<string> categories_;
         public List<string> Categories { get => categories_; set => SetProperty(ref categories_, value); }
@@ -18,9 +18,10 @@ namespace App1.ViewModel
         public List<Quiz> Quizzes { get => quizzes_; set => SetProperty(ref quizzes_, value); }
 
 
-        public SearchQuizViewModel(string title)
+        public SearchQuizViewModel(string title, IQuizDBService quizService)
         {
             Title = title;
+            quizService_ = quizService;
             Categories = new List<string>();
             Quizzes = new List<Quiz>();
             quizService_ = new QuizDBServices();
@@ -96,3 +97,4 @@ namespace App1.ViewModel
          
     }
 }
+ 
