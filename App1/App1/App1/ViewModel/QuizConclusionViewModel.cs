@@ -16,6 +16,13 @@ namespace App1.ViewModel
             set => SetProperty(ref totalScore, value);
         }
 
+        private string scoreLabel;
+        public string ScoreLabel
+        {
+            get => scoreLabel;
+            set => SetProperty(ref scoreLabel, value);
+        }
+
         private string quizDescription_;
 
         public string QuizDescription
@@ -38,6 +45,7 @@ namespace App1.ViewModel
             Title = "Quiz Afsluttet";
             completedQuiz = quiz;
             TotalScore = score;
+            ScoreLabel = string.Format("Du har scoret: {0:0.00} Points", TotalScore);
             QuizDescription = $"{completedQuiz.QuizName}, {completedQuiz.Category}";
             HighScoreUpdatedDescription = "";
             updateHighScore();
