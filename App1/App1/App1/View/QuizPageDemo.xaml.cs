@@ -46,7 +46,6 @@ namespace App1.View
 
         async void onQuizCompleted(object sender, EventArgs e)
         {
-            
             await Navigation.PushModalAsync(new QuizConclusionPage(_viewModel.TheQuiz, _viewModel.TotalScore));
         }
 

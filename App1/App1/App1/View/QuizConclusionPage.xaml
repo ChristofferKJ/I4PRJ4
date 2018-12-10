@@ -1,7 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
              x:Class="App1.View.QuizConclusionPage">
+
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="180">
+            <xfg:GradientStep StepColor="LightGray" StepPercentage="0" />
+            <xfg:GradientStep StepColor="#9ab7b6" StepPercentage=".5" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
+
     <ContentPage.Content>
         <StackLayout>
             <Grid>
@@ -14,10 +23,9 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Row="1" Margin="20,0,0,0">Tilykke du har fuldendt quiz: </Label>
                 <Label Grid.Row="2" Margin="20,0,0,0" Text="{Binding QuizDescription}"/>
-                <Label Grid.Row="3" Margin="20,0,0,0">Du har scoret: </Label>
-                <Label Grid.Row="3" Margin="120,0,0,0" Text="{Binding TotalScore}"/>
-                <Label Grid.Row="3" Margin="160,0,0,0">Points</Label>
+                <Label Grid.Row="3" Margin="20,0,0,0" Text="{Binding ScoreLabel}"/>
                 <Label Grid.Row="4" Margin="20,0,0,0" Text="{Binding HighScoreUpdatedDescription}"/>
+                <Button Grid.Row="5" Text="Gå til hovedmenuen" Clicked="goback"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

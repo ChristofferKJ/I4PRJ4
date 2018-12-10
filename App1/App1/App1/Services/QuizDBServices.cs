@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace App1.Services
 {
-    class QuizDBServices
+    class QuizDBServices : IQuizDBService
     {
         private HttpClient QuizDBClient;
 
@@ -49,8 +49,7 @@ namespace App1.Services
             {
                 var content = await response.Content.ReadAsStringAsync();
                 var Quizzes = JsonConvert.DeserializeObject<List<Quiz>>(content);
-               // JsonConvert.SerializeObject(new Quiz());
-                return Quizzes;
+               return Quizzes;
             }
             else
             {
