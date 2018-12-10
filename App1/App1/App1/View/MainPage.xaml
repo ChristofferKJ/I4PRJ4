@@ -41,6 +41,8 @@
                     <RowDefinition Height="170"/>
                     <RowDefinition Height="170"/>
                     <RowDefinition Height="170"/>
+                    <RowDefinition Height="170"/>
+
                 </Grid.RowDefinitions>
 
                 <ffimageloading:CachedImage Scale="0.7" Source="spil" Grid.Row="1">
@@ -110,7 +112,7 @@
                        Grid.Row="5"/>
 
 
-                <ffimageloading:CachedImage Scale="0.4" Source="logud" Grid.Row="5">
+                <ffimageloading:CachedImage Scale="0.4" Source="logud" Grid.Row="6">
                     <ffimageloading:CachedImage.GestureRecognizers>
                         <TapGestureRecognizer 
                             Command=""
@@ -120,8 +122,8 @@
                 <Label TextColor="White" 
                        Text="Logud" 
                        HorizontalTextAlignment="Center" 
-                       Margin="0,150,0,0"
-                       Grid.Row="5"/>
+                       Margin="0,125,0,0"
+                       Grid.Row="6"/>
 
 
 

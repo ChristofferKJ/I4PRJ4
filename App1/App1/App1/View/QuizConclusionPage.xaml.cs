@@ -35,6 +35,13 @@ namespace App1.View
             await Navigation.PopAsync();
         }
 
+        public void goback(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new MainPage();
+
+
+        }
+
     }
 }
 
