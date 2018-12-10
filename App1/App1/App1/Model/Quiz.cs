@@ -17,6 +17,7 @@ namespace App1.Model
         public Quiz()
         {
             questionIndex_ = 0;
+            Question = new List<Question>();
         }
 
         string _Id;

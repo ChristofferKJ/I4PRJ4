@@ -26,7 +26,7 @@ namespace App1.Unit.Test.QuizFeature.Model
         }
 
         [Test]
-        public void OnPro()
+        public void IsRightChangedToNewValue_PropertyChangedInvoked()
         {
             int propertychangedCounter = 0;
             uut_.PropertyChanged += (o, arg) => { propertychangedCounter++; };
@@ -39,7 +39,7 @@ namespace App1.Unit.Test.QuizFeature.Model
         }
 
         [Test]
-        public void OnPro2()
+        public void IsRightChangedToSameValue_PropertyChangedNotInvoked()
         {
             int propertychangedCounter = 0;
             uut_.PropertyChanged += (o, arg) => { propertychangedCounter++; };
@@ -54,7 +54,7 @@ namespace App1.Unit.Test.QuizFeature.Model
         }
 
         [Test]
-        public void OptionTextChangedOnceToNewString()
+        public void OptionTextChangedToNewString_PropertyChangedInvoked()
         {
             int propertychangedCounter = 0;
             uut_.PropertyChanged += (o, arg) => { propertychangedCounter++; };
@@ -68,7 +68,7 @@ namespace App1.Unit.Test.QuizFeature.Model
         }
 
         [Test]
-        public void OptionTextChangedTwiceToSameString()
+        public void OptionTextChangedToNewString_PropertyChangedNotInvoked()
         {
             int propertychangedCounter = 0;
             uut_.PropertyChanged += (o, arg) => { propertychangedCounter++; };

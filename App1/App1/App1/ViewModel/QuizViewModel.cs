@@ -40,7 +40,7 @@ namespace App1.ViewModel
         public QuizViewModel(Quiz quiz)
         {
             theQuiz = quiz;
-            theQuiz.RandomizeQuestionOrder();
+            //theQuiz.RandomizeQuestionOrder();
             Title = theQuiz.Category;
             TheQuestion = theQuiz.Question[0];
             TheQuestion.RandomizeOptionOrder();
