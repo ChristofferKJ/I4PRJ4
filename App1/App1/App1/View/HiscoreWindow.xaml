@@ -7,95 +7,55 @@
              x:Class="App1.HiscoreWindow"
              BackgroundColor="#9ab7b6">
 
-    <!--<xfg:ContentPageGloss.BackgroundGradient>
-        <xfg:Gradient Rotation="180">
-            <xfg:GradientStep StepColor="LightGray" StepPercentage="0" />
-            <xfg:GradientStep StepColor="#9ab7b6" StepPercentage=".5" />
-        </xfg:Gradient>
-    </xfg:ContentPageGloss.BackgroundGradient>-->
-    <Grid>
-
-      
-
-        <!--<ffimageloading:CachedImage 
-                Margin="0,0,0,0"
-                VerticalOptions="Start"
-                HorizontalOptions="End"
-                Rotation="30"
-                Opacity="0.25"
-                Scale="2"
-                Source = "hiscore_bg"
-                />-->
-
-        <Grid>
 
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
+    <Grid Margin="50">
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
 
 
-        </Grid.RowDefinitions>
+            <Label TextColor="White" FontSize="50" Grid.Row="1" Grid.ColumnSpan="2" Text="HISCORES" HorizontalOptions="CenterAndExpand"/>
+            <Label FontAttributes="Bold" FontSize="20" TextColor="White" Grid.Row="2" Grid.Column="0" Text="USERNAME" HorizontalOptions="Start"/>
+            <Label FontAttributes="Bold" FontSize="20" TextColor="White" Grid.Row="2" Grid.Column="1" Text="SCORE" HorizontalOptions="End"/>
 
-        <Label TextColor="White" Grid.Row="2" FontAttributes="Bold, Italic" Grid.Column="1" FontSize="20" Text="USERNAME" />
-        <Label TextColor="White" Grid.Row="2" FontAttributes="Bold, Italic" Grid.Column="3" FontSize="20" Text="SCORE"/>
+            <ListView  SeparatorVisibility="None"  HorizontalOptions="End" Grid.Row="3" Grid.Column="0" ItemsSource="{Binding UserList}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                <Label TextColor="White" HorizontalTextAlignment="Start" FontSize="{Binding calculateFontSize}"  Text ="{Binding Username}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-    <ListView 
-        SeparatorColor="Transparent"
-        Grid.Row="3" 
-        Grid.Column="1" 
-        ItemsSource="{Binding UserList}" 
-        HasUnevenRows="True">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Orientation="Horizontal">
-                        <Label TextColor="White"  
-                               Text ="{Binding Username}"
-                               HorizontalOptions="EndAndExpand"
-                               HorizontalTextAlignment="End"/>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-        </ListView>
+            <ListView SeparatorVisibility="None" HorizontalOptions="EndAndExpand" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding UserList}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                <Label TextColor="White" HorizontalTextAlignment="End" FontSize="{Binding calculateFontSize}" Text ="{Binding UserHiscore}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-    <ListView 
-        SeparatorColor="Transparent"
-        Grid.Row="3" 
-        Grid.Column="3" 
-        ItemsSource="{Binding UserList}" 
-        HasUnevenRows="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label HorizontalTextAlignment="Start" 
-                                   HorizontalOptions="StartAndExpand"
-                                   TextColor="White" 
-                                   Text="{Binding UserHiscore}"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-    </ListView>
 
+
+        </Grid>
     </Grid>
 
-
-
-        
-                    
-
-
-    </Grid>
 </ContentPage>

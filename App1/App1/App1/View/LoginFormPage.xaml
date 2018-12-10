@@ -2,10 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+             xmlns:viewModel="clr-namespace:App1.ViewModel;assembly=App1"
              x:Class="App1.LoginFormPage"
-             BackgroundColor="White"     
-             >
+             BackgroundColor="White">
 
+    <ContentPage.BindingContext>
+        <viewModel:LoginViewModel/>
+    </ContentPage.BindingContext>
     <xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient Rotation="180">
             <xfg:GradientStep StepColor="LightGray" StepPercentage="0" />
@@ -19,7 +22,7 @@
             <Grid.RowDefinitions>
                     <RowDefinition Height="300"/>
                     <RowDefinition/>
-                </Grid.RowDefinitions>
+            </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -41,29 +44,29 @@
                 TextColor="#9ab7b6"
                 FontSize="24"/>
 
-                <Entry 
+                <Entry
                         x:Name="Username_Entry"
                         Margin="30,20,30,0"
-                        HorizontalTextAlignment="Start" 
-                        HorizontalOptions="FillAndExpand" 
-                        Grid.Row="2" 
-                        PlaceholderColor="#9ab7b6"  
-                        Placeholder="Brugernavn, email eller ID"
+                        HorizontalTextAlignment="Start"
+                        HorizontalOptions="FillAndExpand"
+                        Grid.Row="2"
+                        PlaceholderColor="#9ab7b6"
+                        Placeholder="Brugernavn"
                         Text="{Binding Username}"
                 />
 
-                <Entry 
+                <Entry
                         x:Name="Password_Entry"
                         Margin="30,20,30,0"
-                        HorizontalTextAlignment="Start" 
-                        HorizontalOptions="FillAndExpand" 
-                        Grid.Row="3" 
-                        PlaceholderColor="#9ab7b6" 
-                        Placeholder="Password" 
+                        HorizontalTextAlignment="Start"
+                        HorizontalOptions="FillAndExpand"
+                        Grid.Row="3"
+                        PlaceholderColor="#9ab7b6"
+                        Placeholder="Password"
                         IsPassword="True"
                         Text="{Binding Password}"
                 />
-                <Image 
+                <Image
                         Grid.Row="3"
                         HorizontalOptions="End"
                         VerticalOptions="Center"
@@ -71,8 +74,8 @@
                         Source="show_password">
 
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer 
-                            Tapped="ShowPass_OnTapped" 
+                        <TapGestureRecognizer
+                            Tapped="ShowPass_OnTapped"
                             NumberOfTapsRequired="1"/>
                     </Image.GestureRecognizers>
 
@@ -87,26 +90,38 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
                         <RowDefinition Height="100"/>
-                    </Grid.RowDefinitions>
 
-                    <Button 
+                </Grid.RowDefinitions>
+
+                <Label Text="{Binding LoginResponse}"
+                       TextColor="#9ab7b6"
+                       HorizontalOptions="FillAndExpand"
+                       HorizontalTextAlignment="Center"
+                       Grid.ColumnSpan="2"
+                       Grid.Row="0"
+                       Margin="30,30,10,0"
+
+                           />
+
+                    <Button
                         Margin="30,30,10,0"
                         Grid.Column="0"
-                        Grid.Row="0"
+                        Grid.Row="1"
                         BorderColor="#9ab7b6"
                         BorderWidth="1"
                         Text="Log ind"
                         TextColor="White"
                         BackgroundColor="#9ab7b6"
-                        Command ="{Binding SubmitCommand}"
-
+                        Command ="{Binding LoginCommand}"
+                        CommandParameter="{Binding LoginResponse}"
                         />
 
-                    <Button 
+                    <Button
                         Margin="10,30,30,0"
                         Grid.Column="1"
-                        Grid.Row="0"
+                        Grid.Row="1"
                         BorderColor="#9ab7b6"
                         BorderWidth="1"
                         TextColor="#9ab7b6"
