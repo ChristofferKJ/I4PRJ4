@@ -48,6 +48,9 @@
     <Reference Include="FFImageLoading.Platform, Version=2.4.4.859, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.FFImageLoading.2.4.4.859\lib\netstandard1.0\FFImageLoading.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="Lottie.Forms, Version=2.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.6.3\lib\netstandard2.0\Lottie.Forms.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.DocumentDB.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.DocumentDB.Core.2.2.0\lib\netstandard1.6\Microsoft.Azure.DocumentDB.Core.dll</HintPath>
     </Reference>
