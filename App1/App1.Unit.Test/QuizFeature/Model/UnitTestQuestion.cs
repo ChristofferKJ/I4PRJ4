@@ -96,7 +96,5 @@ namespace App1.Unit.Test
         }
 
         // RandomizeOptionOrder isn't tested, due to its randomness
-
-
     }
 }

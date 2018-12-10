@@ -12,6 +12,10 @@ namespace App1.Model
     {
         private static System.Random nrg => new System.Random();
 
+        public Question()
+        {
+            Options = new List<Option>();
+        }
 
         private string _QuestionText;
         [JsonProperty(PropertyName = "QuestionText")]
