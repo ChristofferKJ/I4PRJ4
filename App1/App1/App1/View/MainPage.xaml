@@ -109,6 +109,23 @@
                        Margin="0,150,0,0"
                        Grid.Row="5"/>
 
+
+                <ffimageloading:CachedImage Scale="0.4" Source="logud" Grid.Row="5">
+                    <ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command=""
+                        NumberOfTapsRequired="1"/>
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
+                <Label TextColor="White" 
+                       Text="Logud" 
+                       HorizontalTextAlignment="Center" 
+                       Margin="0,150,0,0"
+                       Grid.Row="5"/>
+
+
+
+
             </Grid>
 
         </ScrollView>
