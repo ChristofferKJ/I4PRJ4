@@ -20,9 +20,10 @@ namespace App1.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
-
+            
 
             base.OnCreate(savedInstanceState);
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)

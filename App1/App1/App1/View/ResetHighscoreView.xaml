@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:viewModel="clr-namespace:App1.ViewModel;assembly=App1"
+             x:Class="App1.View.ResetHighscoreView">
+
+    <ContentPage.BindingContext>
+        <viewModel:ResetHighscoreViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout 
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Margin="12"
+        Padding="24"
+        Spacing="24"
+        BackgroundColor="White"
+        >
+
+        <StackLayout>
+            <Label Text="Reset highScore"
+                   TextColor="#9ab7b6"
+                   FontSize="Large"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Efter reset kan highscore ikke gendannes"/>
+        </StackLayout>
+       
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                   <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+           
+
+            <Button TextColor="#9ab7b6"
+                    Grid.Column="0"
+                    BackgroundColor="White"
+                    CornerRadius="5"
+                    Text="Reset"
+                    BorderWidth="1"
+                    BorderColor="#9ab7b6"
+                    Command="{Binding ResertHighscoreCommand}"
+                        />
+                <Button TextColor="#9ab7b6"
+                        Text="Cancel"
+                        Grid.Column="1"
+                        BackgroundColor="White"
+                        CornerRadius="5"
+                        BorderWidth="1"
+                        BorderColor="#9ab7b6"
+                        Clicked="Button_OnClicked"
+                />
+
+
+            </Grid>
+        </StackLayout>
+    </StackLayout>
+</pages:PopupPage>

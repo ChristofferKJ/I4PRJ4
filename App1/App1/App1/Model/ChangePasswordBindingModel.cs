@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App1.Model
 {
-    class ChangePasswordBindingModel
+    public class ChangePasswordBindingModel
     {
         public string OldPassword { get; set; }
         public string NewPassword { get; set; }

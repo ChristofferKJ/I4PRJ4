@@ -67,9 +67,10 @@ namespace App1.Services
             var accessToken = jwtDynamic.Value<string>("access_token");
             var accessTokenExpirationDate = jwtDynamic.Value<DateTime>(".expires");
             Settings.AccessTokenExpirationDate = accessTokenExpirationDate;
+            Debug.WriteLine(await response.Content.ReadAsStringAsync());
 
             return accessToken;
-            //Debug.WriteLine(await response.Content.ReadAsStringAsync());
+
         }
 
         public async Task<List<CategoryScoreModel>> GetHighScoreForQuiz()
@@ -133,10 +134,11 @@ namespace App1.Services
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> ChangePassword(ChangePasswordBindingModel model)
+        public async Task<bool> ChangePassword(string oldPW, string newPW, string conPW)
         {
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Settings.AccessToken);
+            var model = new ChangePasswordBindingModel(){OldPassword = oldPW,NewPassword = newPW,ConfirmPassword = conPW};
 
             var json = JsonConvert.SerializeObject(model);
             HttpContent content = new StringContent(json);

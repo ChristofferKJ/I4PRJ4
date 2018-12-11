@@ -49,6 +49,10 @@ namespace App1
 
         }
 
-     
+
+        private async void Logout_OnTapped(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new LoginPage();
+        }
     }
 }
