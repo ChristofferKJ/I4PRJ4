@@ -44,12 +44,13 @@ namespace App1.View
             await Navigation.PopAsync();
         }
 
-        async void onQuizCompleted(object sender, EventArgs e)
+        void onQuizCompleted(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new QuizConclusionPage(_viewModel.TheQuiz, _viewModel.TotalScore));
+            Application.Current.MainPage = new QuizConclusionPage(_viewModel.TheQuiz, _viewModel.TotalScore);
+
+            //await Navigation.PushModalAsync(new NavigationPage(quizConclusionPage));
         }
 
-        
-
+  
     }
 }

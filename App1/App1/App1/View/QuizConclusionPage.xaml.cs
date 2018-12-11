@@ -38,7 +38,7 @@ namespace App1.View
         public void goback(object sender, EventArgs e)
         {
             Application.Current.MainPage = new MainPage();
-
+            Navigation.RemovePage(this);
 
         }
 

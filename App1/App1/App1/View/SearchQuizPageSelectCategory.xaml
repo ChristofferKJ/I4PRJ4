@@ -32,9 +32,8 @@
             <Grid Margin="30">
 
                 <StackLayout HorizontalOptions="CenterAndExpand">
-                <ActivityIndicator  HorizontalOptions="Center" Color="White" IsRunning="{Binding IsBusy}" />
-                <!--<Label VerticalTextAlignment="Center" TextColor="White">Vælg en Kategori</Label>-->
-            <ListView 
+                    <ActivityIndicator  HorizontalOptions="Center" Color="White" IsRunning="{Binding IsBusy}" />
+                    <ListView 
                 HorizontalOptions="Center" 
                 SeparatorColor="White" 
                 ItemsSource="{Binding Categories}" 

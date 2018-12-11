@@ -110,7 +110,7 @@ namespace App1.ViewModel
             else
             {
                 ExcuteAnswerCommand(false);
-            }
+            } 
         }
 
     }
