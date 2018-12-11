@@ -33,20 +33,10 @@ namespace App1.View
             InitializeComponent();
         }
 
-        protected override void OnDisappearing()
+        void onQuizCompleted(object sender, EventArgs e)
         {
-            base.OnDisappearing();
-        }
-
-
-        async Task DismissPage()
-        {
-            await Navigation.PopAsync();
-        }
-
-        async void onQuizCompleted(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new QuizConclusionPage(_viewModel.TheQuiz, _viewModel.TotalScore));
+            Application.Current.MainPage = new QuizConclusionPage(_viewModel.TheQuiz, _viewModel.TotalScore);
+            // await Navigation.PushModalAsync(new QuizConclusionPage(_viewModel.TheQuiz, _viewModel.TotalScore));
         }
 
         

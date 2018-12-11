@@ -47,7 +47,8 @@ namespace App1.View
 	        if (selCategory == null)
 	            return;
 
-	        await Navigation.PushAsync(new SearchQuizPageSelectQuiz(viewModel_, selCategory));
-	    }
+	        Application.Current.MainPage = new SearchQuizPageSelectQuiz(viewModel_, selCategory);
+            //await Navigation.PushAsync(new SearchQuizPageSelectQuiz(viewModel_, selCategory));
+        }
 	}
 }

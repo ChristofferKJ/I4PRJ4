@@ -45,8 +45,9 @@ namespace App1.View
 	        if (selQuiz == null)
 	            return;
 
-	        await Navigation.PushAsync(new QuizPageDemo(selQuiz));
-	    }
+	        Application.Current.MainPage = new QuizPageDemo(selQuiz);
+            //await Navigation.PushAsync(new QuizPageDemo(selQuiz));
+        }
     }
 
 
