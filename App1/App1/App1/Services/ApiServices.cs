@@ -130,7 +130,7 @@ namespace App1.Services
             var response =
                 await client.PostAsync("https://asestudyhelper.azurewebsites.net/api/CategoryScores/ResetProfileScore",
                     content);
-
+            
             return response.IsSuccessStatusCode;
         }
 

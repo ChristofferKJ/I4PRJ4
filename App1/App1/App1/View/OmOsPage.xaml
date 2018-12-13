@@ -100,7 +100,7 @@
                 Margin="0,210,0,0"
                 TextColor="White" 
                 FontSize="14"
-                Text="ASE StudyHelper er til dig som har svært ved at kæmpe dig igennem læselektierne! Her kan du quizze dig til faglig fakta. Det er en sjovere og mere effektiv måde, end at læse sig til alle svarene! Så hvad venter du på, bitch? Kom igang med din første quiz! "/>
+                Text="ASE StudyHelper er til dig som har svært ved at kæmpe dig igennem læselektierne! Her kan du quizze dig til faglig fakta. Det er en sjovere og mere effektiv måde, end at læse sig til alle svarene! Så hvad venter du på? Kom igang med din første quiz! "/>
                     
                     
                     <ffimageloading:CachedImage 

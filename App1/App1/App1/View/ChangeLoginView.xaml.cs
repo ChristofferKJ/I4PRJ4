@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,10 @@ namespace App1.View
 		{
 			InitializeComponent ();
 		}
+
+	    private void NewPassword_onClicked(object sender, EventArgs e)
+	    {
+	        PopupNavigation.Instance.PopAsync();
+	    }
 	}
 }

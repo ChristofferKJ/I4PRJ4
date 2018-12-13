@@ -26,7 +26,8 @@ namespace App1.View
 
 	    private void DeleteUser_OnClicked(object sender, EventArgs e)
 	    {
-	        Application.Current.MainPage = new LoginPage();
+	        PopupNavigation.Instance.PopAsync();
+            Application.Current.MainPage = new LoginPage();
 	    }
 	}
 }

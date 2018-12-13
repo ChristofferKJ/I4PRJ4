@@ -32,7 +32,7 @@
                 Source = "spil_bg"
                 />
 
-            <Label HorizontalOptions="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Text="Her kan du ikke spille baby." FontSize="40" HorizontalTextAlignment="Center"/>
+            <Label HorizontalOptions="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Text="Her kan du ikke spille endnu." FontSize="40" HorizontalTextAlignment="Center"/>
         
         </StackLayout>
     </ContentPage.Content>

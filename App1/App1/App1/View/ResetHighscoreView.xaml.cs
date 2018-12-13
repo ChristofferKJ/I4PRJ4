@@ -22,5 +22,10 @@ namespace App1.View
 	    {
 	        PopupNavigation.Instance.PopAsync();
 	    }
+
+	    private void ResetHighscore_Clicked(object sender, EventArgs e)
+	    {
+	        PopupNavigation.Instance.PopAllAsync();
+	    }
 	}
 }

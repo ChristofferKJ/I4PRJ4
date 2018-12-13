@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using App1.Helpers;
 using App1.Model;
 using App1.Services;
 using Plugin.Connectivity;
@@ -34,7 +35,9 @@ namespace App1.ViewModel
                     }
 
                     var isPasswordChanged = _apiServices.ChangePassword(OldPassword, NewPassword, ConfirmPassword);
-                    
+                    Settings.Password = (ConfirmPassword == NewPassword) && (OldPassword == Settings.Password)
+                        ? NewPassword
+                        : Settings.Password;
                 });
             }
         }
