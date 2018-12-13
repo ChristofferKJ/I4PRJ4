@@ -7,7 +7,7 @@ namespace App1.ViewModel
 {
     class QuizConclusionViewModel : BaseViewModel
     {
-        private ApiServices _apiServices = new ApiServices();
+        private IAPIService _apiServices;
         private List<CategoryScoreModel> Highscores { get; set; }
         public CategoryScoreModel CurrentHighScore{ get; set; }
 
@@ -44,8 +44,15 @@ namespace App1.ViewModel
             set => SetProperty(ref highScoreUpdatedDescription_, value);
         }
 
-        public QuizConclusionViewModel(Quiz quiz, double score)
+        public QuizConclusionViewModel(Quiz quiz, double score, IAPIService service = null)
         {
+            if (service != null)
+                _apiServices = service;
+            else
+            {
+                _apiServices = new ApiServices();
+            }
+            
             Title = "Quiz Afsluttet";
             completedQuiz = quiz;
             TotalScore = score;

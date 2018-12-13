@@ -16,7 +16,7 @@ using Newtonsoft.Json.Linq;
 
 namespace App1.Services
 {
-    class ApiServices
+    class ApiServices : IAPIService
     {
         internal async Task<bool> RegisterAsync(string username, string email, string password, string confirmPassword)
         {
