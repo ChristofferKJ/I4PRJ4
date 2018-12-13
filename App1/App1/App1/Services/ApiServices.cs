@@ -16,7 +16,7 @@ using Newtonsoft.Json.Linq;
 
 namespace App1.Services
 {
-    class ApiServices
+    class ApiServices : IAPIService
     {
         internal async Task<bool> RegisterAsync(string username, string email, string password, string confirmPassword)
         {
@@ -80,6 +80,19 @@ namespace App1.Services
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Settings.AccessToken);
 
             var json = await client.GetStringAsync("https://asestudyhelper.azurewebsites.net/api/CategoryScores");
+
+            var highscores = JsonConvert.DeserializeObject<List<CategoryScoreModel>>(json);
+            Debug.WriteLine(highscores.ToString());
+            return highscores;
+        }
+
+        public async Task<List<CategoryScoreModel>> GetHighScoreForCurrentUser()
+        {
+            var client = new HttpClient();
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Settings.AccessToken);
+
+            var json = await client.GetStringAsync("https://asestudyhelper.azurewebsites.net/api/CategoryScores/CurrentUser");
 
             var highscores = JsonConvert.DeserializeObject<List<CategoryScoreModel>>(json);
             Debug.WriteLine(highscores.ToString());

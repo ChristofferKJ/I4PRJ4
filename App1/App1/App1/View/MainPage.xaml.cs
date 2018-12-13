@@ -28,9 +28,10 @@ namespace App1
         private async void quiz_OnTapped(object sender, EventArgs e)
         {
              
-            var QuizSearchPage = new SearchQuizPageSelectCategory();
+            var quizSearchPage = new SearchQuizPageSelectCategory();
 
-            await Navigation.PushModalAsync(new NavigationPage(QuizSearchPage){ BarBackgroundColor = Color.FromHex("#9ab7b6"), BarTextColor = Color.White});
+            Application.Current.MainPage = quizSearchPage;
+            //  await Navigation.PushModalAsync(new NavigationPage(QuizSearchPage){ BarBackgroundColor = Color.FromHex("#9ab7b6"), BarTextColor = Color.White});
         }
 
         private async void spil_OnTapped(object sender, EventArgs e)

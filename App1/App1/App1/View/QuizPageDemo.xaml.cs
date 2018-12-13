@@ -23,7 +23,7 @@ namespace App1.View
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             _viewModel = new QuizViewModel(quiz);
-            _viewModel.QuizCompleted += onQuizCompleted;
+            _viewModel.QuizCompleted += OnQuizCompleted;
             BindingContext = _viewModel;
 
         }
@@ -33,20 +33,10 @@ namespace App1.View
             InitializeComponent();
         }
 
-        protected override void OnDisappearing()
+        async void OnQuizCompleted(object sender, EventArgs e)
         {
-            base.OnDisappearing();
-        }
-
-
-        async Task DismissPage()
-        {
-            await Navigation.PopAsync();
-        }
-
-        async void onQuizCompleted(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new QuizConclusionPage(_viewModel.TheQuiz, _viewModel.TotalScore));
+            Application.Current.MainPage = new QuizConclusionPage(_viewModel.TheQuiz, _viewModel.TotalScore);
+            // await Navigation.PushModalAsync(new QuizConclusionPage(_viewModel.TheQuiz, _viewModel.TotalScore));
         }
 
         
