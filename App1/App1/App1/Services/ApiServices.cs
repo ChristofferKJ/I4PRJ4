@@ -86,6 +86,19 @@ namespace App1.Services
             return highscores;
         }
 
+        public async Task<List<CategoryScoreModel>> GetHighScoreForCurrentUser()
+        {
+            var client = new HttpClient();
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Settings.AccessToken);
+
+            var json = await client.GetStringAsync("https://asestudyhelper.azurewebsites.net/api/CategoryScores/CurrentUser");
+
+            var highscores = JsonConvert.DeserializeObject<List<CategoryScoreModel>>(json);
+            Debug.WriteLine(highscores.ToString());
+            return highscores;
+        }
+
         public async Task<bool> PostHighscore(CategoryScoreModel model)
         {
             var client = new HttpClient();

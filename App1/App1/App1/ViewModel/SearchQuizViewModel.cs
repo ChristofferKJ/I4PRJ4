@@ -55,25 +55,25 @@ namespace App1.ViewModel
             }
         }
 
-        public async Task ExecuteLoadCategories()
-        {
-            if (IsBusy)
-                return;
-
-            IsBusy = true;
-            try
+            public async Task ExecuteLoadCategories()
             {
-                var quizzes = await quizService_.GetAllQuizzesAsync();
+                if (IsBusy)
+                    return;
 
-                if (quizzes.Count != 0)
-                    Categories = ExtractCategories(quizzes);
+                IsBusy = true;
+                try
+                {
+                    var quizzes = await quizService_.GetAllQuizzesAsync();
+
+                    if (quizzes.Count != 0)
+                        Categories = ExtractCategories(quizzes);
+                }
+                finally
+                {
+                    IsBusy = false;
+                }
+               
             }
-            finally
-            {
-                IsBusy = false;
-            }
-           
-        }
 
         List<string> ExtractCategories(List<Quiz> quizzes)
         {

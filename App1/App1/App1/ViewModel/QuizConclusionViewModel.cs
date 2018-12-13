@@ -1,10 +1,15 @@
-﻿using App1.Model;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using App1.Model;
+using App1.Services;
 
 namespace App1.ViewModel
 {
     class QuizConclusionViewModel : BaseViewModel
     {
-        //need private userService
+        private ApiServices _apiServices = new ApiServices();
+        private List<CategoryScoreModel> Highscores { get; set; }
+        public CategoryScoreModel CurrentHighScore{ get; set; }
 
         Quiz completedQuiz;
         public Quiz CompletedQuiz { get => completedQuiz; set => SetProperty(ref completedQuiz, value); }
@@ -41,7 +46,6 @@ namespace App1.ViewModel
 
         public QuizConclusionViewModel(Quiz quiz, double score)
         {
-            //initialize userService
             Title = "Quiz Afsluttet";
             completedQuiz = quiz;
             TotalScore = score;
@@ -55,16 +59,58 @@ namespace App1.ViewModel
 
         private void updateHighScore()
         {
-            double currentHighScore = 0;
-           // get currentHighScore
-            if (TotalScore > currentHighScore)
+            // LoadUserHighScores();
+            // CurrentHighScore = findUserHighScoreForQuizCategory(completedQuiz.Category);
+
+            int currentHighScore = 0;
+
+            if((int) TotalScore > currentHighScore)
+           // if ((int) TotalScore > CurrentHighScore.HighScore)
             {
-                //update highScore
-                HighScoreUpdatedDescription =
-                    $"Tillykke du har slået din egen highscore for {completedQuiz.Category} på {currentHighScore}";
+
+                // HighScoreUpdatedDescription =
+                //   $"Tillykke du har slået din egen highscore for {completedQuiz.Category} på {CurrentHighScore.HighScore}";
+
+                 HighScoreUpdatedDescription =
+                   $"Tillykke du har slået din egen highscore for {completedQuiz.Category} på {currentHighScore}";
             }
         }
 
+        private async void LoadUserHighScores()
+        {
+            Highscores = await _apiServices.GetHighScoreForCurrentUser();
+        }
+
+        private CategoryScoreModel findUserHighScoreForQuizCategory(string category)
+        {
+
+            CategoryScoreModel currentHighCategoryScoreModel = null;
+
+            foreach (var score in Highscores)
+            {
+                if (score.Category == category)
+                    currentHighCategoryScoreModel = score;
+            }
+
+            return currentHighCategoryScoreModel;
+        }
+
+        private async void updateUserHighScoreOnDatabase(double newHighScore)
+        {
+
+            if (CurrentHighScore != null)
+            {
+                CurrentHighScore.HighScore = (int) TotalScore;
+                await _apiServices.PutHighscore(CurrentHighScore);
+            }
+            else
+            {
+                CurrentHighScore = new CategoryScoreModel();
+                CurrentHighScore.Category = completedQuiz.Category;
+                CurrentHighScore.HighScore = (int)TotalScore;
+                await _apiServices.PostHighscore(CurrentHighScore);
+            }
+        }
 
 
 
