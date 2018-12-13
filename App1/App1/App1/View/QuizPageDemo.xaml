@@ -1,129 +1,103 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
              x:Class="App1.View.QuizPageDemo"
              Title="{Binding Title}"
              BackgroundColor="#9ab7b6">
 
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="180">
+            <xfg:GradientStep StepColor="LightGray" StepPercentage="0" />
+            <xfg:GradientStep StepColor="#9ab7b6" StepPercentage=".5" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
 
     <ContentPage.Content>
         <StackLayout>
             <Grid>
-               <Grid.ColumnDefinitions>
+
+              
+
+                <Grid.ColumnDefinitions>
                    <ColumnDefinition />
                    <ColumnDefinition />
-               </Grid.ColumnDefinitions>
+                   <ColumnDefinition />
+                </Grid.ColumnDefinitions>
                <Grid.RowDefinitions>
                    <RowDefinition />
+                   <RowDefinition Height="Auto" />
+                   <RowDefinition Height="50" />
                    <RowDefinition />
                    <RowDefinition />
                    <RowDefinition />
+                   <RowDefinition />
+                   <RowDefinition />
+                    <RowDefinition Height="50" />
+
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Grid.ColumnSpan="2"
+
+                <Label Grid.Row="1"
+                       Grid.RowSpan="1"
+                       Grid.ColumnSpan="3"
                        HorizontalTextAlignment="Center"
-                       Margin="3,3,3,3" 
-                       Text="{Binding TheQuiz.Question}"
-                       FontSize="32" FontAttributes="Bold"
+                       VerticalTextAlignment="Center"
+                       Margin="10,10,10,10" 
+                       Text="{Binding Path=TheQuestion.QuestionText}"
                        TextColor="White"/>
-               <Button Grid.Row="2" Grid.Column="0"
-                       TextColor="White" 
-                       Text="{Binding TheQuiz.Option1}" 
+
+                   <Button Grid.Row="2" Grid.ColumnSpan="3"
+                           TextColor="White" 
+                           Text="{Binding TheQuestion.Options[0].OptionText}" 
                        BackgroundColor="#9ab7b6"
-                       Margin="3,3,3,3"
-                       Command="{Binding RefreshCommand}"
+                       Margin="10,5,10,5"
+                       Command="{Binding AnswerCommand}" CommandParameter="{Binding TheQuestion.Options[0].IsRight}"
                        BorderWidth="1" BorderRadius="1" BorderColor="White"/>
-               <Button Grid.Row="2" Grid.Column="1"
+                <Button Grid.Row="3" Grid.ColumnSpan="3"
                        TextColor="White" 
-                       Text="Okay" 
+                       Text="{Binding Path=TheQuestion.Options[1].OptionText}" 
                        BackgroundColor="#9ab7b6"
-                       Margin="3,3,3,3"
-                       Command="{Binding RefreshCommand}"
+                       Margin="10,5,10,5"
+                       Command="{Binding AnswerCommand}" CommandParameter="{Binding TheQuestion.Options[1].IsRight}"
                        BorderWidth="1" BorderRadius="1" BorderColor="White"/>
-               <Button Grid.Row="3" Grid.Column="0"
+                <Button Grid.Row="4" Grid.ColumnSpan="3"
                        TextColor="White" 
-                       Text="Rarh" 
+                       Text="{Binding Path=TheQuestion.Options[2].OptionText}" 
                        BackgroundColor="#9ab7b6"
-                       Margin="3,3,3,3"
-                       Command="{Binding RefreshCommand}"
+                       Margin="10,5,10,5"
+                       Command="{Binding AnswerCommand}" CommandParameter="{Binding TheQuestion.Options[2].IsRight}"
                        BorderWidth="1" BorderRadius="1" BorderColor="White"/>
-               <Button Grid.Row="3" Grid.Column="1"
+                <Button Grid.Row="5" Grid.ColumnSpan="3"
                        TextColor="White" 
-                       Text="Meh" 
+                       Text="{Binding Path=TheQuestion.Options[3].OptionText}" 
                        BackgroundColor="#9ab7b6"
-                       Margin="3,3,3,3"
+                       Margin="10,5,10,5"
+                       Command="{Binding AnswerCommand}" CommandParameter="{Binding TheQuestion.Options[3].IsRight}"
                        BorderWidth="1" BorderRadius="1" BorderColor="White"
                        />
+                
+                <ProgressBar Grid.Row="6" Grid.Column ="0" Grid.ColumnSpan="3"
+                       x:Name="pb_timeleft"
+                       ProgressColor="White"
+                       Margin="20,11,20,5"
+                       VerticalOptions="LayoutOptions.Start"
+                       HorizontalOptions="FillAndExpand"
+                       Progress ="{Binding TimeLeft}"/>
+   
+                
+                <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"
+                       HorizontalTextAlignment="Center"
+                       
+                       FontSize="30"
+                       Margin="0,0,0,0" 
+                       FontAttributes="Italic"
+                       Text="{Binding TotalScore}"
+                       TextColor="White"/>
+
+
             </Grid>
-        </StackLayout>
+           </StackLayout>
         </ContentPage.Content>
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Handle_CancelClicked" />
-        <ToolbarItem Text="Save" Command="{Binding SaveCommand}" />
-        <ToolbarItem Text="Refresh" Command="{Binding RefreshCommand}" />
-    </ContentPage.ToolbarItems>
+ 
 </ContentPage>
 
-<!--<?xml version="1.0" encoding="utf-8" ?>
-    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="App1.View.QuizPageDemo"
-             Title="{Binding Title}"
-             BackgroundColor="#9ab7b6">
-
-
-        <ContentPage.Content>
-            <StackLayout>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.ColumnSpan="2"
-                       HorizontalTextAlignment="Center"
-                       Margin="3,3,3,3" 
-                       Text="{Binding TheQuiz.Category}"
-                       FontSize="32" FontAttributes="Bold"
-                       TextColor="White"/>
-                    <Button Grid.Row="2" Grid.Column="0"
-                       TextColor="White" 
-                       Text="{Binding currentQuestion.Option0}" 
-                       BackgroundColor="#9ab7b6"
-                       Margin="3,3,3,3"
-                       Command="{Binding AnswerSelected}"
-                       BorderWidth="1" BorderRadius="1" BorderColor="White"/>
-                    <Button Grid.Row="2" Grid.Column="1"
-                       TextColor="White" 
-                       Text="{Binding currentQuestion.Option1}" 
-                       BackgroundColor="#9ab7b6"
-                       Margin="3,3,3,3"
-                       Command="{Binding AnswerSelected}"
-                       BorderWidth="1" BorderRadius="1" BorderColor="White"/>
-                    <Button Grid.Row="3" Grid.Column="0"
-                       TextColor="White" 
-                       Text="{Binding currentQuestion.Option2}" 
-                       BackgroundColor="#9ab7b6"
-                       Margin="3,3,3,3"
-                       Command="{Binding AnswerSelected}"
-                       BorderWidth="1" BorderRadius="1" BorderColor="White"/>
-                    <Button Grid.Row="3" Grid.Column="1"
-                       TextColor="White" 
-                       Text="{Binding Category}" 
-                       BackgroundColor="#9ab7b6"
-                       Margin="3,3,3,3"
-                       BorderWidth="1" BorderRadius="1" BorderColor="White"
-                       />
-                </Grid>
-            </StackLayout>
-        </ContentPage.Content>
-        <ContentPage.ToolbarItems>
-            <ToolbarItem Text="Cancel" Clicked="Handle_CancelClicked" />
-            <ToolbarItem Text="Save" Command="{Binding SaveCommand}" />
-            <ToolbarItem Text="Refresh" Command="{Binding RefreshCommand}" />
-        </ContentPage.ToolbarItems>
-    </ContentPage> -->

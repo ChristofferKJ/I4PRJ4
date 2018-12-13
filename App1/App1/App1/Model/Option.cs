@@ -1,68 +1,45 @@
-﻿using System;
+﻿    using System;
 using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
 
 namespace App1.Model
 {
     public class Option : PropertyChangedModel
     {
-
-        string _optionText;
-        [BsonElement("OptionText")]
-        public string OptionText
-        {
-            get => _optionText;
-            set
-            {
-                if (_optionText == value)
-                    return;
-
-                _optionText = value;
-
-                HandlePropertyChanged();
-            }
-        }
-
-        bool _isRight; //den her behøver måske ikke være propertychanged
-        [BsonElement("IsRight")]
+        private bool _IsRight;
+        [JsonProperty(PropertyName = "IsRight")]
         public bool IsRight
         {
-            get => _isRight;
+            get => _IsRight;
             set
             {
-                if (_isRight == value)
+
+                if (_IsRight == value)
+                {
                     return;
-
-                _isRight = value;
-
+                }
+                _IsRight = value;
                 HandlePropertyChanged();
             }
         }
 
-        int _optionIndex;
-        [BsonElement("OptionIndex")]
-        public int QuestionIndex
+        private string _OptionText;
+        [JsonProperty(PropertyName = "OptionText")]
+        public string OptionText
         {
-            get => _optionIndex;
+            get => _OptionText;
             set
             {
-                if (_optionIndex == value)
+                if (_OptionText == value)
+                {
                     return;
-
-                _optionIndex = value;
-
+                }
+                _OptionText = value;
                 HandlePropertyChanged();
             }
-
-        }
-
-        public void print()
-        {
-            Console.WriteLine($"Option: {OptionText}");
-            Console.WriteLine($"Right Choice: {IsRight}");
-            Console.WriteLine("----------------------");
         }
     }
 }

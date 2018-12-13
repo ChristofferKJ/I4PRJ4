@@ -3,22 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App1.MainPage"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"             BackgroundColor="#9ab7b6">
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+             xmlns:viewModel="clr-namespace:App1.ViewModel;assembly=App1"
+             BackgroundColor="#9ab7b6">
 
     <xfg:ContentPageGloss.BackgroundGradient>
-        <xfg:Gradient Rotation="150">
-            <xfg:GradientStep StepColor="Orange" StepPercentage="0" />
+        <xfg:Gradient Rotation="180">
+            <xfg:GradientStep StepColor="LightGray" StepPercentage="0" />
             <xfg:GradientStep StepColor="#9ab7b6" StepPercentage=".5" />
         </xfg:Gradient>
     </xfg:ContentPageGloss.BackgroundGradient>
 
-
+<ContentPage.BindingContext>
+    <viewModel:LogoutViewModel/>
+</ContentPage.BindingContext>
     <Grid>
 
 
         <ffimageloading:CachedImage HorizontalOptions="Start"
                                     Scale="1"
-                                    Source = "BackgroundMain">
+                                    Source = "BackgroundMain"
+                                    Opacity="0.5">
+        </ffimageloading:CachedImage>
+
+        <ffimageloading:CachedImage HorizontalOptions="End"
+                                    Scale="1"
+                                    Rotation="180"
+                                    Source = "BackgroundMain"
+                                    Opacity="0.5">
         </ffimageloading:CachedImage>
 
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
@@ -32,6 +44,8 @@
                     <RowDefinition Height="170"/>
                     <RowDefinition Height="170"/>
                     <RowDefinition Height="170"/>
+                    <RowDefinition Height="170"/>
+
                 </Grid.RowDefinitions>
 
                 <ffimageloading:CachedImage Scale="0.7" Source="spil" Grid.Row="1">
@@ -99,6 +113,24 @@
                        HorizontalTextAlignment="Center" 
                        Margin="0,150,0,0"
                        Grid.Row="5"/>
+
+
+                <ffimageloading:CachedImage Scale="0.4" Source="logud" Grid.Row="6">
+                    <ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding LogoutCommand}"
+                            Tapped="Logout_OnTapped"
+                        NumberOfTapsRequired="1"/>
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
+                <Label TextColor="White" 
+                       Text="Logud" 
+                       HorizontalTextAlignment="Center" 
+                       Margin="0,125,0,0"
+                       Grid.Row="6"/>
+
+
+
 
             </Grid>
 

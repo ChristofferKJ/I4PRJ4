@@ -4,137 +4,79 @@ using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
 
 namespace App1.Model
 {
     public class Question : PropertyChangedModel
     {
-
         private static System.Random nrg => new System.Random();
 
-        int _questionIndex;
-        [BsonElement("QuestionIndex")]
-        public int QuestionIndex
+        public Question()
         {
-            get => _questionIndex;
-            set
-            {
-                if (_questionIndex == value)
-                    return;
-
-                _questionIndex = value;
-
-                HandlePropertyChanged();
-            }
-
+            Options = new List<Option>();
         }
 
-        string _questionText;
-        [BsonElement("QuestionText")]
+        private string _QuestionText;
+        [JsonProperty(PropertyName = "QuestionText")]
         public string QuestionText
         {
-            get => _questionText;
+            get => _QuestionText;
             set
             {
-                if (_questionText == value)
+                if (_QuestionText == value)
+                {
                     return;
-
-                _questionText = value;
-
-                HandlePropertyChanged();
-            }
-
-        }
-
-        Option[] _options;
-
-        [BsonElement("Option0")]
-        public Option Option0
-        {
-            get => _options[0];
-            set
-            {
-                if (_options[0] == value)
-                    return;
-
-                _options[0] = value;
-
+                }
+                _QuestionText = value;
                 HandlePropertyChanged();
             }
         }
 
-        [BsonElement("Option1")]
-        public Option Option1
+        private int _Score;
+        [JsonProperty(PropertyName = "Score")]
+        public int Score
         {
-            get => _options[1];
+            get => _Score;
             set
             {
-                if (_options[1] == value)
+                if (_Score == value)
+                {
                     return;
-
-                _options[1] = value;
-
+                }
+                _Score = value;
                 HandlePropertyChanged();
             }
         }
 
-        [BsonElement("Option2")]
-        public Option Option2
+        private List<Option> _Options;
+        [JsonProperty(PropertyName = "Options")]
+        public List<Option> Options
         {
-            get => _options[2];
+            get => _Options;
             set
             {
-                if (_options[2] == value)
+                if (_Options == value)
+                {
                     return;
-
-                _options[2] = value;
-
+                }
+                _Options = value;
                 HandlePropertyChanged();
-            }
-        }
-
-
-        [BsonElement("Option3")]
-        public Option Option3
-        {
-            get => _options[3];
-            set
-            {
-                if (_options[3] == value)
-                    return;
-
-                _options[3] = value;
-
-                HandlePropertyChanged();
-
             }
         }
 
         public void RandomizeOptionOrder()
         {
 
-            int n = _options.Length;
+            int n = _Options.Count;
             while (n > 1)
             {
                 n--;
                 int k = nrg.Next(n + 1);
-                Option opt = _options[k];
-                _options[k] = _options[n];
-                _options[n] = opt;
+                Option opt = _Options[k];
+                _Options[k] = _Options[n];
+                _Options[n] = opt;
             }
-        }
-
-        public void print()
-        {
-            Console.WriteLine($"Question: {QuestionText}");
-            Console.WriteLine("----------------------");
-            Console.WriteLine("     Options");
-            Console.WriteLine("----------------------");
-            foreach (var o in _options)
-            {
-                o.print();
-            }
-            Console.WriteLine("----------------------");
         }
     }
 }

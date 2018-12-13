@@ -27,13 +27,11 @@ namespace App1
 
         private async void quiz_OnTapped(object sender, EventArgs e)
         {
-            var myQuiz = new Quiz();
-            myQuiz.Question = "Er der hul igennem?";
-            myQuiz.Option1 = "Måske";
-            myQuiz.Category = "Quiz";
-            var QuizPage = new QuizPageDemo(myQuiz);
+             
+            var quizSearchPage = new SearchQuizPageSelectCategory();
 
-            await Navigation.PushModalAsync(new NavigationPage(QuizPage));
+            Application.Current.MainPage = quizSearchPage;
+            //  await Navigation.PushModalAsync(new NavigationPage(QuizSearchPage){ BarBackgroundColor = Color.FromHex("#9ab7b6"), BarTextColor = Color.White});
         }
 
         private async void spil_OnTapped(object sender, EventArgs e)
@@ -43,7 +41,8 @@ namespace App1
         }
         private async void settings_OnTapped(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new SpilPage());
+            var Settingspage = new SettingsPage(); 
+            await Navigation.PushModalAsync(new NavigationPage(Settingspage) { BarBackgroundColor = Color.FromHex("#9ab7b6"), BarTextColor = Color.White });
         }
         private async void omos_OnTapped(object sender, EventArgs e)
         {
@@ -52,5 +51,9 @@ namespace App1
         }
 
 
+        private async void Logout_OnTapped(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new LoginPage();
+        }
     }
 }

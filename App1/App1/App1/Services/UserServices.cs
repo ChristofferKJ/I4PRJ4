@@ -13,6 +13,10 @@ namespace App1.Services
         {
 
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e1c3120525ef6e3140224b2b0fde56e36ac4303d
         public List<User> GetUsers()
         {
             var list = new List<User>
@@ -41,11 +45,11 @@ namespace App1.Services
                 }
             };
 
-            List<User> sortedlist  = list.OrderByDescending(o => o.UserHiscore).ToList();
+            List<User> sortedlist = list.OrderByDescending(o => o.UserHiscore).ToList();
 
             list = sortedlist;
 
-            return list; 
+            return list;
         }
 
 

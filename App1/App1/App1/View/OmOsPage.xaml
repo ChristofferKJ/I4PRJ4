@@ -2,42 +2,301 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="App1.OmOsPage"
              BackgroundColor="#9ab7b6">
 
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="180">
+            <xfg:GradientStep StepColor="LightGray" StepPercentage="0" />
+            <xfg:GradientStep StepColor="#9ab7b6" StepPercentage=".5" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
 
-    <ContentPage.Content>
-        <Grid Padding="50">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <ContentPage.Content>
+            <Grid>
+                <ffimageloading:CachedImage 
+                Margin="0,0,0,0"
+                VerticalOptions="Start"
+                HorizontalOptions="End"
+                Rotation="0"
+                Opacity="0.25"
+                Scale="2"
+                Source = "omos_bg"
+                />
 
-            <Label 
+            <ScrollView x:Name="scrollingfar">
+                <Grid Padding="50" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--<Label 
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            TextColor="White"
+                            FontAttributes="Bold" 
+                           HorizontalOptions="Start" 
+                        FontSize="22"
+                           HorizontalTextAlignment="Center" 
+                           Text="Swipe ned for at møde os!"
+                        Margin="0,0,0,0"/>-->
+
+                    <forms:AnimationView 
+                    Grid.Row="1"
+                        Margin="0,-40,0,0"
+                    Grid.ColumnSpan="2"
+                    x:Name="AnimationView"
+                    Scale="0.7"
+                    Animation="SwipeDown.json"
+                    Loop="True"
+                    AutoPlay="True"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center" 
+                        Rotation="90"
+                        OnClick="ScrollViewTo"/>
+
+                    <Label 
                 Grid.Row="0"
-                Text="Om os" 
+                Grid.ColumnSpan="2"
+                Text="Om appen" 
                 TextColor="White" 
                 FontAttributes="Bold"
                 FontSize="20"/>
-            <Label 
+                    
+                    <Label 
                 Grid.Row="0"
+                Grid.ColumnSpan="2"
                 Margin="0,30,0,0"
                 TextColor="White" 
                 FontSize="14"
-                Text="ASE StudyHelper er en applikation udviklet i forbindelse med et semesterprojekt på uddannelsen Information- og Kommunikationsteknologi. Den er sponsoreret og fundet af virksomheden Marius Tank Corp. "/>
+                Text="ASE StudyHelper er en applikation udviklet i forbindelse med et semesterprojekt på uddannelsen Information- og Kommunikationsteknologi. Den er sponsoreret og fundet af virksomheden Marius Tank Corp. Du kan trykke på pilen nederst, eller swipe ned for at se os! "/>
+
+                    <Label 
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Margin="0,180,0,0"
+                Text="Hvem er den til? " 
+                TextColor="White" 
+                FontAttributes="Bold"
+                FontSize="20"/>
+
+                    <Label 
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Margin="0,210,0,0"
+                TextColor="White" 
+                FontSize="14"
+                Text="ASE StudyHelper er til dig som har svært ved at kæmpe dig igennem læselektierne! Her kan du quizze dig til faglig fakta. Det er en sjovere og mere effektiv måde, end at læse sig til alle svarene! Så hvad venter du på, bitch? Kom igang med din første quiz! "/>
+                    
+                    
+                    <ffimageloading:CachedImage 
+                Grid.Row="2"
+                Grid.Column="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Scale="1"
+                Source = "christoffer_omos"
+                />
+
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="Christoffer K."
+                        FontAttributes="Bold"
+                        Margin="0,30,0,0"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Start"
+                        TextColor="White"
+                        />
+
+                    <Label 
+                        Margin="0,20,0,0"
+                        HorizontalTextAlignment="Center" 
+                        VerticalTextAlignment="Center" 
+                        Grid.Row="2" 
+                        TextColor="White"
+                        Grid.Column="1" 
+                        Text="Har primært stået for design af GUI, 
+                        samt design af resources og assets."/>
+                
+                
+                    
+                    <ffimageloading:CachedImage 
+                        Grid.Row="3"
+                        Grid.Column="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Scale="1"
+                Source = "simon_omos"
+                />
+
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="Simon Hindkær"
+                        FontAttributes="Bold"
+                        Margin="0,40,0,0"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Start"
+                        TextColor="White"
+                        />
+
+                    <Label 
+                        Margin="0,20,0,0"
+                        HorizontalTextAlignment="Center" 
+                        VerticalTextAlignment="Center" 
+                        Grid.Row="3" 
+                        TextColor="White"
+                        Grid.Column="1" 
+                        Text="Har stået for quiz-databasen, 
+                        og for at spille Hearthstone."/>
+
+                    <ffimageloading:CachedImage 
+                        Grid.Row="4"
+                        Grid.Column="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Scale="1"
+                Source = "tobias_omos"
+                />
+
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Text="Tobias Damm-H"
+                        FontAttributes="Bold"
+                        Margin="0,40,0,0"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Start"
+                        TextColor="White"
+                        />
+
+                    <Label 
+                        Margin="0,20,0,0"
+                        HorizontalTextAlignment="Center" 
+                        VerticalTextAlignment="Center" 
+                        Grid.Row="4" 
+                        TextColor="White"
+                        Grid.Column="1" 
+                        Text="Har stået for quiz-databasen, 
+                        og været inde over GUI. "/>
+
+                    <ffimageloading:CachedImage 
+                        Grid.Row="5"
+                        Grid.Column="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Scale="1"
+                Source = "kasper_omos"
+                />
+
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Text="Kasper Gnutzmayn"
+                        FontAttributes="Bold"
+                        Margin="0,40,0,0"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Start"
+                        TextColor="White"
+                        />
+
+                    <Label 
+                        Margin="0,20,0,0"
+                        HorizontalTextAlignment="Center" 
+                        VerticalTextAlignment="Center" 
+                        Grid.Row="5" 
+                        TextColor="White"
+                        Grid.Column="1" 
+                        Text="Har stået for quiz-databasen, og har også været inde over GUI. "/>
+
+                    <ffimageloading:CachedImage 
+                        Grid.Row="6"
+                        Grid.Column="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Scale="1"
+                Source = "marius_omos"
+                />
+
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Text="Marius Møller"
+                        FontAttributes="Bold"
+                        Margin="0,30,0,0"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Start"
+                        TextColor="White"
+                        />
+
+                    <Label 
+                        Margin="0,20,0,0"
+                        HorizontalTextAlignment="Center" 
+                        VerticalTextAlignment="Center" 
+                        Grid.Row="6" 
+                        TextColor="White"
+                        Grid.Column="1" 
+                        Text="Har stået for user-databasen og login logikken, 
+                        og for at sponsorere kaffe til Chris."/>
+
+                    <ffimageloading:CachedImage 
+                        Grid.Row="7"
+                        Grid.Column="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Scale="1"
+                Source = "viktor_omos"
+                />
+
+                    <Label
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        Text="Viktor Søndergaard"
+                        FontAttributes="Bold"
+                        Margin="0,40,0,0"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Start"
+                        TextColor="White"
+                        />
+
+                    <Label 
+                        Margin="0,20,0,0"
+                        HorizontalTextAlignment="Center" 
+                        VerticalTextAlignment="Center" 
+                        Grid.Row="7" 
+                        TextColor="White"
+                        Grid.Column="1" 
+                        Text="Har stået for at teste softwaren, 
+                        og været git- og LaTeX-master."/>
 
 
 
-            <forms:AnimationView 
-                x:Name="AnimationView"
-                Grid.Row="1"
-                Animation="cool.json"
-                Loop="True"
-                AutoPlay="True"
-                VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand" />
 
+
+
+
+
+
+
+
+
+                </Grid>
+        </ScrollView>
         </Grid>
-    </ContentPage.Content>
+        </ContentPage.Content>
 </ContentPage>

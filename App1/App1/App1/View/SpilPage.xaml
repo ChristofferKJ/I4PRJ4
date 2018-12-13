@@ -2,20 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="App1.SpilPage"
+             BackgroundColor="#9ab7b6"
              >
+
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="180">
+            <xfg:GradientStep StepColor="LightGray" StepPercentage="0" />
+            <xfg:GradientStep StepColor="#9ab7b6" StepPercentage=".5" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
+
+
     <ContentPage.Content>
 
+        
+        
         <StackLayout>
 
-            <forms:AnimationView x:Name="Cool_Animation"
-                             Animation="denher.json"
-                             Loop="True"
-                             AutoPlay="True"
-                             VerticalOptions="FillAndExpand"
-                             HorizontalOptions="FillAndExpand" />
-        
-        <Label Text="404" FontSize="30" HorizontalTextAlignment="Center"/>
+            <ffimageloading:CachedImage 
+                Margin="0,0,0,0"
+                VerticalOptions="Start"
+                HorizontalOptions="End"
+                Rotation="30"
+                Opacity="0.25"
+                Scale="2"
+                Source = "spil_bg"
+                />
+
+            <Label HorizontalOptions="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Text="Her kan du ikke spille baby." FontSize="40" HorizontalTextAlignment="Center"/>
         
         </StackLayout>
     </ContentPage.Content>

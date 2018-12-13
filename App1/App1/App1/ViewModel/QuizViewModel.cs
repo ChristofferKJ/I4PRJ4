@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Windows.Input;
-using System.Threading.Tasks;
+using System.Timers;
 using App1.Model;
-using App1.Services;
-using TaskList.Core;
 using Xamarin.Forms;
 
 
@@ -14,58 +13,107 @@ namespace App1.ViewModel
     public class QuizViewModel : BaseViewModel
     {
         Quiz theQuiz;
-        public Quiz TheQuiz{ get => theQuiz; set => SetProperty(ref theQuiz, value); }
-        public ICommand SaveCommand { get; }
-       
-        public event EventHandler SaveComplete;
+        public Quiz TheQuiz { get => theQuiz; set => SetProperty(ref theQuiz, value); }
 
-        List<Quiz> myQuizzes;
-        public List<Quiz> MyQuizzes { get => myQuizzes; set => SetProperty(ref myQuizzes, value); }
-        public ICommand RefreshCommand { get; }
+        private string b_animation = "#9ab7b6"; 
+
+        private Question theQuestion;
+        public Question TheQuestion { get => theQuestion; set => SetProperty(ref theQuestion, value); }
+
+        public Command AnswerCommand { get; private set; }
+
+        public event EventHandler QuizCompleted;
+
+        private double timeLeft;
+        public double TimeLeft
+        {
+            get => timeLeft;
+            set => SetProperty(ref timeLeft, value);
+        }
+
+        private double totalScore;
+        public double TotalScore
+        {
+            get => totalScore;
+            set => SetProperty(ref totalScore, value);}
 
         public QuizViewModel(Quiz quiz)
         {
-            MyQuizzes = new List<Quiz>();
-            TheQuiz = quiz;
-            Title = TheQuiz.Category;
-            SaveCommand = new Command(async () => await ExecuteSaveCommand());
+            theQuiz = quiz;
+            //theQuiz.RandomizeQuestionOrder();
+            Title = theQuiz.Category;
+            TheQuestion = theQuiz.Question[0];
+            TheQuestion.RandomizeOptionOrder();
 
-            RefreshCommand = new Command(async () => await ExecuteRefreshQuizListCommand());
-            IsBusy = false;
+            TotalScore = 0;
+            AnswerCommand = new Command<bool>(ExcuteAnswerCommand);
+            timeLeft = 1;
 
+            startTimerForTimeLeft();
         }
 
-        async Task ExecuteSaveCommand()
+        protected virtual void OnQuizCompleted()
         {
-           /* var quizServices = new QuizServices();
+            QuizCompleted?.Invoke(this, new EventArgs());
+        }
 
-            if (_isNew)
-                await quizServices.CreateTask(TheQuiz);
+        void ExcuteAnswerCommand(bool isRightAnswer) //Kan kaldes med false, hvis timelimit overstiges.
+        {
+           updateScore(isRightAnswer);
+
+        
+
+            var nextQuestion = theQuiz.NextQuestion();
+
+            if (nextQuestion != null)
+            {
+                nextQuestion.RandomizeOptionOrder();
+                updateQuestion(nextQuestion);
+            }
             else
-                await quizServices.UpdateTask(TheQuiz);
-
-            SaveComplete?.Invoke(this, new EventArgs());*/
+            {
+                OnQuizCompleted();
+            }
         }
 
-        async Task ExecuteRefreshQuizListCommand()
+        void updateScore(bool isRightAnswer)
         {
-            if (IsBusy)
-                return;
+            if (isRightAnswer)
+                TotalScore += TheQuestion.Score * TimeLeft;
+        }
 
-            IsBusy = true;
+        void updateQuestion(Question newQuestion)
+        {
+            theQuestion.QuestionText = newQuestion.QuestionText;
+            theQuestion.Options = newQuestion.Options;
+            theQuestion.Score = newQuestion.Score;
+            TimeLeft = 1;
 
-            try
+        }
+
+        void startTimerForTimeLeft()
+        {
+            System.Timers.Timer timer = new System.Timers.Timer(500);
+            timer.Enabled = true;
+            timer.Elapsed += new ElapsedEventHandler(TimerTick);
+            timer.AutoReset = true;
+        }
+
+
+
+        void TimerTick(object sender, ElapsedEventArgs e)
+        {
+            if (TimeLeft > 0)
             {
-                var quizServices = new QuizServices();
-                MyQuizzes = await quizServices.GetAllQuizzes();
-                
+                TimeLeft -= 0.025;
             }
-            finally
+            else
             {
-                IsBusy = false;
+                ExcuteAnswerCommand(false);
             }
         }
+
     }
 
-    
+
 }
