@@ -11,9 +11,9 @@ namespace App1.Unit.Test
     class QuizServicesTest
     {
         [Test]
-        public void TestTEst()
+        public void TestTest()
         {
-
+            Assert.That(2 + 2, Is.EqualTo(4));
         }
     }
 }
