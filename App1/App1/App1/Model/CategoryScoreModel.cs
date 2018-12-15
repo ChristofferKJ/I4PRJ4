@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App1.Model
 {
-    class CategoryScoreModel
+    public class CategoryScoreModel
     {
         public int Id { get; set; }
         public string Category { get; set; }

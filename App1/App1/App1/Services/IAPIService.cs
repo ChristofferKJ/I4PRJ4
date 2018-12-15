@@ -5,7 +5,7 @@ using App1.Model;
 
 namespace App1.Services
 {
-    interface IAPIService
+    public interface IAPIService
     {
         Task<string> LoginAsync(string username, string password);
 

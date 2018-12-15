@@ -108,7 +108,7 @@ namespace App1.Unit.Test.QuizFeature.Model
         }
 
 
-
+        [Test]
         public void TestPropertyChangedIsSetOnQuestions()
         {
             uut.Question = new List<Question>();
@@ -123,6 +123,30 @@ namespace App1.Unit.Test.QuizFeature.Model
             uut.Question = new List<Question>();
 
             Assert.That(eventsreceived, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void NextQuestionWhenNotLastQuestion_ReturnsQuestion()
+        {
+            uut.Question = new List<Question>(){new Question(), new Question()};
+
+            Question question = uut.NextQuestion();
+            bool exists = question != null;
+
+            Assert.That(exists, Is.EqualTo(true));
+
+        }
+
+        [Test]
+        public void NextQuestionWhenLastQuestion_ReturnsNull()
+        {
+            uut.Question = new List<Question>() {};
+
+            Question question = uut.NextQuestion();
+            bool exists = question == null;
+
+            Assert.That(exists, Is.EqualTo(true));
+
         }
     } 
 }

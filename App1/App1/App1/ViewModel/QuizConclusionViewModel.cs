@@ -5,7 +5,7 @@ using App1.Services;
 
 namespace App1.ViewModel
 {
-    class QuizConclusionViewModel : BaseViewModel
+    public class QuizConclusionViewModel : BaseViewModel
     {
         private IAPIService _apiServices;
         private List<CategoryScoreModel> Highscores { get; set; }
@@ -64,9 +64,9 @@ namespace App1.ViewModel
             
         }
 
-        private void updateHighScore()
+        public void updateHighScore()
         {
-            // LoadUserHighScores();
+             // LoadUserHighScores();
             // CurrentHighScore = findUserHighScoreForQuizCategory(completedQuiz.Category);
 
             int currentHighScore = 0;
@@ -78,9 +78,14 @@ namespace App1.ViewModel
                 // HighScoreUpdatedDescription =
                 //   $"Tillykke du har slået din egen highscore for {completedQuiz.Category} på {CurrentHighScore.HighScore}";
 
-                 HighScoreUpdatedDescription =
+               
+
+                HighScoreUpdatedDescription =
                    $"Tillykke du har slået din egen highscore for {completedQuiz.Category} på {currentHighScore}";
+
+               // updateUserHighScoreOnDatabase(TotalScore);
             }
+
         }
 
         private async void LoadUserHighScores()
@@ -104,7 +109,7 @@ namespace App1.ViewModel
 
         private async void updateUserHighScoreOnDatabase(double newHighScore)
         {
-
+            
             if (CurrentHighScore != null)
             {
                 CurrentHighScore.HighScore = (int) TotalScore;
@@ -117,6 +122,7 @@ namespace App1.ViewModel
                 CurrentHighScore.HighScore = (int)TotalScore;
                 await _apiServices.PostHighscore(CurrentHighScore);
             }
+
         }
 
 
